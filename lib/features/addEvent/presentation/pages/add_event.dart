@@ -11,7 +11,9 @@ class AddEventScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Add Event"),
-        leading: const Icon(Icons.arrow_back_ios),
+        leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(Icons.arrow_back_ios, color: Colors.white)),
       ),
       body: const AddEventForm(),
     );

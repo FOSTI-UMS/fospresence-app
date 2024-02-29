@@ -5,6 +5,7 @@ import 'package:fospresence/core/constants/font.dart';
 ThemeData get lightThemeData => ThemeData(
       scaffoldBackgroundColor: appLightBgColor,
       appBarTheme: AppBarTheme(
+        scrolledUnderElevation: 0,
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
         titleTextStyle: const TextStyle(

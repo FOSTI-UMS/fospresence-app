@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/core/themes/light_theme.dart';
-import 'package:fospresence/features/addEvent/presentation/pages/add_event.dart';
+import 'package:fospresence/features/home/presentation/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         );
       },
       theme: lightThemeData,
-      home: const AddEventScreen(),
+      home: const HomeScreen(),
     );
   }
 }
