@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/core/themes/light_theme.dart';
-import 'package:fospresence/features/home/presentation/pages/home.dart';
+import 'package:fospresence/features/addEvent/presentation/pages/add_event.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      home: const HomeScreen(),
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: const ScrollBehavior().copyWith(overscroll: false),
+          child: child!,
+        );
+      },
+      theme: lightThemeData,
+      home: const AddEventScreen(),
     );
   }
 }
