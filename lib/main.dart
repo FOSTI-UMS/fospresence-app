@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return ScrollConfiguration(
-          behavior: const ScrollBehavior().copyWith(overscroll: false),
+          behavior: const ScrollBehavior().copyWith(
+              overscroll: false, physics: const BouncingScrollPhysics()),
           child: child!,
         );
       },
