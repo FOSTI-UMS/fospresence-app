@@ -59,8 +59,8 @@ class HomeSliverAppBar extends StatelessWidget {
                   colors: [
                     Colors.transparent,
                     Colors.transparent,
-                    Color.fromARGB(60, 0, 0, 0),
-                    Color.fromARGB(150, 0, 0, 0)
+                    Color.fromARGB(90, 0, 0, 0),
+                    Color.fromARGB(190, 0, 0, 0)
                   ],
                 ),
               ),
