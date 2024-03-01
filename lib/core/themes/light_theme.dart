@@ -118,7 +118,6 @@ ThemeData get lightThemeData => ThemeData(
 
 Theme lightTheme(Widget? child) => Theme(
     data: lightThemeData.copyWith(
-      primaryColor: primaryColor, // Warna utama
-      colorScheme: ColorScheme.light(primary: primaryColor),
-    ),
+        primaryColor: primaryColor,
+        colorScheme: ColorScheme.light(primary: primaryColor)),
     child: child!);

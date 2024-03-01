@@ -6,28 +6,33 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const int listViewLength = 10;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: ListView.separated(
-        itemCount: listViewLength,
-        separatorBuilder: (context, index) => const SizedBox(height: 5),
-        itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.only(
-              top: index == 0 ? 10 : 0,
-              bottom: index == listViewLength - 1 ? 10 : 0),
-          child: Container(
-            height: 100,
-            width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white.withOpacity(0.8)),
-            child: Center(
-              child: ListTile(
-                title: const Text("FOSTIFEST"),
-                subtitle: const Text("Saturday-30-February-2024"),
-                trailing: GestureDetector(
-                    onTap: () => _showSheet(context),
-                    child: const Icon(Icons.more_vert)),
+    return MediaQuery.removePadding(
+      removeTop: true,
+      context: context,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: listViewLength,
+          separatorBuilder: (context, index) => const SizedBox(height: 5),
+          itemBuilder: (context, index) => Padding(
+            padding: EdgeInsets.only(
+                top: index == 0 ? 10 : 0,
+                bottom: index == listViewLength - 1 ? 10 : 0),
+            child: Container(
+              height: 100,
+              width: MediaQuery.sizeOf(context).width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white.withOpacity(0.8)),
+              child: Center(
+                child: ListTile(
+                  title: const Text("FOSTIFEST"),
+                  subtitle: const Text("Saturday-30-February-2024"),
+                  trailing: GestureDetector(
+                      onTap: () => _showSheet(context),
+                      child: const Icon(Icons.more_vert)),
+                ),
               ),
             ),
           ),

@@ -16,11 +16,11 @@ class HomeBackground extends StatelessWidget {
             image: const AssetImage('assets/images/fosti_rectangle_logo.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.3), BlendMode.dstATop),
+                Colors.black.withOpacity(0.4), BlendMode.dstATop),
           ),
         ),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
           child: Container(color: Colors.transparent),
         ),
       ),
