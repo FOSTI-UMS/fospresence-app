@@ -1,4 +1,8 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key});
@@ -43,29 +47,34 @@ class EventCard extends StatelessWidget {
 
   _showSheet(BuildContext context) {
     return showBottomSheet(
+      backgroundColor: Colors.transparent,
+      enableDrag: true,
       context: context,
-      builder: (BuildContext context) {
-        return SizedBox(
-          height: MediaQuery.of(context).size.height / 6,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Update'),
-                  ),
+      builder: (context) => SizedBox(
+        height: 160,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: ElevatedButton(
-                    onPressed: () {
+            ),
+            SizedBox(
+              height: 160,
+              child: CupertinoActionSheet(
+                actions: [
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text("Update"),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
@@ -103,14 +112,103 @@ class EventCard extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text('Delete'),
+                    child: const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text("Delete"),
+                      ),
+                    ),
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text("Close"),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
-      },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
+//   _showSheet(BuildContext context) {
+//     return showBottomSheet(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return SizedBox(
+//           height: MediaQuery.of(context).size.height / 6,
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Padding(
+//                 padding: const EdgeInsets.all(5),
+//                 child: SizedBox(
+//                   width: MediaQuery.of(context).size.width / 2.5,
+//                   child: ElevatedButton(
+//                     onPressed: () {},
+//                     child: const Text('Update'),
+//                   ),
+//                 ),
+//               ),
+//               Padding(
+//                 padding: const EdgeInsets.all(5),
+//                 child: SizedBox(
+//                   width: MediaQuery.of(context).size.width / 2.5,
+//                   child: ElevatedButton(
+//                     onPressed: () {
+//                       showDialog(
+//                         context: context,
+//                         builder: (context) => AlertDialog(
+//                           title: Text(
+//                             'Are you sure?',
+//                             style: Theme.of(context).textTheme.bodyLarge,
+//                             textAlign: TextAlign.center,
+//                           ),
+//                           actions: [
+//                             Row(
+//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                               children: [
+//                                 ElevatedButton(
+//                                   onPressed: () {
+//                                     Navigator.of(context).pop();
+//                                   },
+//                                   child: const Row(
+//                                     children: [
+//                                       Icon(Icons.close),
+//                                       Text("Cancel")
+//                                     ],
+//                                   ),
+//                                 ),
+//                                 ElevatedButton(
+//                                   onPressed: () {
+//                                     Navigator.of(context).pop();
+//                                   },
+//                                   child: const Row(
+//                                     children: [Icon(Icons.done), Text("Yes")],
+//                                   ),
+//                                 )
+//                               ],
+//                             )
+//                           ],
+//                         ),
+//                       );
+//                     },
+//                     child: const Text('Delete'),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }
