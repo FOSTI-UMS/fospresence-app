@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fospresence/features/editEvent/presentation/edit_widget_form.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key});
@@ -55,60 +55,98 @@ class EventCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.transparent,
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                  ),
                 ),
               ),
             ),
             SizedBox(
               height: 160,
               child: CupertinoActionSheet(
-                actions: [
-                  const Center(
+                cancelButton: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Center(
                     child: Padding(
                       padding: EdgeInsets.all(10.0),
-                      child: Text("Update"),
+                      child: Text("Close"),
+                    ),
+                  ),
+                ),
+                actions: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(
+                              builder: (context) => const EditEventForm()))
+                          .then((_) => Navigator.of(context).pop());
+                    },
+                    child: const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text("Edit"),
+                      ),
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
                       showDialog(
                         context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text(
-                            'Are you sure?',
-                            style: Theme.of(context).textTheme.bodyLarge,
-                            textAlign: TextAlign.center,
-                          ),
+                        builder: (context) => CupertinoAlertDialog(
+                          title: const Text("Delete"),
                           actions: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            CupertinoDialogAction(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                "Back",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ),
+                            CupertinoDialogAction(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                "Yes",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ),
+                          ],
+                          content: Text.rich(
+                            TextSpan(
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Row(
-                                    children: [
-                                      Icon(Icons.close),
-                                      Text("Cancel")
-                                    ],
-                                  ),
+                                TextSpan(
+                                  text: "Are you sure to delete ",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                 ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Row(
-                                    children: [Icon(Icons.done), Text("Yes")],
-                                  ),
+                                TextSpan(
+                                  text: "FOSTIFEST ?",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 )
                               ],
-                            )
-                          ],
+                            ),
+                          ),
                         ),
                       );
                     },
@@ -116,17 +154,6 @@ class EventCard extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text("Delete"),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Close"),
                       ),
                     ),
                   ),
