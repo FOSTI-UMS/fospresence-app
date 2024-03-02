@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
@@ -11,7 +12,8 @@ class AddEventForm extends StatefulWidget {
 }
 
 class _AddEventFormState extends State<AddEventForm> {
-  DateTime? selectedDate = DateTime.now();
+  DateTime? _selectedDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,17 +21,30 @@ class _AddEventFormState extends State<AddEventForm> {
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Form(
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Chip(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                avatar: const Icon(Icons.error_rounded),
-                backgroundColor: Colors.blue.withOpacity(0.3),
-                label: SizedBox(
-                  width: MediaQuery.sizeOf(context).width,
-                  child: const Text("Input the appropriate inputs!"),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                width: MediaQuery.sizeOf(context).width,
+                decoration: BoxDecoration(
+                    color: Colors.blue.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(15)),
+                child: const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(Icons.error_rounded, size: 22),
+                    SizedBox(width: 5),
+                    Expanded(
+                      child: Text(
+                          "Input the event name in lowercase letters and without spaces",
+                          maxLines: 3,
+                          overflow: TextOverflow.fade),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 30),
@@ -52,8 +67,8 @@ class _AddEventFormState extends State<AddEventForm> {
                     side: BorderSide(width: 0.2, color: lightGrey)),
                 child: InkWell(
                   onTap: () async {
-                    selectedDate = await _showDatetimePicker(context);
-                    selectedDate = selectedDate ?? DateTime.now();
+                    _selectedDate = await _showDatetimePicker(context);
+                    _selectedDate = _selectedDate ?? DateTime.now();
                     setState(() {});
                   },
                   child: Container(
@@ -64,7 +79,7 @@ class _AddEventFormState extends State<AddEventForm> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                              "${selectedDate!.month}/${selectedDate!.day}/${selectedDate!.year}"),
+                              "${_selectedDate!.month}/${_selectedDate!.day}/${_selectedDate!.year}"),
                           const SizedBox(width: 30),
                           const Icon(Icons.calendar_month, size: 20),
                         ],
@@ -77,7 +92,9 @@ class _AddEventFormState extends State<AddEventForm> {
               SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
                   child: const Text("Save"),
                 ),
               )

@@ -9,7 +9,6 @@ class AddEventScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text("Add Event"),
         leading: GestureDetector(
             onTap: () => Navigator.pop(context),

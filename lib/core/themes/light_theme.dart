@@ -8,6 +8,7 @@ ThemeData get lightThemeData => ThemeData(
         scrolledUnderElevation: 0,
         backgroundColor: primaryColor,
         foregroundColor: Colors.white,
+        centerTitle: true,
         titleTextStyle: const TextStyle(
           fontFamily: "Nunito",
           fontSize: 22,
@@ -119,5 +120,5 @@ ThemeData get lightThemeData => ThemeData(
 Theme lightTheme(Widget? child) => Theme(
     data: lightThemeData.copyWith(
         primaryColor: primaryColor,
-        colorScheme: ColorScheme.light(primary: primaryColor)),
+        colorScheme: const ColorScheme.light(primary: Colors.blue)),
     child: child!);
