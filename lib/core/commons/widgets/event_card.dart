@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fospresence/features/editEvent/presentation/edit_widget_form.dart';
+
+import 'package:fospresence/features/detailEvent/presentation/pages/detail_event.dart';
+
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key});
@@ -16,6 +18,7 @@ class EventCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: ListView.separated(
+          shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: listViewLength,
           separatorBuilder: (context, index) => const SizedBox(height: 5),
@@ -23,19 +26,26 @@ class EventCard extends StatelessWidget {
             padding: EdgeInsets.only(
                 top: index == 0 ? 10 : 0,
                 bottom: index == listViewLength - 1 ? 10 : 0),
-            child: Container(
-              height: 100,
-              width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white.withOpacity(0.8)),
-              child: Center(
-                child: ListTile(
-                  title: const Text("FOSTIFEST"),
-                  subtitle: const Text("Saturday-30-February-2024"),
-                  trailing: GestureDetector(
-                      onTap: () => _showSheet(context),
-                      child: const Icon(Icons.more_vert)),
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const DetailEventScreen()),
+              ),
+              child: Container(
+                height: 100,
+                width: MediaQuery.sizeOf(context).width,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white.withOpacity(0.9)),
+                child: Center(
+                  child: ListTile(
+                    title: const Text("FOSTIFEST"),
+                    subtitle: const Text("Saturday-30-February-2024"),
+                    trailing: GestureDetector(
+                        onTap: () => _showSheet(context),
+                        child: const Icon(Icons.more_vert)),
+                  ),
                 ),
               ),
             ),

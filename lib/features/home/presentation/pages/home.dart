@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/features/addEvent/presentation/pages/add_event.dart';
-import 'package:fospresence/features/home/presentation/widgets/event_card.dart';
+import 'package:fospresence/core/commons/widgets/event_card.dart';
 
 import '../widgets/home_background.dart';
 import '../widgets/sliver_app_bar.dart';
