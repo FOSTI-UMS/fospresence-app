@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "106581407588",
+    "project_id": "fospresence",
+    "storage_bucket": "fospresence.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106581407588:android:e37a04f4472683d9606c71",
+        "android_client_info": {
+          "package_name": "com.example.fospresence"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyBQLZIiuOneXfnoktgcErmwII_jW2REw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
