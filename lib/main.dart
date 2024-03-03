@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fospresence/core/themes/light_theme.dart';
-import 'package:fospresence/features/home/presentation/pages/home.dart';
+import 'package:fospresence/config/themes/light_theme.dart';
+import 'package:fospresence/features/event/presentation/pages/home.dart';
 import 'firebase_options.dart';
 
 import 'core/services/injection_container.dart';
