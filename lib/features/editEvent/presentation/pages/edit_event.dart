@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fospresence/features/editEvent/presentation/edit_widget_form.dart';
+import 'package:fospresence/features/editEvent/presentation/widgets/edit_widget_form.dart';
 
-
-
-class AddEventScreen extends StatelessWidget {
-  const AddEventScreen({super.key});
+class EditEventScreen extends StatelessWidget {
+  const EditEventScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
