@@ -11,18 +11,28 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const AddEventScreen()),
-        ),
-        child: const Icon(Icons.add),
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
-            [const HomeSliverAppBar()],
-        body: const Stack(
-            fit: StackFit.expand, children: [HomeBackground(), EventCard()]),
+      body: Stack(
+        children: [
+          NestedScrollView(
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) =>
+                    [const HomeSliverAppBar()],
+            body: const Stack(
+                fit: StackFit.expand,
+                children: [HomeBackground(), EventCard()]),
+          ),
+          Positioned(
+            bottom: 30,
+            right: 30,
+            child: FloatingActionButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddEventScreen()),
+              ),
+              child: const Icon(Icons.add),
+            ),
+          )
+        ],
       ),
     );
   }
