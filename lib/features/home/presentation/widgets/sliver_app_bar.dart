@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/colors.dart';
@@ -15,32 +16,36 @@ class HomeSliverAppBar extends StatelessWidget {
       automaticallyImplyLeading: false,
       pinned: true,
       centerTitle: true,
-      toolbarHeight: 85,
+      toolbarHeight: 80,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         titlePadding: const EdgeInsets.only(bottom: 20),
-        title: RichText(
-          text: TextSpan(
-            style: textWhite26.copyWith(fontWeight: FontWeight.w600),
-            children: [
-              WidgetSpan(
-                child: Container(
-                  height: sizeFostiLogo,
-                  width: sizeFostiLogo,
-                  margin: const EdgeInsets.only(left: 0, right: 6),
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(width: 1, color: Colors.white)),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(sizeFostiLogo),
-                    child: Image.asset("assets/images/fosti_rectangle_logo.png",
-                        fit: BoxFit.cover),
+        title: FadeInUp(
+          duration: const Duration(seconds: 1),
+          child: RichText(
+            text: TextSpan(
+              style: textWhite26.copyWith(fontWeight: FontWeight.w600),
+              children: [
+                WidgetSpan(
+                  child: Container(
+                    height: sizeFostiLogo,
+                    width: sizeFostiLogo,
+                    margin: const EdgeInsets.only(left: 0, right: 6),
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 1, color: Colors.white)),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(sizeFostiLogo),
+                      child: Image.asset(
+                          "assets/images/fosti_rectangle_logo.png",
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
-              ),
-              const TextSpan(text: "Presence"),
-            ],
+                const TextSpan(text: "Presence"),
+              ],
+            ),
           ),
         ),
         background: Stack(

@@ -2,10 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:fospresence/features/detailEvent/presentation/pages/detail_event.dart';
 import 'package:fospresence/features/editEvent/presentation/pages/edit_event.dart';
-import 'package:fospresence/features/editEvent/presentation/widgets/edit_widget_form.dart';
+
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key});
@@ -45,7 +46,7 @@ class EventCard extends StatelessWidget {
                     subtitle: const Text("Saturday-30-February-2024"),
                     trailing: GestureDetector(
                         onTap: () => _showSheet(context),
-                        child: const Icon(Icons.more_vert)),
+                        child: SvgPicture.asset("assets/svg/more_vert.svg")),
                   ),
                 ),
               ),

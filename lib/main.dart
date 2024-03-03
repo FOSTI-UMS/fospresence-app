@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fospresence/core/themes/light_theme.dart';
 import 'package:fospresence/features/home/presentation/pages/home.dart';
 
-void main() {
+import 'core/services/injection_container.dart';
+
+Future<void> main() async {
+  await init();
   runApp(const MyApp());
 }
 
