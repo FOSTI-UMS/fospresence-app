@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';

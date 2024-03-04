@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../pages/detail_event.dart';
+import 'package:fospresence/config/routes/routes.dart';
 
 class UserListView extends StatelessWidget {
   const UserListView({super.key});
@@ -23,11 +22,7 @@ class UserListView extends StatelessWidget {
                 top: index == 0 ? 10 : 0,
                 bottom: index == listViewLength - 1 ? 10 : 0),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const DetailEventScreen()),
-              ),
+              onTap: () => Navigator.pushNamed(context, RouteName.homeScreen),
               child: Container(
                 height: 100,
                 width: MediaQuery.sizeOf(context).width,

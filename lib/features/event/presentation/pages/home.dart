@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fospresence/features/event/presentation/pages/add_event.dart';
+import 'package:fospresence/config/routes/routes.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_card.dart';
 
 import '../widgets/home/home_background.dart';
@@ -25,10 +25,8 @@ class HomeScreen extends StatelessWidget {
             bottom: 30,
             right: 30,
             child: FloatingActionButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddEventScreen()),
-              ),
+              onPressed: () =>
+                  Navigator.pushNamed(context, RouteName.addEventScreen),
               child: const Icon(Icons.add),
             ),
           )
