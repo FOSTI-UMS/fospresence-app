@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fospresence/features/event/presentation/pages/detail_event.dart';
 import 'package:fospresence/features/event/presentation/pages/edit_event.dart';
 
-
 class EventCard extends StatelessWidget {
   const EventCard({super.key});
 
@@ -62,127 +61,133 @@ class EventCard extends StatelessWidget {
       backgroundColor: Colors.transparent,
       enableDrag: true,
       context: context,
-      builder: (context) => Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+      builder: (context) => Stack(
         children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              height: MediaQuery.of(context).size.height - 160,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(color: Colors.transparent),
-            ),
+          Container(
+            decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
           ),
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 160,
-            child: CupertinoActionSheet(
-              cancelButton: GestureDetector(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
                 onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      "Close",
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 160,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(color: Colors.transparent),
                 ),
               ),
-              actions: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(
-                            builder: (context) => const EditEventScreen()))
-                        .then((_) => Navigator.of(context).pop());
-                  },
-                  child: const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        "Edit",
-                        textAlign: TextAlign.center,
+              BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 4,
+                  sigmaY: 4,
+                ),
+                child: const SizedBox(),
+              ),
+              SizedBox(
+                height: 160,
+                child: CupertinoActionSheet(
+                  cancelButton: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const SizedBox(
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          "Close",
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => CupertinoAlertDialog(
-                        title: const Text("Delete"),
-                        actions: [
-                          CupertinoDialogAction(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(
-                              "Back",
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ),
-                          CupertinoDialogAction(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(
-                              "Yes",
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ),
-                        ],
-                        content: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Are you sure to delete ",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: "FOSTIFEST ?",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              )
-                            ],
+                  actions: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(
+                                builder: (context) => const EditEventScreen()))
+                            .then((_) => Navigator.of(context).pop());
+                      },
+                      child: const SizedBox(
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            "Edit",
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
-                    ).then((_) => Navigator.of(context).pop());
-                  },
-                  child: const Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        "Delete",
-                        textAlign: TextAlign.center,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => CupertinoAlertDialog(
+                            title: const Text("Delete"),
+                            actions: [
+                              CupertinoDialogAction(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  "Back",
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              ),
+                              CupertinoDialogAction(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  "Yes",
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              ),
+                            ],
+                            content: Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "Are you sure to delete ",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                  TextSpan(
+                                    text: "FOSTIFEST ?",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ).then((_) => Navigator.of(context).pop());
+                      },
+                      child: const SizedBox(
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            "Delete",
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
