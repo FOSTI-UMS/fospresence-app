@@ -19,32 +19,38 @@ mixin _$AddEventEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(EventEntity event) createEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(EventEntity event)? createEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(EventEntity event)? createEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CreateEvent value) createEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CreateEvent value)? createEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CreateEvent value)? createEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,7 +92,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
@@ -107,6 +113,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(EventEntity event) createEvent,
   }) {
     return initial();
   }
@@ -115,6 +122,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(EventEntity event)? createEvent,
   }) {
     return initial?.call();
   }
@@ -123,6 +131,7 @@ class _$InitialImpl implements Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(EventEntity event)? createEvent,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -134,7 +143,8 @@ class _$InitialImpl implements Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CreateEvent value) createEvent,
   }) {
     return initial(this);
   }
@@ -142,7 +152,8 @@ class _$InitialImpl implements Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CreateEvent value)? createEvent,
   }) {
     return initial?.call(this);
   }
@@ -150,7 +161,8 @@ class _$InitialImpl implements Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CreateEvent value)? createEvent,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -160,8 +172,152 @@ class _$InitialImpl implements Initial {
   }
 }
 
-abstract class Initial implements AddEventEvent {
-  const factory Initial() = _$InitialImpl;
+abstract class _Initial implements AddEventEvent {
+  const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateEventImplCopyWith<$Res> {
+  factory _$$CreateEventImplCopyWith(
+          _$CreateEventImpl value, $Res Function(_$CreateEventImpl) then) =
+      __$$CreateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EventEntity event});
+
+  $EventEntityCopyWith<$Res> get event;
+}
+
+/// @nodoc
+class __$$CreateEventImplCopyWithImpl<$Res>
+    extends _$AddEventEventCopyWithImpl<$Res, _$CreateEventImpl>
+    implements _$$CreateEventImplCopyWith<$Res> {
+  __$$CreateEventImplCopyWithImpl(
+      _$CreateEventImpl _value, $Res Function(_$CreateEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_$CreateEventImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res> get event {
+    return $EventEntityCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateEventImpl implements _CreateEvent {
+  const _$CreateEventImpl({required this.event});
+
+  @override
+  final EventEntity event;
+
+  @override
+  String toString() {
+    return 'AddEventEvent.createEvent(event: $event)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateEventImpl &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
+      __$$CreateEventImplCopyWithImpl<_$CreateEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(EventEntity event) createEvent,
+  }) {
+    return createEvent(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(EventEntity event)? createEvent,
+  }) {
+    return createEvent?.call(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(EventEntity event)? createEvent,
+    required TResult orElse(),
+  }) {
+    if (createEvent != null) {
+      return createEvent(event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_CreateEvent value) createEvent,
+  }) {
+    return createEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_CreateEvent value)? createEvent,
+  }) {
+    return createEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_CreateEvent value)? createEvent,
+    required TResult orElse(),
+  }) {
+    if (createEvent != null) {
+      return createEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateEvent implements AddEventEvent {
+  const factory _CreateEvent({required final EventEntity event}) =
+      _$CreateEventImpl;
+
+  EventEntity get event;
+  @JsonKey(ignore: true)
+  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -188,19 +344,19 @@ mixin _$AddEventState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_AddEventState value) $default, {
-    required TResult Function(Started value) started,
+    required TResult Function(_Started value) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_AddEventState value)? $default, {
-    TResult? Function(Started value)? started,
+    TResult? Function(_Started value)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_AddEventState value)? $default, {
-    TResult Function(Started value)? started,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -328,7 +484,7 @@ class _$AddEventStateImpl implements _AddEventState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_AddEventState value) $default, {
-    required TResult Function(Started value) started,
+    required TResult Function(_Started value) started,
   }) {
     return $default(this);
   }
@@ -337,7 +493,7 @@ class _$AddEventStateImpl implements _AddEventState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_AddEventState value)? $default, {
-    TResult? Function(Started value)? started,
+    TResult? Function(_Started value)? started,
   }) {
     return $default?.call(this);
   }
@@ -346,7 +502,7 @@ class _$AddEventStateImpl implements _AddEventState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_AddEventState value)? $default, {
-    TResult Function(Started value)? started,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -386,7 +542,7 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements Started {
+class _$StartedImpl implements _Started {
   const _$StartedImpl();
 
   @override
@@ -438,7 +594,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_AddEventState value) $default, {
-    required TResult Function(Started value) started,
+    required TResult Function(_Started value) started,
   }) {
     return started(this);
   }
@@ -447,7 +603,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_AddEventState value)? $default, {
-    TResult? Function(Started value)? started,
+    TResult? Function(_Started value)? started,
   }) {
     return started?.call(this);
   }
@@ -456,7 +612,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_AddEventState value)? $default, {
-    TResult Function(Started value)? started,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -466,6 +622,6 @@ class _$StartedImpl implements Started {
   }
 }
 
-abstract class Started implements AddEventState {
-  const factory Started() = _$StartedImpl;
+abstract class _Started implements AddEventState {
+  const factory _Started() = _$StartedImpl;
 }

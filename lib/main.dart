@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fospresence/config/routes/routes.dart';
+import 'package:fospresence/config/routes/routes_name.dart';
 import 'package:fospresence/config/themes/light_theme.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 import 'firebase_options.dart';
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
           child: child!,
         );
       },
+      onGenerateRoute: RouteGenerator.onGenerateRoute,
+      initialRoute: RouteName.homeScreen,
       theme: lightThemeData,
       home: const HomeScreen(),
     );

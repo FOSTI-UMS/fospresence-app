@@ -6,5 +6,5 @@ class AddEventState with _$AddEventState {
     required String input,
     required DateTime date,
   })= _AddEventState;
-  const factory AddEventState.started() = Started;
+  const factory AddEventState.started() = _Started;
 }
