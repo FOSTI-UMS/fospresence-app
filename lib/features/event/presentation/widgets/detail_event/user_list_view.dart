@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fospresence/config/routes/routes.dart';
+import 'package:fospresence/config/routes/route_name.dart';
 
 class UserListView extends StatelessWidget {
   const UserListView({super.key});

@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fospresence/core/constants/font.dart';
 
-import 'package:fospresence/features/event/presentation/pages/detail_event.dart';
-import 'package:fospresence/features/event/presentation/pages/edit_event.dart';
+import '../../../../../config/routes/route_name.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key});
@@ -28,11 +28,8 @@ class EventCard extends StatelessWidget {
                 top: index == 0 ? 10 : 0,
                 bottom: index == listViewLength - 1 ? 10 : 0),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const DetailEventScreen()),
-              ),
+              onTap: () =>
+                  Navigator.pushNamed(context, RouteName.detailEventScreen),
               child: Container(
                 height: 100,
                 width: MediaQuery.sizeOf(context).width,
@@ -59,7 +56,7 @@ class EventCard extends StatelessWidget {
   _showSheet(BuildContext context) {
     return showBottomSheet(
       backgroundColor: Colors.transparent,
-      enableDrag: true,
+      enableDrag: false,
       context: context,
       builder: (context) => Stack(
         children: [
@@ -70,9 +67,7 @@ class EventCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
+                onTap: () => Navigator.of(context).pop(),
                 child: Container(
                   height: MediaQuery.of(context).size.height - 160,
                   width: MediaQuery.of(context).size.width,
@@ -80,44 +75,30 @@ class EventCard extends StatelessWidget {
                 ),
               ),
               BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaX: 4,
-                  sigmaY: 4,
-                ),
+                filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                 child: const SizedBox(),
               ),
               SizedBox(
                 height: 160,
                 child: CupertinoActionSheet(
                   cancelButton: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
+                    onTap: () => Navigator.of(context).pop(),
                     child: const SizedBox(
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          "Close",
-                          textAlign: TextAlign.center,
-                        ),
+                        child: Text("Close", textAlign: TextAlign.center),
                       ),
                     ),
                   ),
                   actions: [
                     GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(
-                                builder: (context) => const EditEventScreen()))
-                            .then((_) => Navigator.of(context).pop());
-                      },
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(RouteName.editEventScreen)
+                          .then((_) => Navigator.of(context).pop()),
                       child: const SizedBox(
                         child: Padding(
                           padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Edit",
-                            textAlign: TextAlign.center,
-                          ),
+                          child: Text("Edit", textAlign: TextAlign.center),
                         ),
                       ),
                     ),
@@ -126,47 +107,32 @@ class EventCard extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (context) => CupertinoAlertDialog(
-                            title: const Text("Delete"),
+                            title: Text("Delete",
+                                style: textDark18.copyWith(
+                                    fontWeight: FontWeight.w700)),
                             actions: [
                               CupertinoDialogAction(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text(
-                                  "Back",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
+                                onPressed: () => Navigator.of(context).pop(),
+                                child: Text("Cancel",
+                                    style: textDark14.copyWith(
+                                        color: Colors.redAccent)),
                               ),
                               CupertinoDialogAction(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text(
-                                  "Yes",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
+                                onPressed: () => Navigator.of(context).pop(),
+                                child: Text("Confirm",
+                                    style: textDark14.copyWith(
+                                        color: Colors.blueAccent)),
                               ),
                             ],
                             content: Text.rich(
                               TextSpan(
                                 children: [
-                                  TextSpan(
-                                    text: "Are you sure to delete ",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                  ),
+                                  const TextSpan(
+                                      text: "Are you sure to delete "),
                                   TextSpan(
                                     text: "FOSTIFEST ?",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                    style: textDark14.copyWith(
+                                        fontWeight: FontWeight.bold),
                                   )
                                 ],
                               ),
@@ -174,13 +140,11 @@ class EventCard extends StatelessWidget {
                           ),
                         ).then((_) => Navigator.of(context).pop());
                       },
-                      child: const SizedBox(
+                      child: SizedBox(
                         child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Delete",
-                            textAlign: TextAlign.center,
-                          ),
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text("Delete",
+                              textAlign: TextAlign.center, style: textDark14),
                         ),
                       ),
                     ),

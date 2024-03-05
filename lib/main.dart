@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fospresence/config/routes/routes.dart';
-import 'package:fospresence/config/routes/routes_name.dart';
+import 'package:fospresence/config/routes/route_name.dart';
+import 'package:fospresence/config/routes/route_generator.dart';
 import 'package:fospresence/config/themes/light_theme.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 import 'firebase_options.dart';
@@ -22,13 +22,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      builder: (context, child) {
-        return ScrollConfiguration(
-          behavior: const ScrollBehavior().copyWith(
-              overscroll: false, physics: const BouncingScrollPhysics()),
-          child: child!,
-        );
-      },
+      builder: (context, child) => ScrollConfiguration(
+        behavior: const ScrollBehavior().copyWith(
+            overscroll: false, physics: const BouncingScrollPhysics()),
+        child: child!,
+      ),
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteName.homeScreen,
       theme: lightThemeData,

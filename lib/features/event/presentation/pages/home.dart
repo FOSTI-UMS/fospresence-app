@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fospresence/config/routes/routes.dart';
+import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_card.dart';
 
 import '../widgets/home/home_background.dart';
