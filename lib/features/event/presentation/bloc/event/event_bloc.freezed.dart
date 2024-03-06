@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'add_event_bloc.dart';
+part of 'event_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AddEventEvent {
+mixin _$EventEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -57,16 +57,16 @@ mixin _$AddEventEvent {
 }
 
 /// @nodoc
-abstract class $AddEventEventCopyWith<$Res> {
-  factory $AddEventEventCopyWith(
-          AddEventEvent value, $Res Function(AddEventEvent) then) =
-      _$AddEventEventCopyWithImpl<$Res, AddEventEvent>;
+abstract class $EventEventCopyWith<$Res> {
+  factory $EventEventCopyWith(
+          EventEvent value, $Res Function(EventEvent) then) =
+      _$EventEventCopyWithImpl<$Res, EventEvent>;
 }
 
 /// @nodoc
-class _$AddEventEventCopyWithImpl<$Res, $Val extends AddEventEvent>
-    implements $AddEventEventCopyWith<$Res> {
-  _$AddEventEventCopyWithImpl(this._value, this._then);
+class _$EventEventCopyWithImpl<$Res, $Val extends EventEvent>
+    implements $EventEventCopyWith<$Res> {
+  _$EventEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AddEventEventCopyWithImpl<$Res, _$InitialImpl>
+    extends _$EventEventCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -97,7 +97,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AddEventEvent.initial()';
+    return 'EventEvent.initial()';
   }
 
   @override
@@ -172,7 +172,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AddEventEvent {
+abstract class _Initial implements EventEvent {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -187,7 +187,7 @@ abstract class _$$CreateEventImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CreateEventImplCopyWithImpl<$Res>
-    extends _$AddEventEventCopyWithImpl<$Res, _$CreateEventImpl>
+    extends _$EventEventCopyWithImpl<$Res, _$CreateEventImpl>
     implements _$$CreateEventImplCopyWith<$Res> {
   __$$CreateEventImplCopyWithImpl(
       _$CreateEventImpl _value, $Res Function(_$CreateEventImpl) _then)
@@ -224,7 +224,7 @@ class _$CreateEventImpl implements _CreateEvent {
 
   @override
   String toString() {
-    return 'AddEventEvent.createEvent(name: $name, date: $date)';
+    return 'EventEvent.createEvent(name: $name, date: $date)';
   }
 
   @override
@@ -308,7 +308,7 @@ class _$CreateEventImpl implements _CreateEvent {
   }
 }
 
-abstract class _CreateEvent implements AddEventEvent {
+abstract class _CreateEvent implements EventEvent {
   const factory _CreateEvent(
       {required final String name,
       required final DateTime date}) = _$CreateEventImpl;
@@ -321,22 +321,22 @@ abstract class _CreateEvent implements AddEventEvent {
 }
 
 /// @nodoc
-mixin _$AddEventState {
+mixin _$EventState {
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<ValueFailure<String>, EventEntity>> get failureOrSuccess =>
       throw _privateConstructorUsedError;
   bool get isLoaded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AddEventStateCopyWith<AddEventState> get copyWith =>
+  $EventStateCopyWith<EventState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AddEventStateCopyWith<$Res> {
-  factory $AddEventStateCopyWith(
-          AddEventState value, $Res Function(AddEventState) then) =
-      _$AddEventStateCopyWithImpl<$Res, AddEventState>;
+abstract class $EventStateCopyWith<$Res> {
+  factory $EventStateCopyWith(
+          EventState value, $Res Function(EventState) then) =
+      _$EventStateCopyWithImpl<$Res, EventState>;
   @useResult
   $Res call(
       {bool isLoading,
@@ -345,9 +345,9 @@ abstract class $AddEventStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddEventStateCopyWithImpl<$Res, $Val extends AddEventState>
-    implements $AddEventStateCopyWith<$Res> {
-  _$AddEventStateCopyWithImpl(this._value, this._then);
+class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
+    implements $EventStateCopyWith<$Res> {
+  _$EventStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -379,11 +379,11 @@ class _$AddEventStateCopyWithImpl<$Res, $Val extends AddEventState>
 }
 
 /// @nodoc
-abstract class _$$AddEventStateImplCopyWith<$Res>
-    implements $AddEventStateCopyWith<$Res> {
-  factory _$$AddEventStateImplCopyWith(
-          _$AddEventStateImpl value, $Res Function(_$AddEventStateImpl) then) =
-      __$$AddEventStateImplCopyWithImpl<$Res>;
+abstract class _$$EventStateImplCopyWith<$Res>
+    implements $EventStateCopyWith<$Res> {
+  factory _$$EventStateImplCopyWith(
+          _$EventStateImpl value, $Res Function(_$EventStateImpl) then) =
+      __$$EventStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -393,11 +393,11 @@ abstract class _$$AddEventStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AddEventStateImplCopyWithImpl<$Res>
-    extends _$AddEventStateCopyWithImpl<$Res, _$AddEventStateImpl>
-    implements _$$AddEventStateImplCopyWith<$Res> {
-  __$$AddEventStateImplCopyWithImpl(
-      _$AddEventStateImpl _value, $Res Function(_$AddEventStateImpl) _then)
+class __$$EventStateImplCopyWithImpl<$Res>
+    extends _$EventStateCopyWithImpl<$Res, _$EventStateImpl>
+    implements _$$EventStateImplCopyWith<$Res> {
+  __$$EventStateImplCopyWithImpl(
+      _$EventStateImpl _value, $Res Function(_$EventStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -407,7 +407,7 @@ class __$$AddEventStateImplCopyWithImpl<$Res>
     Object? failureOrSuccess = null,
     Object? isLoaded = null,
   }) {
-    return _then(_$AddEventStateImpl(
+    return _then(_$EventStateImpl(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -426,8 +426,8 @@ class __$$AddEventStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddEventStateImpl extends _AddEventState {
-  const _$AddEventStateImpl(
+class _$EventStateImpl extends _EventState {
+  const _$EventStateImpl(
       {required this.isLoading,
       required this.failureOrSuccess,
       required this.isLoaded})
@@ -442,14 +442,14 @@ class _$AddEventStateImpl extends _AddEventState {
 
   @override
   String toString() {
-    return 'AddEventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, isLoaded: $isLoaded)';
+    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, isLoaded: $isLoaded)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddEventStateImpl &&
+            other is _$EventStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.failureOrSuccess, failureOrSuccess) ||
@@ -465,17 +465,17 @@ class _$AddEventStateImpl extends _AddEventState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddEventStateImplCopyWith<_$AddEventStateImpl> get copyWith =>
-      __$$AddEventStateImplCopyWithImpl<_$AddEventStateImpl>(this, _$identity);
+  _$$EventStateImplCopyWith<_$EventStateImpl> get copyWith =>
+      __$$EventStateImplCopyWithImpl<_$EventStateImpl>(this, _$identity);
 }
 
-abstract class _AddEventState extends AddEventState {
-  const factory _AddEventState(
+abstract class _EventState extends EventState {
+  const factory _EventState(
       {required final bool isLoading,
       required final Option<Either<ValueFailure<String>, EventEntity>>
           failureOrSuccess,
-      required final bool isLoaded}) = _$AddEventStateImpl;
-  const _AddEventState._() : super._();
+      required final bool isLoaded}) = _$EventStateImpl;
+  const _EventState._() : super._();
 
   @override
   bool get isLoading;
@@ -485,6 +485,6 @@ abstract class _AddEventState extends AddEventState {
   bool get isLoaded;
   @override
   @JsonKey(ignore: true)
-  _$$AddEventStateImplCopyWith<_$AddEventStateImpl> get copyWith =>
+  _$$EventStateImplCopyWith<_$EventStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
