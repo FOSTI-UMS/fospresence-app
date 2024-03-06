@@ -19,38 +19,38 @@ mixin _$EventEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String name, DateTime date) createEvent,
+    required TResult Function(EventEntity event) createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String name, DateTime date)? createEvent,
+    TResult? Function(EventEntity event)? createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String name, DateTime date)? createEvent,
+    TResult Function(EventEntity event)? createEventPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_CreateEventPressed value) createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_CreateEventPressed value)? createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_CreateEventPressed value)? createEventPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String name, DateTime date) createEvent,
+    required TResult Function(EventEntity event) createEventPressed,
   }) {
     return initial();
   }
@@ -122,7 +122,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String name, DateTime date)? createEvent,
+    TResult? Function(EventEntity event)? createEventPressed,
   }) {
     return initial?.call();
   }
@@ -131,7 +131,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String name, DateTime date)? createEvent,
+    TResult Function(EventEntity event)? createEventPressed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -144,7 +144,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_CreateEventPressed value) createEventPressed,
   }) {
     return initial(this);
   }
@@ -153,7 +153,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_CreateEventPressed value)? createEventPressed,
   }) {
     return initial?.call(this);
   }
@@ -162,7 +162,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_CreateEventPressed value)? createEventPressed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -177,101 +177,104 @@ abstract class _Initial implements EventEvent {
 }
 
 /// @nodoc
-abstract class _$$CreateEventImplCopyWith<$Res> {
-  factory _$$CreateEventImplCopyWith(
-          _$CreateEventImpl value, $Res Function(_$CreateEventImpl) then) =
-      __$$CreateEventImplCopyWithImpl<$Res>;
+abstract class _$$CreateEventPressedImplCopyWith<$Res> {
+  factory _$$CreateEventPressedImplCopyWith(_$CreateEventPressedImpl value,
+          $Res Function(_$CreateEventPressedImpl) then) =
+      __$$CreateEventPressedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name, DateTime date});
+  $Res call({EventEntity event});
+
+  $EventEntityCopyWith<$Res> get event;
 }
 
 /// @nodoc
-class __$$CreateEventImplCopyWithImpl<$Res>
-    extends _$EventEventCopyWithImpl<$Res, _$CreateEventImpl>
-    implements _$$CreateEventImplCopyWith<$Res> {
-  __$$CreateEventImplCopyWithImpl(
-      _$CreateEventImpl _value, $Res Function(_$CreateEventImpl) _then)
+class __$$CreateEventPressedImplCopyWithImpl<$Res>
+    extends _$EventEventCopyWithImpl<$Res, _$CreateEventPressedImpl>
+    implements _$$CreateEventPressedImplCopyWith<$Res> {
+  __$$CreateEventPressedImplCopyWithImpl(_$CreateEventPressedImpl _value,
+      $Res Function(_$CreateEventPressedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? date = null,
+    Object? event = null,
   }) {
-    return _then(_$CreateEventImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+    return _then(_$CreateEventPressedImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res> get event {
+    return $EventEntityCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$CreateEventImpl implements _CreateEvent {
-  const _$CreateEventImpl({required this.name, required this.date});
+class _$CreateEventPressedImpl implements _CreateEventPressed {
+  const _$CreateEventPressedImpl({required this.event});
 
   @override
-  final String name;
-  @override
-  final DateTime date;
+  final EventEntity event;
 
   @override
   String toString() {
-    return 'EventEvent.createEvent(name: $name, date: $date)';
+    return 'EventEvent.createEventPressed(event: $event)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateEventImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.date, date) || other.date == date));
+            other is _$CreateEventPressedImpl &&
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, date);
+  int get hashCode => Object.hash(runtimeType, event);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
-      __$$CreateEventImplCopyWithImpl<_$CreateEventImpl>(this, _$identity);
+  _$$CreateEventPressedImplCopyWith<_$CreateEventPressedImpl> get copyWith =>
+      __$$CreateEventPressedImplCopyWithImpl<_$CreateEventPressedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String name, DateTime date) createEvent,
+    required TResult Function(EventEntity event) createEventPressed,
   }) {
-    return createEvent(name, date);
+    return createEventPressed(event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String name, DateTime date)? createEvent,
+    TResult? Function(EventEntity event)? createEventPressed,
   }) {
-    return createEvent?.call(name, date);
+    return createEventPressed?.call(event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String name, DateTime date)? createEvent,
+    TResult Function(EventEntity event)? createEventPressed,
     required TResult orElse(),
   }) {
-    if (createEvent != null) {
-      return createEvent(name, date);
+    if (createEventPressed != null) {
+      return createEventPressed(event);
     }
     return orElse();
   }
@@ -280,50 +283,48 @@ class _$CreateEventImpl implements _CreateEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_CreateEventPressed value) createEventPressed,
   }) {
-    return createEvent(this);
+    return createEventPressed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_CreateEventPressed value)? createEventPressed,
   }) {
-    return createEvent?.call(this);
+    return createEventPressed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_CreateEventPressed value)? createEventPressed,
     required TResult orElse(),
   }) {
-    if (createEvent != null) {
-      return createEvent(this);
+    if (createEventPressed != null) {
+      return createEventPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateEvent implements EventEvent {
-  const factory _CreateEvent(
-      {required final String name,
-      required final DateTime date}) = _$CreateEventImpl;
+abstract class _CreateEventPressed implements EventEvent {
+  const factory _CreateEventPressed({required final EventEntity event}) =
+      _$CreateEventPressedImpl;
 
-  String get name;
-  DateTime get date;
+  EventEntity get event;
   @JsonKey(ignore: true)
-  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
+  _$$CreateEventPressedImplCopyWith<_$CreateEventPressedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$EventState {
   bool get isLoading => throw _privateConstructorUsedError;
-  Option<Either<ValueFailure<String>, EventEntity>> get failureOrSuccess =>
+  Option<Either<ValueFailure<String>, Set<Set<void>>>> get failureOrSuccess =>
       throw _privateConstructorUsedError;
   bool get isLoaded => throw _privateConstructorUsedError;
 
@@ -340,7 +341,7 @@ abstract class $EventStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<ValueFailure<String>, EventEntity>> failureOrSuccess,
+      Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess,
       bool isLoaded});
 }
 
@@ -369,7 +370,7 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
       failureOrSuccess: null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure<String>, EventEntity>>,
+              as Option<Either<ValueFailure<String>, Set<Set<void>>>>,
       isLoaded: null == isLoaded
           ? _value.isLoaded
           : isLoaded // ignore: cast_nullable_to_non_nullable
@@ -388,7 +389,7 @@ abstract class _$$EventStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<ValueFailure<String>, EventEntity>> failureOrSuccess,
+      Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess,
       bool isLoaded});
 }
 
@@ -415,7 +416,7 @@ class __$$EventStateImplCopyWithImpl<$Res>
       failureOrSuccess: null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure<String>, EventEntity>>,
+              as Option<Either<ValueFailure<String>, Set<Set<void>>>>,
       isLoaded: null == isLoaded
           ? _value.isLoaded
           : isLoaded // ignore: cast_nullable_to_non_nullable
@@ -436,7 +437,7 @@ class _$EventStateImpl extends _EventState {
   @override
   final bool isLoading;
   @override
-  final Option<Either<ValueFailure<String>, EventEntity>> failureOrSuccess;
+  final Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess;
   @override
   final bool isLoaded;
 
@@ -472,7 +473,7 @@ class _$EventStateImpl extends _EventState {
 abstract class _EventState extends EventState {
   const factory _EventState(
       {required final bool isLoading,
-      required final Option<Either<ValueFailure<String>, EventEntity>>
+      required final Option<Either<ValueFailure<String>, Set<Set<void>>>>
           failureOrSuccess,
       required final bool isLoaded}) = _$EventStateImpl;
   const _EventState._() : super._();
@@ -480,7 +481,7 @@ abstract class _EventState extends EventState {
   @override
   bool get isLoading;
   @override
-  Option<Either<ValueFailure<String>, EventEntity>> get failureOrSuccess;
+  Option<Either<ValueFailure<String>, Set<Set<void>>>> get failureOrSuccess;
   @override
   bool get isLoaded;
   @override

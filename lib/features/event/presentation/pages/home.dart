@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/config/routes/route_name.dart';
+import 'package:fospresence/core/di/injection_container.dart';
+import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/home/home_background.dart';
 import '../widgets/home/sliver_app_bar.dart';
+
+class EventBlocProvider extends StatelessWidget {
+  const EventBlocProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+        create: (context) => sl<EventBloc>(), child: const HomeScreen());
+  }
+}
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           NestedScrollView(

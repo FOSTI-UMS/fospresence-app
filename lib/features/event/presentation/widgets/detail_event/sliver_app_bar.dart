@@ -5,7 +5,7 @@ import 'package:fospresence/core/utils/initial_animation.dart';
 
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/font.dart';
-import '../../../../../core/services/injection_container.dart';
+import '../../../../../core/di/injection_container.dart';
 
 class DetailEventSliverAppBar extends StatefulWidget {
   const DetailEventSliverAppBar({super.key});

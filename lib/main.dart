@@ -6,7 +6,7 @@ import 'package:fospresence/config/themes/light_theme.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 import 'firebase_options.dart';
 
-import 'core/services/injection_container.dart';
+import 'core/di/injection_container.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteName.homeScreen,
       theme: lightThemeData,
-      home: const HomeScreen(),
+      home: const EventBlocProvider(),
     );
   }
 }

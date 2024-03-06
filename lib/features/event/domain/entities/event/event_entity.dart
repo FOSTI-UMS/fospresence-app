@@ -6,11 +6,8 @@ part 'event_entity.freezed.dart';
 
 @freezed
 abstract class EventEntity with _$EventEntity {
-  const EventEntity._();
-
   const factory EventEntity({
     required DocumentReference ref,
-    required String id,
     required String name,
     required DateTime datetime,
     List<ParticipantEntity>? participants,
@@ -23,16 +20,13 @@ abstract class EventEntity with _$EventEntity {
 
     return EventEntity(
       ref: snapshot.reference,
-      id: data?["id"],
       name: data?["name"],
       datetime: data?["datetime"],
       participants: data?["participants"] ?? [],
     );
   }
-
-  Map<String, dynamic> toFirestore() {
+  Map<String, Object?> toFirestore() {
     return {
-      "id": id,
       "name": name,
       "datetime": datetime,
       "participants": participants,

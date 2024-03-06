@@ -5,12 +5,12 @@ import 'package:fospresence/features/event/domain/entities/event/event_entity.da
 import 'package:fospresence/features/event/domain/repositories/event_repository.dart';
 
 class CreateEventUseCase
-    extends UseCase<Either<ValueFailure<String>, Unit>, EventEntity> {
-  final EventRespository _eventRespository;
+    extends UseCase<Either<ValueFailure<String>, Set<Set<void>>>, EventEntity> {
+  final EventRespository eventRespository;
 
-  CreateEventUseCase(this._eventRespository);
+  CreateEventUseCase({required this.eventRespository});
   @override
-  Future<Either<ValueFailure<String>, Unit>> call(
+  Future<Either<ValueFailure<String>, Set<Set<void>>>> call(
           {required EventEntity params}) async =>
-      await _eventRespository.createEvent(event: params);
+      await eventRespository.createEvent(event: params);
 }

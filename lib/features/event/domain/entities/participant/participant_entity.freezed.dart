@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ParticipantEntity {
   DocumentReference<Object?> get ref => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get nim => throw _privateConstructorUsedError;
   List<EventEntity>? get events => throw _privateConstructorUsedError;
@@ -35,7 +34,6 @@ abstract class $ParticipantEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {DocumentReference<Object?> ref,
-      String id,
       String name,
       String nim,
       List<EventEntity>? events});
@@ -55,7 +53,6 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
   @override
   $Res call({
     Object? ref = null,
-    Object? id = null,
     Object? name = null,
     Object? nim = null,
     Object? events = freezed,
@@ -65,10 +62,6 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -95,7 +88,6 @@ abstract class _$$ParticipantEntityImplCopyWith<$Res>
   @useResult
   $Res call(
       {DocumentReference<Object?> ref,
-      String id,
       String name,
       String nim,
       List<EventEntity>? events});
@@ -113,7 +105,6 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ref = null,
-    Object? id = null,
     Object? name = null,
     Object? nim = null,
     Object? events = freezed,
@@ -123,10 +114,6 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -145,20 +132,16 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ParticipantEntityImpl extends _ParticipantEntity {
+class _$ParticipantEntityImpl implements _ParticipantEntity {
   const _$ParticipantEntityImpl(
       {required this.ref,
-      required this.id,
       required this.name,
       required this.nim,
       final List<EventEntity>? events})
-      : _events = events,
-        super._();
+      : _events = events;
 
   @override
   final DocumentReference<Object?> ref;
-  @override
-  final String id;
   @override
   final String name;
   @override
@@ -175,7 +158,7 @@ class _$ParticipantEntityImpl extends _ParticipantEntity {
 
   @override
   String toString() {
-    return 'ParticipantEntity(ref: $ref, id: $id, name: $name, nim: $nim, events: $events)';
+    return 'ParticipantEntity(ref: $ref, name: $name, nim: $nim, events: $events)';
   }
 
   @override
@@ -184,14 +167,13 @@ class _$ParticipantEntityImpl extends _ParticipantEntity {
         (other.runtimeType == runtimeType &&
             other is _$ParticipantEntityImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.nim, nim) || other.nim == nim) &&
             const DeepCollectionEquality().equals(other._events, _events));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, id, name, nim,
+  int get hashCode => Object.hash(runtimeType, ref, name, nim,
       const DeepCollectionEquality().hash(_events));
 
   @JsonKey(ignore: true)
@@ -200,21 +182,25 @@ class _$ParticipantEntityImpl extends _ParticipantEntity {
   _$$ParticipantEntityImplCopyWith<_$ParticipantEntityImpl> get copyWith =>
       __$$ParticipantEntityImplCopyWithImpl<_$ParticipantEntityImpl>(
           this, _$identity);
+
+  Map<String, Object?> toFirestore() {
+    return {
+      "name": name,
+      "nim": nim,
+      "events": events,
+    };
+  }
 }
 
-abstract class _ParticipantEntity extends ParticipantEntity {
+abstract class _ParticipantEntity implements ParticipantEntity {
   const factory _ParticipantEntity(
       {required final DocumentReference<Object?> ref,
-      required final String id,
       required final String name,
       required final String nim,
       final List<EventEntity>? events}) = _$ParticipantEntityImpl;
-  const _ParticipantEntity._() : super._();
 
   @override
   DocumentReference<Object?> get ref;
-  @override
-  String get id;
   @override
   String get name;
   @override

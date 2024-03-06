@@ -6,11 +6,11 @@ import 'package:fospresence/features/event/domain/repositories/event_repository.
 
 class GetEventsUseCase
     extends UseCase<Either<ValueFailure<String>, List<EventEntity>>, Unit> {
-  final EventRespository _eventRespository;
+  final EventRespository eventRespository;
 
-  GetEventsUseCase(this._eventRespository);
+  GetEventsUseCase({required this.eventRespository});
   @override
   Future<Either<ValueFailure<String>, List<EventEntity>>> call(
           {required Unit params}) async =>
-      await _eventRespository.getEvents();
+      await eventRespository.getEvents();
 }
