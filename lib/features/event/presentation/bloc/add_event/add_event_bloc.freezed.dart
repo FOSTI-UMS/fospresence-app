@@ -19,19 +19,19 @@ mixin _$AddEventEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(EventEntity event) createEvent,
+    required TResult Function(String name, DateTime date) createEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(EventEntity event)? createEvent,
+    TResult? Function(String name, DateTime date)? createEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(EventEntity event)? createEvent,
+    TResult Function(String name, DateTime date)? createEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(EventEntity event) createEvent,
+    required TResult Function(String name, DateTime date) createEvent,
   }) {
     return initial();
   }
@@ -122,7 +122,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(EventEntity event)? createEvent,
+    TResult? Function(String name, DateTime date)? createEvent,
   }) {
     return initial?.call();
   }
@@ -131,7 +131,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(EventEntity event)? createEvent,
+    TResult Function(String name, DateTime date)? createEvent,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -182,9 +182,7 @@ abstract class _$$CreateEventImplCopyWith<$Res> {
           _$CreateEventImpl value, $Res Function(_$CreateEventImpl) then) =
       __$$CreateEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EventEntity event});
-
-  $EventEntityCopyWith<$Res> get event;
+  $Res call({String name, DateTime date});
 }
 
 /// @nodoc
@@ -198,36 +196,35 @@ class __$$CreateEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = null,
+    Object? name = null,
+    Object? date = null,
   }) {
     return _then(_$CreateEventImpl(
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as EventEntity,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EventEntityCopyWith<$Res> get event {
-    return $EventEntityCopyWith<$Res>(_value.event, (value) {
-      return _then(_value.copyWith(event: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$CreateEventImpl implements _CreateEvent {
-  const _$CreateEventImpl({required this.event});
+  const _$CreateEventImpl({required this.name, required this.date});
 
   @override
-  final EventEntity event;
+  final String name;
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'AddEventEvent.createEvent(event: $event)';
+    return 'AddEventEvent.createEvent(name: $name, date: $date)';
   }
 
   @override
@@ -235,11 +232,12 @@ class _$CreateEventImpl implements _CreateEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateEventImpl &&
-            (identical(other.event, event) || other.event == event));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event);
+  int get hashCode => Object.hash(runtimeType, name, date);
 
   @JsonKey(ignore: true)
   @override
@@ -251,29 +249,29 @@ class _$CreateEventImpl implements _CreateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(EventEntity event) createEvent,
+    required TResult Function(String name, DateTime date) createEvent,
   }) {
-    return createEvent(event);
+    return createEvent(name, date);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(EventEntity event)? createEvent,
+    TResult? Function(String name, DateTime date)? createEvent,
   }) {
-    return createEvent?.call(event);
+    return createEvent?.call(name, date);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(EventEntity event)? createEvent,
+    TResult Function(String name, DateTime date)? createEvent,
     required TResult orElse(),
   }) {
     if (createEvent != null) {
-      return createEvent(event);
+      return createEvent(name, date);
     }
     return orElse();
   }
@@ -311,10 +309,12 @@ class _$CreateEventImpl implements _CreateEvent {
 }
 
 abstract class _CreateEvent implements AddEventEvent {
-  const factory _CreateEvent({required final EventEntity event}) =
-      _$CreateEventImpl;
+  const factory _CreateEvent(
+      {required final String name,
+      required final DateTime date}) = _$CreateEventImpl;
 
-  EventEntity get event;
+  String get name;
+  DateTime get date;
   @JsonKey(ignore: true)
   _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -322,43 +322,13 @@ abstract class _CreateEvent implements AddEventEvent {
 
 /// @nodoc
 mixin _$AddEventState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String input, DateTime date) $default, {
-    required TResult Function() started,
-  }) =>
+  bool get isLoading => throw _privateConstructorUsedError;
+  Option<Either<ValueFailure<String>, EventEntity>> get failureOrSuccess =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String input, DateTime date)? $default, {
-    TResult? Function()? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String input, DateTime date)? $default, {
-    TResult Function()? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_AddEventState value) $default, {
-    required TResult Function(_Started value) started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_AddEventState value)? $default, {
-    TResult? Function(_Started value)? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_AddEventState value)? $default, {
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) =>
+  bool get isLoaded => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AddEventStateCopyWith<AddEventState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -367,6 +337,11 @@ abstract class $AddEventStateCopyWith<$Res> {
   factory $AddEventStateCopyWith(
           AddEventState value, $Res Function(AddEventState) then) =
       _$AddEventStateCopyWithImpl<$Res, AddEventState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      Option<Either<ValueFailure<String>, EventEntity>> failureOrSuccess,
+      bool isLoaded});
 }
 
 /// @nodoc
@@ -378,15 +353,43 @@ class _$AddEventStateCopyWithImpl<$Res, $Val extends AddEventState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? failureOrSuccess = null,
+    Object? isLoaded = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failureOrSuccess: null == failureOrSuccess
+          ? _value.failureOrSuccess
+          : failureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, EventEntity>>,
+      isLoaded: null == isLoaded
+          ? _value.isLoaded
+          : isLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$AddEventStateImplCopyWith<$Res> {
+abstract class _$$AddEventStateImplCopyWith<$Res>
+    implements $AddEventStateCopyWith<$Res> {
   factory _$$AddEventStateImplCopyWith(
           _$AddEventStateImpl value, $Res Function(_$AddEventStateImpl) then) =
       __$$AddEventStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String input, DateTime date});
+  $Res call(
+      {bool isLoading,
+      Option<Either<ValueFailure<String>, EventEntity>> failureOrSuccess,
+      bool isLoaded});
 }
 
 /// @nodoc
@@ -400,35 +403,46 @@ class __$$AddEventStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? input = null,
-    Object? date = null,
+    Object? isLoading = null,
+    Object? failureOrSuccess = null,
+    Object? isLoaded = null,
   }) {
     return _then(_$AddEventStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failureOrSuccess: null == failureOrSuccess
+          ? _value.failureOrSuccess
+          : failureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, EventEntity>>,
+      isLoaded: null == isLoaded
+          ? _value.isLoaded
+          : isLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AddEventStateImpl implements _AddEventState {
-  const _$AddEventStateImpl({required this.input, required this.date});
+class _$AddEventStateImpl extends _AddEventState {
+  const _$AddEventStateImpl(
+      {required this.isLoading,
+      required this.failureOrSuccess,
+      required this.isLoaded})
+      : super._();
 
   @override
-  final String input;
+  final bool isLoading;
   @override
-  final DateTime date;
+  final Option<Either<ValueFailure<String>, EventEntity>> failureOrSuccess;
+  @override
+  final bool isLoaded;
 
   @override
   String toString() {
-    return 'AddEventState(input: $input, date: $date)';
+    return 'AddEventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, isLoaded: $isLoaded)';
   }
 
   @override
@@ -436,192 +450,41 @@ class _$AddEventStateImpl implements _AddEventState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddEventStateImpl &&
-            (identical(other.input, input) || other.input == input) &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.failureOrSuccess, failureOrSuccess) ||
+                other.failureOrSuccess == failureOrSuccess) &&
+            (identical(other.isLoaded, isLoaded) ||
+                other.isLoaded == isLoaded));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input, date);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, failureOrSuccess, isLoaded);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddEventStateImplCopyWith<_$AddEventStateImpl> get copyWith =>
       __$$AddEventStateImplCopyWithImpl<_$AddEventStateImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String input, DateTime date) $default, {
-    required TResult Function() started,
-  }) {
-    return $default(input, date);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String input, DateTime date)? $default, {
-    TResult? Function()? started,
-  }) {
-    return $default?.call(input, date);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String input, DateTime date)? $default, {
-    TResult Function()? started,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(input, date);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_AddEventState value) $default, {
-    required TResult Function(_Started value) started,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_AddEventState value)? $default, {
-    TResult? Function(_Started value)? started,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_AddEventState value)? $default, {
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _AddEventState implements AddEventState {
+abstract class _AddEventState extends AddEventState {
   const factory _AddEventState(
-      {required final String input,
-      required final DateTime date}) = _$AddEventStateImpl;
+      {required final bool isLoading,
+      required final Option<Either<ValueFailure<String>, EventEntity>>
+          failureOrSuccess,
+      required final bool isLoaded}) = _$AddEventStateImpl;
+  const _AddEventState._() : super._();
 
-  String get input;
-  DateTime get date;
+  @override
+  bool get isLoading;
+  @override
+  Option<Either<ValueFailure<String>, EventEntity>> get failureOrSuccess;
+  @override
+  bool get isLoaded;
+  @override
   @JsonKey(ignore: true)
   _$$AddEventStateImplCopyWith<_$AddEventStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AddEventStateCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'AddEventState.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String input, DateTime date) $default, {
-    required TResult Function() started,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String input, DateTime date)? $default, {
-    TResult? Function()? started,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String input, DateTime date)? $default, {
-    TResult Function()? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_AddEventState value) $default, {
-    required TResult Function(_Started value) started,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_AddEventState value)? $default, {
-    TResult? Function(_Started value)? started,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_AddEventState value)? $default, {
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements AddEventState {
-  const factory _Started() = _$StartedImpl;
 }

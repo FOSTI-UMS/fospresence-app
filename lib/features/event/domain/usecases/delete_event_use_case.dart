@@ -1,15 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:fospresence/core/errors/failure.dart';
+import 'package:fospresence/core/usecase/usecase.dart';
 import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
 import 'package:fospresence/features/event/domain/repositories/event_repository.dart';
 
-class DeleteEventUseCase {
-  final EventRespository eventRespository;
+class DeleteEventUseCase
+    extends UseCase<Either<ValueFailure<String>, Unit>, EventEntity> {
+  final EventRespository _eventRespository;
 
-  const DeleteEventUseCase({required this.eventRespository});
-
+  DeleteEventUseCase(this._eventRespository);
+  @override
   Future<Either<ValueFailure<String>, Unit>> call(
-      {required EventEntity event}) async {
-    return await eventRespository.deleteEvent(event: event);
-  }
+          {required EventEntity params}) async =>
+      await _eventRespository.deleteEvent(event: params);
 }

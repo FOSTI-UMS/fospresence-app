@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fospresence/features/event/domain/entities/user/participant_entity.dart';
+import 'package:fospresence/features/event/domain/entities/participant/participant_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'event_entity.freezed.dart';
