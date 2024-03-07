@@ -15,6 +15,7 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
               {debugPrint('DocumentSnapshot added with ID: ${doc.id}')}
           },
         );
+    await Future.delayed(const Duration(seconds: 3));
     return result;
   }
 

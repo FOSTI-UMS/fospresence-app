@@ -8,6 +8,7 @@ class AddEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text("Add Event"),
         leading: GestureDetector(

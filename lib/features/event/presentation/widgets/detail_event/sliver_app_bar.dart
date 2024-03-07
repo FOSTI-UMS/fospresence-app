@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fospresence/core/utils/initial_animation.dart';
+import 'package:fospresence/core/commons/utils/initial_animation.dart';
 
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/font.dart';

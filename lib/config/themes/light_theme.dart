@@ -51,6 +51,7 @@ ThemeData get lightThemeData => ThemeData(
         selectionHandleColor: primaryColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
+        errorMaxLines: 3,
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         hintStyle: textDark14.copyWith(color: Colors.grey),

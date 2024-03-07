@@ -1,9 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fospresence/config/routes/route_name.dart';
-import 'package:fospresence/config/routes/route_generator.dart';
-import 'package:fospresence/config/themes/light_theme.dart';
-import 'package:fospresence/features/event/presentation/pages/home.dart';
+import 'package:fospresence/core/di/di_bloc.dart';
 import 'firebase_options.dart';
 
 import 'core/di/injection_container.dart';
@@ -12,25 +9,5 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await init();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) => ScrollConfiguration(
-        behavior: const ScrollBehavior().copyWith(
-            overscroll: false, physics: const BouncingScrollPhysics()),
-        child: child!,
-      ),
-      onGenerateRoute: RouteGenerator.onGenerateRoute,
-      initialRoute: RouteName.homeScreen,
-      theme: lightThemeData,
-      home: const EventBlocProvider(),
-    );
-  }
+  runApp(const GlobalBlocProviders());
 }

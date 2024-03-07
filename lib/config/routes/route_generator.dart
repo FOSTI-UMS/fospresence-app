@@ -9,16 +9,17 @@ import 'package:page_transition/page_transition.dart';
 class RouteGenerator {
   const RouteGenerator._();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    const int duration = 500;
+    const int duration = 300;
     const Curve curve = Curves.easeIn;
     switch (settings.name) {
       case RouteName.homeScreen:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(
+            builder: (context) => const HomeScreen());
       case RouteName.detailEventScreen:
         return PageTransition(
           child: const DetailEventScreen(),
           type: PageTransitionType.rightToLeft,
-          duration: const Duration(milliseconds: duration),
+          duration: const Duration(milliseconds: duration + 700),
           curve: curve,
           isIos: true,
         );
@@ -39,7 +40,8 @@ class RouteGenerator {
           isIos: true,
         );
       default:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(
+            builder: (context) => const HomeScreen());
     }
   }
 }

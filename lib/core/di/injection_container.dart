@@ -1,4 +1,5 @@
-import 'package:fospresence/core/utils/initial_animation.dart';
+import 'package:fospresence/core/commons/utils/initial_animation.dart';
+import 'package:fospresence/core/commons/utils/value_validator.dart';
 import 'package:fospresence/features/event/data/data_resources/remote/event_remote_data_source_impl.dart';
 import 'package:fospresence/features/event/data/repositories/event_repository_impl.dart';
 import 'package:fospresence/features/event/domain/repositories/event_repository.dart';
@@ -14,8 +15,10 @@ import '../../features/event/data/data_resources/remote/event_remote_data_source
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  // utils
   sl.registerFactory<InitialAnimation>(() =>
       InitialAnimation(animationDuration: 1000, animationIsPlaying: true));
+  sl.registerSingleton<ValueValidator>(ValueValidator());
 
   // Bloc
   sl.registerFactory<EventBloc>(() => EventBloc(

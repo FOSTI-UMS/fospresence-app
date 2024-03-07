@@ -19,8 +19,11 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   final EditEventUseCase editEventUseCase;
   final DeleteEventUseCase eventUseCase;
 
-  EventBloc({required this.createEventUseCase, required this.getEventsUseCase,
-      required this.editEventUseCase, required this.eventUseCase})
+  EventBloc(
+      {required this.createEventUseCase,
+      required this.getEventsUseCase,
+      required this.editEventUseCase,
+      required this.eventUseCase})
       : super(EventState.started()) {
     on<EventEvent>(
       (event, emit) async {
@@ -35,12 +38,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
             );
           },
           createEventPressed: (value) async {
-            emit(
-              state.copyWith(
-                isLoading: true,
-                failureOrSuccess: none(),
-              ),
-            );
+            emit(state.copyWith(isLoading: true));
 
             final result = await createEventUseCase(params: value.event);
 
