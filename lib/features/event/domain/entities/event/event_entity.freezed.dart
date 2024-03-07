@@ -185,7 +185,8 @@ class _$EventEntityImpl implements _EventEntity {
   _$$EventEntityImplCopyWith<_$EventEntityImpl> get copyWith =>
       __$$EventEntityImplCopyWithImpl<_$EventEntityImpl>(this, _$identity);
 
- Map<String, Object?> toFirestore() {
+  @override
+  Map<String, Object?> toFirestore() {
     return {
       "name": name,
       "datetime": datetime,

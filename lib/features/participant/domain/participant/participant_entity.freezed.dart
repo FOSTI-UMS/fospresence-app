@@ -183,6 +183,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
       __$$ParticipantEntityImplCopyWithImpl<_$ParticipantEntityImpl>(
           this, _$identity);
 
+  @override
   Map<String, Object?> toFirestore() {
     return {
       "name": name,
