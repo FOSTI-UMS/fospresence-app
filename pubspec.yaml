@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.14.0
   page_transition: ^2.1.0
   fluttertoast: ^8.2.4
+  flutter_native_splash: ^2.3.10
 
 
 dev_dependencies:
@@ -139,3 +140,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo_light.png
+  branding: assets/images/brand_light.png
+  color_dark: "#0B0B0D"
+  image_dark: assets/images/logo_dark.png
+  branding_dark: assets/images/brand_dark.png
+
+  android_12:
+    image: assets/images/logo_light.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/images/logo_dark.png
+    icon_background_color_dark: "#0B0B0D"
+
+  web: false

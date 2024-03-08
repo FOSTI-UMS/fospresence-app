@@ -7,7 +7,7 @@ import 'core/di/injection_container.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   SystemChrome.setPreferredOrientations(
+  SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await init();
