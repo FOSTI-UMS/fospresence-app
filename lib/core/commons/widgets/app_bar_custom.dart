@@ -12,10 +12,16 @@ class AppBarCustom extends StatelessWidget {
     return Positioned(
       top: 0,
       child: Container(
-        color: primaryColor,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         height: 90,
         width: MediaQuery.sizeOf(context).width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: primaryGradientColor,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,

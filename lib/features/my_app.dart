@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fospresence/config/themes/dark_theme.dart';
+import 'package:fospresence/config/themes/light_theme.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 
 import '../config/routes/route_generator.dart';
 import '../config/routes/route_name.dart';
-import '../config/themes/light_theme.dart';
 
 late final FToast fToast;
 
@@ -38,6 +39,7 @@ class _MyAppState extends State<MyApp> {
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteName.homeScreen,
       theme: lightThemeData,
+      darkTheme: darkThemeData,
       home: const HomeScreen(),
     );
   }

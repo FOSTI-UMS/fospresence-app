@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/features/event/presentation/widgets/detail_event/search.dart';
 import 'package:fospresence/features/event/presentation/widgets/detail_event/user_list_view.dart';
+import 'package:fospresence/features/event/presentation/widgets/home/home_background.dart';
 import '../../../../core/constants/colors.dart';
 import '../widgets/detail_event/sliver_app_bar.dart';
 
@@ -10,20 +11,27 @@ class DetailEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 5, 60, 97),
+      resizeToAvoidBottomInset: false,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
             [const DetailEventSliverAppBar()],
         body: Container(
-          decoration: BoxDecoration(
-            color: appLightBgColor,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-          ),
+          decoration: BoxDecoration(color: appDarkBgColor),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: Column(
-              children: [DetailEventSearch(), UserListView()],
+              children: [
+                DetailEventSearch(),
+                Expanded(
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      HomeBackground(),
+                      UserListView(),
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         ),

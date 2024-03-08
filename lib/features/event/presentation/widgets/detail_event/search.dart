@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fospresence/core/constants/font.dart';
 
 import '../../../../../core/constants/colors.dart';
 
@@ -17,12 +18,13 @@ class DetailEventSearch extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 20),
             height: 4,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5), color: primaryColor),
+                borderRadius: BorderRadius.circular(5), color: Colors.white),
           ),
           Row(
             children: [
               Expanded(
                 child: TextField(
+                  style: textWhite14,
                   decoration: InputDecoration(
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(13.0),
@@ -39,7 +41,7 @@ class DetailEventSearch extends StatelessWidget {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                       borderSide:
-                          const BorderSide(width: 0.8, color: Colors.black),
+                          const BorderSide(width: 0.8, color: Colors.white),
                     ),
                   ),
                 ),
@@ -48,7 +50,8 @@ class DetailEventSearch extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: primaryColor,
+                    border: Border.all(color: Colors.white, width: 0.2),
+                    color: primaryColor.withOpacity(0.5),
                     borderRadius: BorderRadius.circular(10)),
                 child: SvgPicture.asset(
                   "assets/svg/scan_qr_code.svg",

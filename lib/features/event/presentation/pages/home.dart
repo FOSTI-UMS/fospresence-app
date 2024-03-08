@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/config/routes/route_name.dart';
+import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_card.dart';
 
 import '../widgets/home/home_background.dart';
@@ -28,7 +29,21 @@ class HomeScreen extends StatelessWidget {
             child: FloatingActionButton(
               onPressed: () =>
                   Navigator.pushNamed(context, RouteName.addEventScreen),
-              child: const Icon(Icons.add),
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white, width: 0.3),
+                  borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(15),
+                      topLeft: Radius.circular(15)),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: primaryGradientColor),
+                ),
+                child: const Icon(Icons.add),
+              ),
             ),
           )
         ],

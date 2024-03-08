@@ -10,17 +10,18 @@ class HomeBackground extends StatelessWidget {
       child: Container(
         width: MediaQuery.sizeOf(context).width * 0.7,
         height: MediaQuery.sizeOf(context).width * 0.7,
+        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
             image: const AssetImage('assets/images/fosti_rectangle_logo.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                Colors.black.withOpacity(0.8), BlendMode.dstATop),
           ),
         ),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+          filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
           child: Container(color: Colors.transparent),
         ),
       ),
