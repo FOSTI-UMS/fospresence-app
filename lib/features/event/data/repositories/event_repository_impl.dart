@@ -15,8 +15,17 @@ class EventRepositoryImpl extends EventRespository {
       final result = await eventRemoteDataSource.createEvent(event: event);
       return Right(result);
     } catch (e) {
-      return Left(ValueFailure.firebaseError(
-          errorMessage: "Failed to create event : $e"));
+      if (e is Exception) {
+        return const Left(
+          ValueFailure.eventAlreadyExists(
+              errorMessage: "Event with the same name already exists"),
+        );
+      } else {
+        return Left(
+          ValueFailure.firebaseError(
+              errorMessage: "Failed to create event: $e"),
+        );
+      }
     }
   }
 

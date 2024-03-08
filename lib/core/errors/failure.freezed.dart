@@ -16,25 +16,26 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ValueFailure<T> {
+  String get errorMessage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String errorMessage) firebaseError,
-    required TResult Function() eventAlreadyExists,
-    required TResult Function(String failedValue) invalidEventName,
+    required TResult Function(String errorMessage) eventAlreadyExists,
+    required TResult Function(String errorMessage) invalidEventName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String errorMessage)? firebaseError,
-    TResult? Function()? eventAlreadyExists,
-    TResult? Function(String failedValue)? invalidEventName,
+    TResult? Function(String errorMessage)? eventAlreadyExists,
+    TResult? Function(String errorMessage)? invalidEventName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String errorMessage)? firebaseError,
-    TResult Function()? eventAlreadyExists,
-    TResult Function(String failedValue)? invalidEventName,
+    TResult Function(String errorMessage)? eventAlreadyExists,
+    TResult Function(String errorMessage)? invalidEventName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +61,10 @@ mixin _$ValueFailure<T> {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -67,6 +72,8 @@ abstract class $ValueFailureCopyWith<T, $Res> {
   factory $ValueFailureCopyWith(
           ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
       _$ValueFailureCopyWithImpl<T, $Res, ValueFailure<T>>;
+  @useResult
+  $Res call({String errorMessage});
 }
 
 /// @nodoc
@@ -78,13 +85,28 @@ class _$ValueFailureCopyWithImpl<T, $Res, $Val extends ValueFailure<T>>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_value.copyWith(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$FirebaseErrorImplCopyWith<T, $Res> {
+abstract class _$$FirebaseErrorImplCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
   factory _$$FirebaseErrorImplCopyWith(_$FirebaseErrorImpl<T> value,
           $Res Function(_$FirebaseErrorImpl<T>) then) =
       __$$FirebaseErrorImplCopyWithImpl<T, $Res>;
+  @override
   @useResult
   $Res call({String errorMessage});
 }
@@ -147,8 +169,8 @@ class _$FirebaseErrorImpl<T> implements _FirebaseError<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String errorMessage) firebaseError,
-    required TResult Function() eventAlreadyExists,
-    required TResult Function(String failedValue) invalidEventName,
+    required TResult Function(String errorMessage) eventAlreadyExists,
+    required TResult Function(String errorMessage) invalidEventName,
   }) {
     return firebaseError(errorMessage);
   }
@@ -157,8 +179,8 @@ class _$FirebaseErrorImpl<T> implements _FirebaseError<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String errorMessage)? firebaseError,
-    TResult? Function()? eventAlreadyExists,
-    TResult? Function(String failedValue)? invalidEventName,
+    TResult? Function(String errorMessage)? eventAlreadyExists,
+    TResult? Function(String errorMessage)? invalidEventName,
   }) {
     return firebaseError?.call(errorMessage);
   }
@@ -167,8 +189,8 @@ class _$FirebaseErrorImpl<T> implements _FirebaseError<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String errorMessage)? firebaseError,
-    TResult Function()? eventAlreadyExists,
-    TResult Function(String failedValue)? invalidEventName,
+    TResult Function(String errorMessage)? eventAlreadyExists,
+    TResult Function(String errorMessage)? invalidEventName,
     required TResult orElse(),
   }) {
     if (firebaseError != null) {
@@ -216,17 +238,23 @@ abstract class _FirebaseError<T> implements ValueFailure<T> {
   const factory _FirebaseError({required final String errorMessage}) =
       _$FirebaseErrorImpl<T>;
 
+  @override
   String get errorMessage;
+  @override
   @JsonKey(ignore: true)
   _$$FirebaseErrorImplCopyWith<T, _$FirebaseErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EventAlreadyExistsImplCopyWith<T, $Res> {
+abstract class _$$EventAlreadyExistsImplCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
   factory _$$EventAlreadyExistsImplCopyWith(_$EventAlreadyExistsImpl<T> value,
           $Res Function(_$EventAlreadyExistsImpl<T>) then) =
       __$$EventAlreadyExistsImplCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call({String errorMessage});
 }
 
 /// @nodoc
@@ -236,58 +264,83 @@ class __$$EventAlreadyExistsImplCopyWithImpl<T, $Res>
   __$$EventAlreadyExistsImplCopyWithImpl(_$EventAlreadyExistsImpl<T> _value,
       $Res Function(_$EventAlreadyExistsImpl<T>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$EventAlreadyExistsImpl<T>(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$EventAlreadyExistsImpl<T> implements _EventAlreadyExists<T> {
-  const _$EventAlreadyExistsImpl();
+  const _$EventAlreadyExistsImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.eventAlreadyExists()';
+    return 'ValueFailure<$T>.eventAlreadyExists(errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EventAlreadyExistsImpl<T>);
+            other is _$EventAlreadyExistsImpl<T> &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventAlreadyExistsImplCopyWith<T, _$EventAlreadyExistsImpl<T>>
+      get copyWith => __$$EventAlreadyExistsImplCopyWithImpl<T,
+          _$EventAlreadyExistsImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String errorMessage) firebaseError,
-    required TResult Function() eventAlreadyExists,
-    required TResult Function(String failedValue) invalidEventName,
+    required TResult Function(String errorMessage) eventAlreadyExists,
+    required TResult Function(String errorMessage) invalidEventName,
   }) {
-    return eventAlreadyExists();
+    return eventAlreadyExists(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String errorMessage)? firebaseError,
-    TResult? Function()? eventAlreadyExists,
-    TResult? Function(String failedValue)? invalidEventName,
+    TResult? Function(String errorMessage)? eventAlreadyExists,
+    TResult? Function(String errorMessage)? invalidEventName,
   }) {
-    return eventAlreadyExists?.call();
+    return eventAlreadyExists?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String errorMessage)? firebaseError,
-    TResult Function()? eventAlreadyExists,
-    TResult Function(String failedValue)? invalidEventName,
+    TResult Function(String errorMessage)? eventAlreadyExists,
+    TResult Function(String errorMessage)? invalidEventName,
     required TResult orElse(),
   }) {
     if (eventAlreadyExists != null) {
-      return eventAlreadyExists();
+      return eventAlreadyExists(errorMessage);
     }
     return orElse();
   }
@@ -328,16 +381,26 @@ class _$EventAlreadyExistsImpl<T> implements _EventAlreadyExists<T> {
 }
 
 abstract class _EventAlreadyExists<T> implements ValueFailure<T> {
-  const factory _EventAlreadyExists() = _$EventAlreadyExistsImpl<T>;
+  const factory _EventAlreadyExists({required final String errorMessage}) =
+      _$EventAlreadyExistsImpl<T>;
+
+  @override
+  String get errorMessage;
+  @override
+  @JsonKey(ignore: true)
+  _$$EventAlreadyExistsImplCopyWith<T, _$EventAlreadyExistsImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$InvalidEventImplCopyWith<T, $Res> {
+abstract class _$$InvalidEventImplCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
   factory _$$InvalidEventImplCopyWith(_$InvalidEventImpl<T> value,
           $Res Function(_$InvalidEventImpl<T>) then) =
       __$$InvalidEventImplCopyWithImpl<T, $Res>;
+  @override
   @useResult
-  $Res call({String failedValue});
+  $Res call({String errorMessage});
 }
 
 /// @nodoc
@@ -351,12 +414,12 @@ class __$$InvalidEventImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failedValue = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$InvalidEventImpl<T>(
-      failedValue: null == failedValue
-          ? _value.failedValue
-          : failedValue // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -365,14 +428,14 @@ class __$$InvalidEventImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$InvalidEventImpl<T> implements _InvalidEvent<T> {
-  const _$InvalidEventImpl({required this.failedValue});
+  const _$InvalidEventImpl({required this.errorMessage});
 
   @override
-  final String failedValue;
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.invalidEventName(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.invalidEventName(errorMessage: $errorMessage)';
   }
 
   @override
@@ -380,12 +443,12 @@ class _$InvalidEventImpl<T> implements _InvalidEvent<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvalidEventImpl<T> &&
-            (identical(other.failedValue, failedValue) ||
-                other.failedValue == failedValue));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failedValue);
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -398,32 +461,32 @@ class _$InvalidEventImpl<T> implements _InvalidEvent<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String errorMessage) firebaseError,
-    required TResult Function() eventAlreadyExists,
-    required TResult Function(String failedValue) invalidEventName,
+    required TResult Function(String errorMessage) eventAlreadyExists,
+    required TResult Function(String errorMessage) invalidEventName,
   }) {
-    return invalidEventName(failedValue);
+    return invalidEventName(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String errorMessage)? firebaseError,
-    TResult? Function()? eventAlreadyExists,
-    TResult? Function(String failedValue)? invalidEventName,
+    TResult? Function(String errorMessage)? eventAlreadyExists,
+    TResult? Function(String errorMessage)? invalidEventName,
   }) {
-    return invalidEventName?.call(failedValue);
+    return invalidEventName?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String errorMessage)? firebaseError,
-    TResult Function()? eventAlreadyExists,
-    TResult Function(String failedValue)? invalidEventName,
+    TResult Function(String errorMessage)? eventAlreadyExists,
+    TResult Function(String errorMessage)? invalidEventName,
     required TResult orElse(),
   }) {
     if (invalidEventName != null) {
-      return invalidEventName(failedValue);
+      return invalidEventName(errorMessage);
     }
     return orElse();
   }
@@ -464,10 +527,12 @@ class _$InvalidEventImpl<T> implements _InvalidEvent<T> {
 }
 
 abstract class _InvalidEvent<T> implements ValueFailure<T> {
-  const factory _InvalidEvent({required final String failedValue}) =
+  const factory _InvalidEvent({required final String errorMessage}) =
       _$InvalidEventImpl<T>;
 
-  String get failedValue;
+  @override
+  String get errorMessage;
+  @override
   @JsonKey(ignore: true)
   _$$InvalidEventImplCopyWith<T, _$InvalidEventImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;

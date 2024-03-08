@@ -9,6 +9,7 @@ class ValueValidator {
 
     return RegExp(eventRegex).hasMatch(input)
         ? const Left(null)
-        : const Right(ValueFailure.invalidEventName(failedValue: errorMessage));
+        : const Right(
+            ValueFailure.invalidEventName(errorMessage: errorMessage));
   }
 }

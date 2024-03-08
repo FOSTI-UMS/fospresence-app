@@ -3,6 +3,8 @@ import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/config/themes/light_theme.dart';
 
+import '../../../../../core/constants/helper.dart';
+
 class EditEventForm extends StatefulWidget {
   const EditEventForm({super.key});
 
@@ -15,16 +17,16 @@ class _EditEventFormState extends State<EditEventForm> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+    return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
+      child: Padding(
+        padding:
+            const EdgeInsets.only(left: 20, right: 20, top: distanceWithAppBar),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -32,15 +34,16 @@ class _EditEventFormState extends State<EditEventForm> {
                 decoration: BoxDecoration(
                     color: Colors.blue.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(15)),
-                child: const Row(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.error_rounded, size: 22),
-                    SizedBox(width: 5),
+                    const Icon(Icons.error_rounded, size: 22),
+                    const SizedBox(width: 5),
                     Expanded(
                       child: Text(
                           "Edit the event name in lowercase letters and without spaces",
                           maxLines: 3,
+                          style: textDark12,
                           overflow: TextOverflow.fade),
                     ),
                   ],
@@ -52,7 +55,8 @@ class _EditEventFormState extends State<EditEventForm> {
               const SizedBox(height: 5),
               TextFormField(
                 style: textDark14,
-                decoration: const InputDecoration(hintText: "Edit event..."),
+                decoration:
+                    const InputDecoration(hintText: "Edit event name..."),
               ),
               const SizedBox(height: 20),
               const Padding(

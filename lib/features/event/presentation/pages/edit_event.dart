@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/features/event/presentation/widgets/edit_event/edit_widget_form.dart';
 
+import '../../../../core/commons/widgets/app_bar_custom.dart';
+
 class EditEventScreen extends StatelessWidget {
   const EditEventScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Edit Event"),
-        leading: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: const Icon(Icons.arrow_back_ios, color: Colors.white)),
+    return const Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Stack(
+        children: [
+          EditEventForm(),
+          AppBarCustom(title: "Edit Event"),
+        ],
       ),
-      body: const EditEventForm(),
     );
   }
 }

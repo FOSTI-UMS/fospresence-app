@@ -6,6 +6,18 @@ import 'package:fospresence/features/event/domain/entities/event/event_entity.da
 class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   @override
   Future<Set<Set<void>>> createEvent({required EventEntity event}) async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    final existingEvent = await FirebaseFirestore.instance
+        .collection('events')
+        .where('name', isEqualTo: event.name)
+        .limit(1)
+        .get();
+
+    if (existingEvent.docs.isNotEmpty) {
+      throw Exception();
+    }
+
     final result = await FirebaseFirestore.instance
         .collection('events')
         .add(event.toFirestore())
@@ -15,7 +27,6 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
               {debugPrint('DocumentSnapshot added with ID: ${doc.id}')}
           },
         );
-    await Future.delayed(const Duration(seconds: 3));
     return result;
   }
 
