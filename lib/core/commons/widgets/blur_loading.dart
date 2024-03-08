@@ -48,7 +48,7 @@ class _BlurLoadingState extends State<BlurLoading>
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
         child: Container(
           color: Colors.black.withOpacity(0.4),
           child: Center(

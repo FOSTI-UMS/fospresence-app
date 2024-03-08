@@ -77,6 +77,7 @@ class _AddEventFormState extends State<AddEventForm> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
+                        border: globalWhiteBorder,
                         color: Colors.blue.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10)),
                     child: Row(
@@ -88,7 +89,7 @@ class _AddEventFormState extends State<AddEventForm> {
                           child: Text(
                               "Input the event name in lowercase letters and without spaces",
                               maxLines: 3,
-                              style: textDark12,
+                              style: textWhite12,
                               overflow: TextOverflow.fade),
                         ),
                       ],
@@ -113,7 +114,7 @@ class _AddEventFormState extends State<AddEventForm> {
                                     failedValue));
                       }
                     },
-                    style: textDark14,
+                    style: textWhite14,
                     decoration:
                         const InputDecoration(hintText: "Type event name..."),
                   ),
@@ -123,7 +124,7 @@ class _AddEventFormState extends State<AddEventForm> {
                       child: Text("Due Date")),
                   const SizedBox(height: 5),
                   Material(
-                    color: Colors.white,
+                    color: Colors.black,
                     clipBehavior: Clip.hardEdge,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),

@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^4.14.0
   page_transition: ^2.1.0
   fluttertoast: ^8.2.4
+  carousel_slider: ^4.2.1
 
 
 dev_dependencies:

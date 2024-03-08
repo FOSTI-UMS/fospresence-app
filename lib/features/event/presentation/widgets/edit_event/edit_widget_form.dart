@@ -43,7 +43,7 @@ class _EditEventFormState extends State<EditEventForm> {
                       child: Text(
                           "Edit the event name in lowercase letters and without spaces",
                           maxLines: 3,
-                          style: textDark12,
+                          style: textWhite12,
                           overflow: TextOverflow.fade),
                     ),
                   ],
@@ -54,7 +54,7 @@ class _EditEventFormState extends State<EditEventForm> {
                   padding: EdgeInsets.only(left: 8.0), child: Text("Event")),
               const SizedBox(height: 5),
               TextFormField(
-                style: textDark14,
+                style: textWhite14,
                 decoration:
                     const InputDecoration(hintText: "Edit event name..."),
               ),
@@ -63,7 +63,7 @@ class _EditEventFormState extends State<EditEventForm> {
                   padding: EdgeInsets.only(left: 8.0), child: Text("Due Date")),
               const SizedBox(height: 5),
               Material(
-                color: Colors.white,
+                color: Colors.black,
                 clipBehavior: Clip.hardEdge,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
