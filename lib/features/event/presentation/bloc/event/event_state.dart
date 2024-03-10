@@ -7,11 +7,11 @@ class EventState with _$EventState {
     required bool isLoading,
     required Option<Either<ValueFailure<String>, Set<Set<void>>>>
         failureOrSuccess,
-    required bool isLoaded,
+    required Option<Either<ValueFailure<String>, List<EventEntity>>>eventList
   }) = _EventState;
   factory EventState.started() => EventState(
         isLoading: false,
         failureOrSuccess: none(),
-        isLoaded: false,
+        eventList: none(),
       );
 }

@@ -44,8 +44,14 @@ class EventRepositoryImpl extends EventRespository {
   }
 
   @override
-  Future<Either<ValueFailure<String>, List<EventEntity>>> getEvents() {
-    // TODO: implement getEvents
-    throw UnimplementedError();
+  Future<Either<ValueFailure<String>, List<EventEntity>>> getEvents() async {
+    try {
+      final result = await eventRemoteDataSource.getEvents();
+      return Right(result);
+    } catch (e) {
+      return Left(
+        ValueFailure.firebaseError(errorMessage: "Failed to create event: $e"),
+      );
+    }
   }
 }

@@ -24,7 +24,6 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   final CreateEventUseCase createEventUseCase;
   final EditEventUseCase editEventUseCase;
   final DeleteEventUseCase eventUseCase;
-
   EventBloc(
       {required this.createEventUseCase,
       required this.getEventsUseCase,
@@ -34,22 +33,28 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     on<EventEvent>(
       (event, emit) async {
         await event.map(
-            initial: (value) async {
-              emit(
-                state.copyWith(
-                  isLoading: false,
-                  isLoaded: false,
-                  failureOrSuccess: none(),
-                ),
-              );
-            },
+            getEvents: (value) async => await _getEvents(),
             createEventPressed: (value) async =>
-                _createEventPressedFunction(value.event));
+                await _createEventPressed(value.event));
       },
     );
   }
 
-  Future<void> _createEventPressedFunction(EventEntity params) async {
+  Future<void> _getEvents() async {
+    emit(
+      state.copyWith(isLoading: true),
+    );
+    final eventList = await getEventsUseCase();
+    await Future.delayed(const Duration(seconds: 3));
+    emit(
+      state.copyWith(
+        isLoading: false,
+        eventList: some(eventList),
+      ),
+    );
+  }
+
+  Future<void> _createEventPressed(EventEntity params) async {
     emit(state.copyWith(isLoading: true));
 
     final result = await createEventUseCase(params: params);
@@ -57,7 +62,6 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     emit(
       state.copyWith(
         isLoading: false,
-        isLoaded: true,
         failureOrSuccess: optionOf(result),
       ),
     );

@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class HomeBackground extends StatelessWidget {
-  const HomeBackground({super.key});
+class BackgroundWithLogo extends StatelessWidget {
+  const BackgroundWithLogo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HomeBackground extends StatelessWidget {
             image: const AssetImage('assets/images/fosti_rectangle_logo.png'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                Colors.black.withOpacity(0.6), BlendMode.dstATop),
           ),
         ),
         child: BackdropFilter(

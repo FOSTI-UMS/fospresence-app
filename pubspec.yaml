@@ -48,6 +48,7 @@ dependencies:
   fluttertoast: ^8.2.4
   carousel_slider: ^4.2.1
   flutter_native_splash: ^2.3.10
+  shimmer: ^3.0.0
 
 
 dev_dependencies:

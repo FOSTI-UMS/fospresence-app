@@ -21,7 +21,7 @@ abstract class EventEntity with _$EventEntity {
     return EventEntity(
       ref: snapshot.reference,
       name: data?["name"],
-      datetime: data?["datetime"],
+      datetime: (data?["datetime"] as Timestamp).toDate(),
       participants: data?["participants"] ?? [],
     );
   }

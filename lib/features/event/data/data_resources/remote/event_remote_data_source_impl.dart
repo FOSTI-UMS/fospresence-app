@@ -43,8 +43,20 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   }
 
   @override
-  Future<List<EventEntity>> getEvents() {
-    // TODO: implement getEvents
-    throw UnimplementedError();
+  Future<List<EventEntity>> getEvents() async {
+    List<EventEntity> events = [];
+    QuerySnapshot querySnapshots = await FirebaseFirestore.instance
+        .collection("events")
+        .withConverter(
+            fromFirestore: EventEntity.fromFirestore,
+            toFirestore: (EventEntity event, _) => event.toFirestore())
+        .get();
+
+    for (var i in querySnapshots.docs) {
+      var data = i.data() as EventEntity;
+      events.add(data);
+    }
+    print("MANTAP: $events");
+    return events;
   }
 }

@@ -18,38 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
     required TResult orElse(),
   }) =>
@@ -75,35 +75,35 @@ class _$EventEventCopyWithImpl<$Res, $Val extends EventEvent>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$GetEventsImplCopyWith<$Res> {
+  factory _$$GetEventsImplCopyWith(
+          _$GetEventsImpl value, $Res Function(_$GetEventsImpl) then) =
+      __$$GetEventsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$EventEventCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$GetEventsImplCopyWithImpl<$Res>
+    extends _$EventEventCopyWithImpl<$Res, _$GetEventsImpl>
+    implements _$$GetEventsImplCopyWith<$Res> {
+  __$$GetEventsImplCopyWithImpl(
+      _$GetEventsImpl _value, $Res Function(_$GetEventsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$GetEventsImpl implements _GetEvents {
+  const _$GetEventsImpl();
 
   @override
   String toString() {
-    return 'EventEvent.initial()';
+    return 'EventEvent.getEvents()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$GetEventsImpl);
   }
 
   @override
@@ -112,30 +112,30 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
   }) {
-    return initial();
+    return getEvents();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
   }) {
-    return initial?.call();
+    return getEvents?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (getEvents != null) {
+      return getEvents();
     }
     return orElse();
   }
@@ -143,37 +143,37 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
   }) {
-    return initial(this);
+    return getEvents(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
   }) {
-    return initial?.call(this);
+    return getEvents?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (getEvents != null) {
+      return getEvents(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements EventEvent {
-  const factory _Initial() = _$InitialImpl;
+abstract class _GetEvents implements EventEvent {
+  const factory _GetEvents() = _$GetEventsImpl;
 }
 
 /// @nodoc
@@ -251,7 +251,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
   }) {
     return createEventPressed(event);
@@ -260,7 +260,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
   }) {
     return createEventPressed?.call(event);
@@ -269,7 +269,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
     required TResult orElse(),
   }) {
@@ -282,7 +282,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
   }) {
     return createEventPressed(this);
@@ -291,7 +291,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
   }) {
     return createEventPressed?.call(this);
@@ -300,7 +300,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
     required TResult orElse(),
   }) {
@@ -326,7 +326,8 @@ mixin _$EventState {
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<ValueFailure<String>, Set<Set<void>>>> get failureOrSuccess =>
       throw _privateConstructorUsedError;
-  bool get isLoaded => throw _privateConstructorUsedError;
+  Option<Either<ValueFailure<String>, List<EventEntity>>> get eventList =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventStateCopyWith<EventState> get copyWith =>
@@ -342,7 +343,7 @@ abstract class $EventStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess,
-      bool isLoaded});
+      Option<Either<ValueFailure<String>, List<EventEntity>>> eventList});
 }
 
 /// @nodoc
@@ -360,7 +361,7 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
   $Res call({
     Object? isLoading = null,
     Object? failureOrSuccess = null,
-    Object? isLoaded = null,
+    Object? eventList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -371,10 +372,10 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure<String>, Set<Set<void>>>>,
-      isLoaded: null == isLoaded
-          ? _value.isLoaded
-          : isLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
+      eventList: null == eventList
+          ? _value.eventList
+          : eventList // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, List<EventEntity>>>,
     ) as $Val);
   }
 }
@@ -390,7 +391,7 @@ abstract class _$$EventStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess,
-      bool isLoaded});
+      Option<Either<ValueFailure<String>, List<EventEntity>>> eventList});
 }
 
 /// @nodoc
@@ -406,7 +407,7 @@ class __$$EventStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? failureOrSuccess = null,
-    Object? isLoaded = null,
+    Object? eventList = null,
   }) {
     return _then(_$EventStateImpl(
       isLoading: null == isLoading
@@ -417,10 +418,10 @@ class __$$EventStateImplCopyWithImpl<$Res>
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure<String>, Set<Set<void>>>>,
-      isLoaded: null == isLoaded
-          ? _value.isLoaded
-          : isLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
+      eventList: null == eventList
+          ? _value.eventList
+          : eventList // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, List<EventEntity>>>,
     ));
   }
 }
@@ -431,7 +432,7 @@ class _$EventStateImpl extends _EventState {
   const _$EventStateImpl(
       {required this.isLoading,
       required this.failureOrSuccess,
-      required this.isLoaded})
+      required this.eventList})
       : super._();
 
   @override
@@ -439,11 +440,11 @@ class _$EventStateImpl extends _EventState {
   @override
   final Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess;
   @override
-  final bool isLoaded;
+  final Option<Either<ValueFailure<String>, List<EventEntity>>> eventList;
 
   @override
   String toString() {
-    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, isLoaded: $isLoaded)';
+    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, eventList: $eventList)';
   }
 
   @override
@@ -455,13 +456,13 @@ class _$EventStateImpl extends _EventState {
                 other.isLoading == isLoading) &&
             (identical(other.failureOrSuccess, failureOrSuccess) ||
                 other.failureOrSuccess == failureOrSuccess) &&
-            (identical(other.isLoaded, isLoaded) ||
-                other.isLoaded == isLoaded));
+            (identical(other.eventList, eventList) ||
+                other.eventList == eventList));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, isLoading, failureOrSuccess, isLoaded);
+      Object.hash(runtimeType, isLoading, failureOrSuccess, eventList);
 
   @JsonKey(ignore: true)
   @override
@@ -475,7 +476,8 @@ abstract class _EventState extends EventState {
       {required final bool isLoading,
       required final Option<Either<ValueFailure<String>, Set<Set<void>>>>
           failureOrSuccess,
-      required final bool isLoaded}) = _$EventStateImpl;
+      required final Option<Either<ValueFailure<String>, List<EventEntity>>>
+          eventList}) = _$EventStateImpl;
   const _EventState._() : super._();
 
   @override
@@ -483,7 +485,7 @@ abstract class _EventState extends EventState {
   @override
   Option<Either<ValueFailure<String>, Set<Set<void>>>> get failureOrSuccess;
   @override
-  bool get isLoaded;
+  Option<Either<ValueFailure<String>, List<EventEntity>>> get eventList;
   @override
   @JsonKey(ignore: true)
   _$$EventStateImplCopyWith<_$EventStateImpl> get copyWith =>

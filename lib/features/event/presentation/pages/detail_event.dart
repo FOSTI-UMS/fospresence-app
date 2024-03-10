@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/features/event/presentation/widgets/detail_event/search.dart';
 import 'package:fospresence/features/event/presentation/widgets/detail_event/user_list_view.dart';
-import 'package:fospresence/features/event/presentation/widgets/home/home_background.dart';
+import 'package:fospresence/core/commons/widgets/background_w_logo.dart';
 import '../../../../core/constants/colors.dart';
 import '../widgets/detail_event/sliver_app_bar.dart';
 
@@ -25,10 +25,7 @@ class DetailEventScreen extends StatelessWidget {
                 Expanded(
                   child: Stack(
                     fit: StackFit.expand,
-                    children: [
-                      HomeBackground(),
-                      UserListView(),
-                    ],
+                    children: [BackgroundWithLogo(), UserListView()],
                   ),
                 )
               ],
