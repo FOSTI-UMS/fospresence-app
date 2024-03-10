@@ -5,7 +5,7 @@ class EventState with _$EventState {
   const EventState._();
   const factory EventState({
     required bool isLoading,
-    required Option<Either<ValueFailure<String>, Set<Set<void>>>>
+    required Option<Either<ValueFailure<String>, dynamic>>
         failureOrSuccess,
     required Option<Either<ValueFailure<String>, List<EventEntity>>>eventList
   }) = _EventState;

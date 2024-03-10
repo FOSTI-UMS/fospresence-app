@@ -5,9 +5,7 @@ import 'package:fospresence/features/event/domain/entities/event/event_entity.da
 
 class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   @override
-  Future<Set<Set<void>>> createEvent({required EventEntity event}) async {
-    await Future.delayed(const Duration(seconds: 3));
-
+  Future<void> createEvent({required EventEntity event}) async {
     final existingEvent = await FirebaseFirestore.instance
         .collection('events')
         .where('name', isEqualTo: event.name)
@@ -21,19 +19,20 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
     final result = await FirebaseFirestore.instance
         .collection('events')
         .add(event.toFirestore())
-        .then(
-          (DocumentReference doc) => {
-            if (kDebugMode)
-              {debugPrint('DocumentSnapshot added with ID: ${doc.id}')}
-          },
-        );
+        .then((DocumentReference doc) =>
+            debugPrint('DocumentSnapshot added with ID: ${doc.id}'));
     return result;
   }
 
   @override
-  Future<Set<Set<void>>> deleteEvent({required EventEntity event}) {
-    // TODO: implement deleteEvent
-    throw UnimplementedError();
+  Future<void> deleteEvent({required EventEntity event}) async {
+    CollectionReference events =
+        FirebaseFirestore.instance.collection('events');
+
+    return events
+        .doc(event.ref.id)
+        .delete()
+        .then((value) => debugPrint("Event Deleted"));
   }
 
   @override
@@ -56,7 +55,6 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
       var data = i.data() as EventEntity;
       events.add(data);
     }
-    print("MANTAP: $events");
     return events;
   }
 }

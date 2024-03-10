@@ -23,29 +23,66 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   final GetEventsUseCase getEventsUseCase;
   final CreateEventUseCase createEventUseCase;
   final EditEventUseCase editEventUseCase;
-  final DeleteEventUseCase eventUseCase;
+  final DeleteEventUseCase deleteEventUseCase;
   EventBloc(
       {required this.createEventUseCase,
       required this.getEventsUseCase,
       required this.editEventUseCase,
-      required this.eventUseCase})
+      required this.deleteEventUseCase})
       : super(EventState.started()) {
     on<EventEvent>(
       (event, emit) async {
         await event.map(
-            getEvents: (value) async => await _getEvents(),
-            createEventPressed: (value) async =>
-                await _createEventPressed(value.event));
+          getEvents: (value) async => await _getEvents(),
+          createEventPressed: (value) async => await _createEvent(value.event),
+          deleteEventPressed: (value) async => await deleteEvent(value.event),
+        );
+      },
+    );
+  }
+
+  Future<void> deleteEvent(EventEntity event) async {
+    emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
+
+    final result = await deleteEventUseCase(params: event);
+    final eventList = await getEventsUseCase(params: null);
+
+    emit(
+      state.copyWith(
+          isLoading: false,
+          failureOrSuccess: some(result),
+          eventList: some(eventList)),
+    );
+
+    result.fold(
+      (failure) {
+        final errorMessage = failure.whenOrNull(
+          invalidEventName: (errorMessage) => errorMessage,
+          firebaseError: (errorMessage) => errorMessage,
+          eventAlreadyExists: (errorMessage) => errorMessage,
+        );
+
+        fToast.showToast(
+          child: CustomToast(
+              message: errorMessage ?? "Unknown error", isSuccess: false),
+          gravity: ToastGravity.BOTTOM,
+        );
+      },
+      (success) {
+        fToast.showToast(
+          child: CustomToast(
+              message: "Successfully deleted ${event.name}", isSuccess: true),
+          gravity: ToastGravity.BOTTOM,
+        );
       },
     );
   }
 
   Future<void> _getEvents() async {
-    emit(
-      state.copyWith(isLoading: true),
-    );
-    final eventList = await getEventsUseCase();
-    await Future.delayed(const Duration(seconds: 3));
+    emit(state.copyWith(isLoading: true));
+
+    final eventList = await getEventsUseCase(params: null);
+
     emit(
       state.copyWith(
         isLoading: false,
@@ -54,15 +91,17 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     );
   }
 
-  Future<void> _createEventPressed(EventEntity params) async {
+  Future<void> _createEvent(EventEntity event) async {
     emit(state.copyWith(isLoading: true));
 
-    final result = await createEventUseCase(params: params);
+    final result = await createEventUseCase(params: event);
+    final eventList = await getEventsUseCase(params: null);
 
     emit(
       state.copyWith(
         isLoading: false,
-        failureOrSuccess: optionOf(result),
+        failureOrSuccess: some(result),
+        eventList: some(eventList),
       ),
     );
 
@@ -82,8 +121,8 @@ class EventBloc extends Bloc<EventEvent, EventState> {
       },
       (success) {
         fToast.showToast(
-          child: const CustomToast(
-              message: "Successfully added an event", isSuccess: true),
+          child: CustomToast(
+              message: "Successfully added ${event.name}", isSuccess: true),
           gravity: ToastGravity.BOTTOM,
         );
       },

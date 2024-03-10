@@ -9,7 +9,7 @@ class EventRepositoryImpl extends EventRespository {
 
   EventRepositoryImpl({required this.eventRemoteDataSource});
   @override
-  Future<Either<ValueFailure<String>, Set<Set<void>>>> createEvent(
+  Future<Either<ValueFailure<String>, void>> createEvent(
       {required EventEntity event}) async {
     try {
       final result = await eventRemoteDataSource.createEvent(event: event);
@@ -21,23 +21,28 @@ class EventRepositoryImpl extends EventRespository {
               errorMessage: "Event with the same name already exists"),
         );
       } else {
-        return Left(
-          ValueFailure.firebaseError(
-              errorMessage: "Failed to create event: $e"),
+        return const Left(
+          ValueFailure.firebaseError(errorMessage: "Failed to create event"),
         );
       }
     }
   }
 
   @override
-  Future<Either<ValueFailure<String>, Set<Set<void>>>> deleteEvent(
-      {required EventEntity event}) {
-    // TODO: implement deleteEvent
-    throw UnimplementedError();
+  Future<Either<ValueFailure<String>, void>> deleteEvent(
+      {required EventEntity event}) async {
+    try {
+      final result = await eventRemoteDataSource.deleteEvent(event: event);
+      return Right(result);
+    } catch (e) {
+      return const Left(
+        ValueFailure.firebaseError(errorMessage: "Failed to delete event"),
+      );
+    }
   }
 
   @override
-  Future<Either<ValueFailure<String>, Set<Set<void>>>> editEvent(
+  Future<Either<ValueFailure<String>, void>> editEvent(
       {required EventEntity event}) {
     // TODO: implement editEvent
     throw UnimplementedError();
@@ -46,6 +51,7 @@ class EventRepositoryImpl extends EventRespository {
   @override
   Future<Either<ValueFailure<String>, List<EventEntity>>> getEvents() async {
     try {
+      await Future.delayed(const Duration(seconds: 3));
       final result = await eventRemoteDataSource.getEvents();
       return Right(result);
     } catch (e) {

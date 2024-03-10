@@ -20,18 +20,21 @@ mixin _$EventEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$EventEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) deleteEventPressed,
   }) {
     return getEvents();
   }
@@ -123,6 +130,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? deleteEventPressed,
   }) {
     return getEvents?.call();
   }
@@ -132,6 +140,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -145,6 +154,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) {
     return getEvents(this);
   }
@@ -154,6 +164,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) {
     return getEvents?.call(this);
   }
@@ -163,6 +174,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -253,6 +265,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) deleteEventPressed,
   }) {
     return createEventPressed(event);
   }
@@ -262,6 +275,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? deleteEventPressed,
   }) {
     return createEventPressed?.call(event);
   }
@@ -271,6 +285,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) {
     if (createEventPressed != null) {
@@ -284,6 +299,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) {
     return createEventPressed(this);
   }
@@ -293,6 +309,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) {
     return createEventPressed?.call(this);
   }
@@ -302,6 +319,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) {
     if (createEventPressed != null) {
@@ -322,9 +340,160 @@ abstract class _CreateEventPressed implements EventEvent {
 }
 
 /// @nodoc
+abstract class _$$DeteleEventPressedImplCopyWith<$Res> {
+  factory _$$DeteleEventPressedImplCopyWith(_$DeteleEventPressedImpl value,
+          $Res Function(_$DeteleEventPressedImpl) then) =
+      __$$DeteleEventPressedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EventEntity event});
+
+  $EventEntityCopyWith<$Res> get event;
+}
+
+/// @nodoc
+class __$$DeteleEventPressedImplCopyWithImpl<$Res>
+    extends _$EventEventCopyWithImpl<$Res, _$DeteleEventPressedImpl>
+    implements _$$DeteleEventPressedImplCopyWith<$Res> {
+  __$$DeteleEventPressedImplCopyWithImpl(_$DeteleEventPressedImpl _value,
+      $Res Function(_$DeteleEventPressedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_$DeteleEventPressedImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res> get event {
+    return $EventEntityCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeteleEventPressedImpl implements _DeteleEventPressed {
+  const _$DeteleEventPressedImpl({required this.event});
+
+  @override
+  final EventEntity event;
+
+  @override
+  String toString() {
+    return 'EventEvent.deleteEventPressed(event: $event)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeteleEventPressedImpl &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeteleEventPressedImplCopyWith<_$DeteleEventPressedImpl> get copyWith =>
+      __$$DeteleEventPressedImplCopyWithImpl<_$DeteleEventPressedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getEvents,
+    required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) deleteEventPressed,
+  }) {
+    return deleteEventPressed(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getEvents,
+    TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? deleteEventPressed,
+  }) {
+    return deleteEventPressed?.call(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getEvents,
+    TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? deleteEventPressed,
+    required TResult orElse(),
+  }) {
+    if (deleteEventPressed != null) {
+      return deleteEventPressed(event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetEvents value) getEvents,
+    required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_DeteleEventPressed value) deleteEventPressed,
+  }) {
+    return deleteEventPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetEvents value)? getEvents,
+    TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
+  }) {
+    return deleteEventPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetEvents value)? getEvents,
+    TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_DeteleEventPressed value)? deleteEventPressed,
+    required TResult orElse(),
+  }) {
+    if (deleteEventPressed != null) {
+      return deleteEventPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeteleEventPressed implements EventEvent {
+  const factory _DeteleEventPressed({required final EventEntity event}) =
+      _$DeteleEventPressedImpl;
+
+  EventEntity get event;
+  @JsonKey(ignore: true)
+  _$$DeteleEventPressedImplCopyWith<_$DeteleEventPressedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$EventState {
   bool get isLoading => throw _privateConstructorUsedError;
-  Option<Either<ValueFailure<String>, Set<Set<void>>>> get failureOrSuccess =>
+  Option<Either<ValueFailure<String>, dynamic>> get failureOrSuccess =>
       throw _privateConstructorUsedError;
   Option<Either<ValueFailure<String>, List<EventEntity>>> get eventList =>
       throw _privateConstructorUsedError;
@@ -342,7 +511,7 @@ abstract class $EventStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess,
+      Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess,
       Option<Either<ValueFailure<String>, List<EventEntity>>> eventList});
 }
 
@@ -371,7 +540,7 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
       failureOrSuccess: null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure<String>, Set<Set<void>>>>,
+              as Option<Either<ValueFailure<String>, dynamic>>,
       eventList: null == eventList
           ? _value.eventList
           : eventList // ignore: cast_nullable_to_non_nullable
@@ -390,7 +559,7 @@ abstract class _$$EventStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess,
+      Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess,
       Option<Either<ValueFailure<String>, List<EventEntity>>> eventList});
 }
 
@@ -417,7 +586,7 @@ class __$$EventStateImplCopyWithImpl<$Res>
       failureOrSuccess: null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure<String>, Set<Set<void>>>>,
+              as Option<Either<ValueFailure<String>, dynamic>>,
       eventList: null == eventList
           ? _value.eventList
           : eventList // ignore: cast_nullable_to_non_nullable
@@ -438,7 +607,7 @@ class _$EventStateImpl extends _EventState {
   @override
   final bool isLoading;
   @override
-  final Option<Either<ValueFailure<String>, Set<Set<void>>>> failureOrSuccess;
+  final Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess;
   @override
   final Option<Either<ValueFailure<String>, List<EventEntity>>> eventList;
 
@@ -474,7 +643,7 @@ class _$EventStateImpl extends _EventState {
 abstract class _EventState extends EventState {
   const factory _EventState(
       {required final bool isLoading,
-      required final Option<Either<ValueFailure<String>, Set<Set<void>>>>
+      required final Option<Either<ValueFailure<String>, dynamic>>
           failureOrSuccess,
       required final Option<Either<ValueFailure<String>, List<EventEntity>>>
           eventList}) = _$EventStateImpl;
@@ -483,7 +652,7 @@ abstract class _EventState extends EventState {
   @override
   bool get isLoading;
   @override
-  Option<Either<ValueFailure<String>, Set<Set<void>>>> get failureOrSuccess;
+  Option<Either<ValueFailure<String>, dynamic>> get failureOrSuccess;
   @override
   Option<Either<ValueFailure<String>, List<EventEntity>>> get eventList;
   @override

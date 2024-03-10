@@ -25,7 +25,7 @@ Future<void> init() async {
       createEventUseCase: sl(),
       getEventsUseCase: sl(),
       editEventUseCase: sl(),
-      eventUseCase: sl()));
+      deleteEventUseCase: sl()));
 
   // Data Source
   sl.registerSingleton<EventRemoteDataSource>(EventRemoteDataSourceImpl());

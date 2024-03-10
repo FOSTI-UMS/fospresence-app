@@ -14,37 +14,46 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      floatingActionButton: _buildFloatingActionButton(context),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
-            [const HomeSliverAppBar()],
-        body: const Stack(
-          fit: StackFit.expand,
-          children: [
-            BackgroundWithLogo(),
-            Column(children: [EventYear(), EventCard()])
-          ],
-        ),
+      body: Stack(
+        children: [
+          NestedScrollView(
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) =>
+                    [const HomeSliverAppBar()],
+            body: const Stack(
+              fit: StackFit.expand,
+              children: [
+                BackgroundWithLogo(),
+                Column(children: [EventYear(), EventCard()])
+              ],
+            ),
+          ),
+          _buildFloatingActionButton(context)
+        ],
       ),
     );
   }
 
-  FloatingActionButton _buildFloatingActionButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => Navigator.pushNamed(context, RouteName.addEventScreen),
-      child: Container(
-        width: 60,
-        height: 60,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 0.3),
-          borderRadius: const BorderRadius.only(
-              bottomRight: Radius.circular(15), topLeft: Radius.circular(15)),
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: primaryGradientColor),
+  Positioned _buildFloatingActionButton(BuildContext context) {
+    return Positioned(
+      bottom: 20,
+      right: 20,
+      child: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, RouteName.addEventScreen),
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white, width: 0.3),
+            borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(15), topLeft: Radius.circular(15)),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: primaryGradientColor),
+          ),
+          child: const Icon(Icons.add),
         ),
-        child: const Icon(Icons.add),
       ),
     );
   }
