@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 TextStyle get basicText =>
     const TextStyle(fontFamily: "Nunito", color: Colors.black);
 
-TextStyle get textWhite9 => basicText.copyWith(fontSize: 9);
 TextStyle get textDark9 => basicText.copyWith(fontSize: 9);
 TextStyle get textDark10 => basicText.copyWith(fontSize: 10);
 TextStyle get textDark11 => basicText.copyWith(fontSize: 11);
@@ -69,3 +68,4 @@ TextStyle get textWhite11 =>
     basicText.copyWith(fontSize: 11, color: Colors.white);
 TextStyle get textWhite10 =>
     basicText.copyWith(fontSize: 10, color: Colors.white);
+TextStyle get textWhite9 => basicText.copyWith(fontSize: 9);

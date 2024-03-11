@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/core/constants/colors.dart';
+import 'package:fospresence/core/constants/pass.dart';
 
 import '../../../features/my_app.dart';
 import '../../constants/font.dart';
@@ -18,12 +19,6 @@ class ConfirmPassDialog {
       required GlobalKey<FormState> formKey,
       required TextEditingController edtPass,
       required FocusNode focusNode}) {
-    void back() {
-      Navigator.pop(context);
-      focusNode.unfocus();
-      edtPass.clear();
-    }
-
     return showDialog(
       context: context,
       builder: (context) => SizedBox(
@@ -54,7 +49,7 @@ class ConfirmPassDialog {
                     textAlign: TextAlign.center,
                   ),
                   content: _buildForm(
-                      formKey, focusNode, edtPass, back, onConfirm, context),
+                      formKey, focusNode, edtPass, onConfirm, context),
                 ),
               ),
             ),
@@ -68,9 +63,33 @@ class ConfirmPassDialog {
       GlobalKey<FormState> formKey,
       FocusNode focusNode,
       TextEditingController edtPass,
-      void Function() back,
       void Function(BuildContext context) onConfirm,
       BuildContext context) {
+    void back() {
+      Navigator.pop(context);
+      focusNode.unfocus();
+      edtPass.clear();
+    }
+
+    Future<void> eventPressed() async {
+      if (formKey.currentState!.validate()) {
+        if (edtPass.text.toLowerCase() == pass) {
+          back();
+          onConfirm(context);
+        } else {
+          back();
+          await Future.delayed(
+            const Duration(milliseconds: 300),
+          );
+          fToast.showToast(
+            child: const CustomToast(
+                message: "Password is wrong", isSuccess: false),
+            gravity: ToastGravity.BOTTOM,
+          );
+        }
+      }
+    }
+
     return Form(
       key: formKey,
       child: SizedBox(
@@ -131,28 +150,9 @@ class ConfirmPassDialog {
                   ),
                   Expanded(
                     child: CupertinoDialogAction(
-                      onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-                          if (edtPass.text.toLowerCase() == "afrizal") {
-                            back();
-                            onConfirm(context);
-                          } else {
-                            back();
-                            await Future.delayed(
-                              const Duration(milliseconds: 300),
-                            );
-                            fToast.showToast(
-                              child: const CustomToast(
-                                  message: "Password is wrong",
-                                  isSuccess: false),
-                              gravity: ToastGravity.BOTTOM,
-                            );
-                          }
-                        }
-                      },
+                      onPressed: () async => eventPressed(),
                       child: Text("Confirm",
-                          style:
-                              textWhite14.copyWith(color: Colors.blueAccent)),
+                          style: textWhite14.copyWith(color: Colors.blue)),
                     ),
                   ),
                 ],

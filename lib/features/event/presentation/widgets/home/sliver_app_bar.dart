@@ -38,7 +38,7 @@ class _HomeSliverAppBarState extends State<HomeSliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: Colors.transparent,
-      expandedHeight: 210,
+      expandedHeight: 170,
       automaticallyImplyLeading: false,
       pinned: true,
       centerTitle: true,

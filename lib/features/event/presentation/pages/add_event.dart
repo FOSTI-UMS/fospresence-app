@@ -11,17 +11,23 @@ class AddEventScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          const AddEventForm(),
-          const AppBarCustom(title: "Add Event"),
-          BlocBuilder<EventBloc, EventState>(
-              bloc: BlocProvider.of<EventBloc>(context),
-              builder: (context, state) =>
-                  state.isLoading ? const BlurLoading() : const SizedBox())
-        ],
+    return BlocBuilder<EventBloc, EventState>(
+      bloc: BlocProvider.of<EventBloc>(context),
+      builder: (context, state) => PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) {
+          if (!state.isLoading && !didPop) Navigator.of(context).pop();
+        },
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Stack(
+            children: [
+              const AddEventForm(),
+              const AppBarCustom(title: "Add Event"),
+              state.isLoading ? const BlurLoading() : const SizedBox()
+            ],
+          ),
+        ),
       ),
     );
   }

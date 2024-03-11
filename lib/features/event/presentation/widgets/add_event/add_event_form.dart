@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fospresence/core/commons/widgets/pass_confirm_dialog.dart';
+import 'package:fospresence/core/commons/widgets/confirm_password_dialog.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
-import 'package:fospresence/config/themes/light_theme.dart';
 import 'package:fospresence/core/commons/utils/value_validator.dart';
 import 'package:fospresence/core/constants/helper.dart';
 import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
+import 'package:intl/intl.dart';
 
+import '../../../../../core/commons/widgets/datetime_picker.dart';
 import '../../../../../core/di/injection_container.dart';
 
 class AddEventForm extends StatefulWidget {
@@ -29,7 +29,7 @@ class _AddEventFormState extends State<AddEventForm> {
   late final GlobalKey<FormState> _formKeyDialog;
   late final TextEditingController _edtPassDialog;
   late final FocusNode _focusNodeDialog;
-
+  String? formattedDatetime;
   @override
   void initState() {
     super.initState();
@@ -38,6 +38,7 @@ class _AddEventFormState extends State<AddEventForm> {
     _formKeyDialog = GlobalKey<FormState>();
     _edtPassDialog = TextEditingController();
     _focusNodeDialog = FocusNode();
+    formattedDatetime = DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
   }
 
   @override
@@ -145,11 +146,14 @@ class _AddEventFormState extends State<AddEventForm> {
               clipBehavior: Clip.hardEdge,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(width: 0.2, color: lightGrey)),
+                  side: BorderSide(width: 0.25, color: lightGrey)),
               child: InkWell(
                 onTap: () async {
-                  _selectedDate = await _showDatetimePicker(context);
+                  _selectedDate =
+                      await DatetimePicker.showDatetimePicker(context);
                   _selectedDate = _selectedDate ?? DateTime.now();
+                  formattedDatetime =
+                      DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
                   setState(() {});
                 },
                 child: Container(
@@ -159,9 +163,8 @@ class _AddEventFormState extends State<AddEventForm> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                            "${_selectedDate!.month}/${_selectedDate!.day}/${_selectedDate!.year}"),
-                        const SizedBox(width: 30),
+                        Text("$formattedDatetime"),
+                        const SizedBox(width: 25),
                         const Icon(Icons.calendar_month, size: 20),
                       ],
                     ),
@@ -192,12 +195,4 @@ class _AddEventFormState extends State<AddEventForm> {
       ),
     );
   }
-}
-
-Future<DateTime?> _showDatetimePicker(BuildContext context) {
-  return showDatePicker(
-      context: context,
-      firstDate: DateTime(2024),
-      lastDate: DateTime(2050),
-      builder: (BuildContext context, Widget? child) => lightTheme(child));
 }

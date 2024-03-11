@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fospresence/core/commons/utils/initial_animation.dart';
 
 import '../../../../../core/constants/colors.dart';
@@ -16,8 +15,8 @@ class DetailEventSliverAppBar extends StatefulWidget {
 }
 
 class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
-  final double _sizeFostiLogo = 30;
-  final double _sizeParticipantsCircle = 58;
+  final double _sizeFostiLogo = 20;
+  final double _sizeParticipantsCircle = 55;
   late final InitialAnimation _initialAnimation;
 
   Future<void> _playAnimation() async => await _initialAnimation
@@ -39,7 +38,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: primaryColor,
-      expandedHeight: 250,
+      expandedHeight: 200,
       floating: true,
       automaticallyImplyLeading: false,
       centerTitle: true,
@@ -68,7 +67,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Participants",
-                          style: textWhite18.copyWith(
+                          style: textWhite16.copyWith(
                               fontWeight: FontWeight.w600)),
                       Container(
                         height: _sizeParticipantsCircle,
@@ -96,7 +95,6 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 15),
                 FadeInUp(
                   from: _initialAnimation.animationIsPlaying ? 100 : 0,
                   duration: Duration(
@@ -122,7 +120,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                       const SizedBox(width: 6),
                       Expanded(
                         child: Text("FOSTIFEST",
-                            style: textWhite20.copyWith(
+                            style: textWhite16.copyWith(
                                 fontWeight: FontWeight.w700,
                                 overflow: TextOverflow.ellipsis),
                             overflow: TextOverflow.ellipsis),
@@ -130,7 +128,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 FadeInUp(
                   from: _initialAnimation.animationIsPlaying ? 100 : 0,
                   duration: Duration(
@@ -139,10 +137,10 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                           : 0),
                   child: Text(
                     "Saturday, 20 Jan 2024",
-                    style: textWhite11.copyWith(fontWeight: FontWeight.w600),
+                    style: textWhite10.copyWith(fontWeight: FontWeight.w600),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
               ],
             ),
           ),

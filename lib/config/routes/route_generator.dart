@@ -35,6 +35,7 @@ class RouteGenerator {
         return PageTransition(
           child: const EditEventScreen(),
           type: PageTransitionType.bottomToTop,
+          settings: settings,
           duration: const Duration(milliseconds: duration),
           curve: curve,
           isIos: true,

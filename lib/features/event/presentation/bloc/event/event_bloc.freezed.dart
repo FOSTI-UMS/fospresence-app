@@ -20,6 +20,7 @@ mixin _$EventEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$EventEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$EventEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$EventEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$EventEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$EventEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) =>
@@ -120,6 +126,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
   }) {
     return getEvents();
@@ -130,6 +137,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
   }) {
     return getEvents?.call();
@@ -140,6 +148,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) {
@@ -154,6 +163,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) {
     return getEvents(this);
@@ -164,6 +174,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) {
     return getEvents?.call(this);
@@ -174,6 +185,7 @@ class _$GetEventsImpl implements _GetEvents {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) {
@@ -265,6 +277,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
   }) {
     return createEventPressed(event);
@@ -275,6 +288,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
   }) {
     return createEventPressed?.call(event);
@@ -285,6 +299,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) {
@@ -299,6 +314,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) {
     return createEventPressed(this);
@@ -309,6 +325,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) {
     return createEventPressed?.call(this);
@@ -319,6 +336,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) {
@@ -336,6 +354,163 @@ abstract class _CreateEventPressed implements EventEvent {
   EventEntity get event;
   @JsonKey(ignore: true)
   _$$CreateEventPressedImplCopyWith<_$CreateEventPressedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditEventPressedImplCopyWith<$Res> {
+  factory _$$EditEventPressedImplCopyWith(_$EditEventPressedImpl value,
+          $Res Function(_$EditEventPressedImpl) then) =
+      __$$EditEventPressedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EventEntity event});
+
+  $EventEntityCopyWith<$Res> get event;
+}
+
+/// @nodoc
+class __$$EditEventPressedImplCopyWithImpl<$Res>
+    extends _$EventEventCopyWithImpl<$Res, _$EditEventPressedImpl>
+    implements _$$EditEventPressedImplCopyWith<$Res> {
+  __$$EditEventPressedImplCopyWithImpl(_$EditEventPressedImpl _value,
+      $Res Function(_$EditEventPressedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_$EditEventPressedImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res> get event {
+    return $EventEntityCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$EditEventPressedImpl implements _EditEventPressed {
+  const _$EditEventPressedImpl({required this.event});
+
+  @override
+  final EventEntity event;
+
+  @override
+  String toString() {
+    return 'EventEvent.editEventPressed(event: $event)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditEventPressedImpl &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditEventPressedImplCopyWith<_$EditEventPressedImpl> get copyWith =>
+      __$$EditEventPressedImplCopyWithImpl<_$EditEventPressedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getEvents,
+    required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) editEventPressed,
+    required TResult Function(EventEntity event) deleteEventPressed,
+  }) {
+    return editEventPressed(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getEvents,
+    TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? editEventPressed,
+    TResult? Function(EventEntity event)? deleteEventPressed,
+  }) {
+    return editEventPressed?.call(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getEvents,
+    TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? editEventPressed,
+    TResult Function(EventEntity event)? deleteEventPressed,
+    required TResult orElse(),
+  }) {
+    if (editEventPressed != null) {
+      return editEventPressed(event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetEvents value) getEvents,
+    required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_EditEventPressed value) editEventPressed,
+    required TResult Function(_DeteleEventPressed value) deleteEventPressed,
+  }) {
+    return editEventPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetEvents value)? getEvents,
+    TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_EditEventPressed value)? editEventPressed,
+    TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
+  }) {
+    return editEventPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetEvents value)? getEvents,
+    TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_EditEventPressed value)? editEventPressed,
+    TResult Function(_DeteleEventPressed value)? deleteEventPressed,
+    required TResult orElse(),
+  }) {
+    if (editEventPressed != null) {
+      return editEventPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EditEventPressed implements EventEvent {
+  const factory _EditEventPressed({required final EventEntity event}) =
+      _$EditEventPressedImpl;
+
+  EventEntity get event;
+  @JsonKey(ignore: true)
+  _$$EditEventPressedImplCopyWith<_$EditEventPressedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -416,6 +591,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
   TResult when<TResult extends Object?>({
     required TResult Function() getEvents,
     required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
   }) {
     return deleteEventPressed(event);
@@ -426,6 +602,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEvents,
     TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
   }) {
     return deleteEventPressed?.call(event);
@@ -436,6 +613,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEvents,
     TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     required TResult orElse(),
   }) {
@@ -450,6 +628,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEvents value) getEvents,
     required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
   }) {
     return deleteEventPressed(this);
@@ -460,6 +639,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetEvents value)? getEvents,
     TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
   }) {
     return deleteEventPressed?.call(this);
@@ -470,6 +650,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEvents value)? getEvents,
     TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     required TResult orElse(),
   }) {

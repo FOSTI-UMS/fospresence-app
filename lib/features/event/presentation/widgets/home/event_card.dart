@@ -6,6 +6,7 @@ import 'package:fospresence/core/commons/widgets/event_bottom_sheet.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../config/routes/route_name.dart';
 import '../../../../../core/constants/helper.dart';
@@ -20,16 +21,25 @@ class EventCard extends StatefulWidget {
 
 class _EventCardState extends State<EventCard> {
   late final EventBloc _eventBloc;
+  late final GlobalKey<FormState> _formKeyDialog;
+  late final TextEditingController _edtPassDialog;
+  late final FocusNode _focusNodeDialog;
+  String? formattedDatetime;
 
   @override
   void initState() {
     super.initState();
     _eventBloc = BlocProvider.of<EventBloc>(context)
       ..add(const EventEvent.getEvents());
+    _formKeyDialog = GlobalKey<FormState>();
+    _edtPassDialog = TextEditingController();
+    _focusNodeDialog = FocusNode();
   }
 
   @override
   void dispose() {
+    _edtPassDialog.dispose();
+    _focusNodeDialog.dispose();
     super.dispose();
   }
 
@@ -41,10 +51,16 @@ class _EventCardState extends State<EventCard> {
       child: BlocBuilder<EventBloc, EventState>(
         bloc: _eventBloc,
         builder: (context, state) {
-          int eventListLength = state.isLoading
-              ? 5
+          List<EventEntity> eventList = state.isLoading
+              ? []
               : state.eventList
-                  .fold(() => 0, (a) => a.fold((l) => 0, (r) => r.length));
+                  .fold(() => [], (a) => a.fold((l) => [], (r) => r));
+          int eventListLength = state.isLoading ? 5 : eventList.length;
+
+          if (!state.isLoading && eventList.isEmpty) {
+            return Text("No Events",
+                style: textWhite14.copyWith(color: Colors.grey));
+          }
           return Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -70,6 +86,8 @@ class _EventCardState extends State<EventCard> {
       () => null,
       (a) => a.fold((l) => null, (r) => r[index]),
     );
+    String formattedDatetime =
+        DateFormat('EEEE, dd MMM yyyy').format(selectedEvent!.datetime);
     return Padding(
       padding: EdgeInsets.only(bottom: index == eventListLength - 1 ? 10 : 0),
       child: GestureDetector(
@@ -91,12 +109,17 @@ class _EventCardState extends State<EventCard> {
           child: Center(
             child: ListTile(
               title: Text(
-                selectedEvent!.name,
+                selectedEvent.name,
                 style: textWhite18.copyWith(fontWeight: FontWeight.w700),
               ),
-              subtitle: Text("${selectedEvent.datetime}", style: textWhite12),
+              subtitle: Text(formattedDatetime, style: textWhite12),
               trailing: GestureDetector(
-                onTap: () => EventBottomSheet.showSheet(context, selectedEvent),
+                onTap: () => EventBottomSheet.showSheet(
+                    context: context,
+                    selectedEvent: selectedEvent,
+                    formKey: _formKeyDialog,
+                    focusNode: _focusNodeDialog,
+                    edtPass: _edtPassDialog),
                 child: SvgPicture.asset("assets/svg/more_vert.svg"),
               ),
             ),

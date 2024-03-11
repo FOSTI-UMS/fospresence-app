@@ -36,9 +36,17 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   }
 
   @override
-  Future<Set<Set<void>>> editEvent({required EventEntity event}) {
-    // TODO: implement editEvent
-    throw UnimplementedError();
+  Future<void> editEvent({required EventEntity event}) {
+    CollectionReference events =
+        FirebaseFirestore.instance.collection('events');
+
+    return events.doc(event.ref.id).update(
+      {
+        'name': event.name,
+        'datetime': event.datetime,
+        'perticipants': event.participants
+      },
+    ).then((value) => debugPrint("Event updated"));
   }
 
   @override
@@ -46,6 +54,7 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
     List<EventEntity> events = [];
     QuerySnapshot querySnapshots = await FirebaseFirestore.instance
         .collection("events")
+        .orderBy("datetime", descending: true)
         .withConverter(
             fromFirestore: EventEntity.fromFirestore,
             toFirestore: (EventEntity event, _) => event.toFirestore())
