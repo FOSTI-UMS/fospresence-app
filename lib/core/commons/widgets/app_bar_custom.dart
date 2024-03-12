@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/font.dart';
+import 'custom_back_button.dart';
 
 class AppBarCustom extends StatelessWidget {
   final String title;
@@ -27,14 +28,7 @@ class AppBarCustom extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                color: Colors.transparent,
-                width: 30,
-                child: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child:
-                        const Icon(Icons.arrow_back_ios, color: Colors.white)),
-              ),
+              const CustomBackButton(),
               Text(title,
                   style: textWhite22.copyWith(fontWeight: FontWeight.w700)),
               const SizedBox(width: 30)

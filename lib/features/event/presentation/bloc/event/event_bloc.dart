@@ -3,7 +3,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:fospresence/core/commons/widgets/custom_toast.dart';
+import 'package:fospresence/core/commons/widgets/custom_toast_w_border.dart';
 import 'package:fospresence/core/errors/failure.dart';
 import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
 import 'package:fospresence/features/event/domain/usecases/create_event_use_case.dart';
@@ -121,14 +121,14 @@ class EventBloc extends Bloc<EventEvent, EventState> {
         );
 
         fToast.showToast(
-          child: CustomToast(
+          child: CustomToastWithBorder(
               message: errorMessage ?? "Unknown error", isSuccess: false),
           gravity: ToastGravity.BOTTOM,
         );
       },
       (success) {
         fToast.showToast(
-          child: CustomToast(message: successMessage, isSuccess: true),
+          child: CustomToastWithBorder(message: successMessage, isSuccess: true),
           gravity: ToastGravity.BOTTOM,
         );
       },

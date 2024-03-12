@@ -4,6 +4,7 @@ import 'package:fospresence/features/event/presentation/pages/add_event.dart';
 import 'package:fospresence/features/event/presentation/pages/detail_event.dart';
 import 'package:fospresence/features/event/presentation/pages/edit_event.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
+import 'package:fospresence/features/participant/presentation/pages/qr_code_scanner_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
 class RouteGenerator {
@@ -13,8 +14,7 @@ class RouteGenerator {
     const Curve curve = Curves.easeIn;
     switch (settings.name) {
       case RouteName.homeScreen:
-        return MaterialPageRoute(
-            builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
       case RouteName.detailEventScreen:
         return PageTransition(
           child: const DetailEventScreen(),
@@ -40,9 +40,16 @@ class RouteGenerator {
           curve: curve,
           isIos: true,
         );
+      case RouteName.qrCodeScannerScreen:
+        return PageTransition(
+          child: const QRCodeScannerScreen(),
+          type: PageTransitionType.rightToLeft,
+          duration: const Duration(milliseconds: duration),
+          curve: curve,
+          isIos: true,
+        );
       default:
-        return MaterialPageRoute(
-            builder: (context) => const HomeScreen());
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
     }
   }
 }

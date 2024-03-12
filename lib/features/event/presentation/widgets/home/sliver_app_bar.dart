@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:fospresence/core/commons/widgets/fospresence_w_logo.dart';
 
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/font.dart';
@@ -13,7 +14,6 @@ class HomeSliverAppBar extends StatefulWidget {
 }
 
 class _HomeSliverAppBarState extends State<HomeSliverAppBar> {
-  final double sizeFostiLogo = 40;
   final List<String> listImageEvent = [
     "assets/images/event1.jpeg",
     "assets/images/event2.jpeg",
@@ -64,33 +64,8 @@ class _HomeSliverAppBarState extends State<HomeSliverAppBar> {
       centerTitle: true,
       titlePadding: const EdgeInsets.only(bottom: 20),
       title: FadeInUp(
-        duration: const Duration(seconds: 3),
-        child: RichText(
-          text: TextSpan(
-            style: textWhite26.copyWith(fontWeight: FontWeight.w600),
-            children: [
-              WidgetSpan(
-                child: Container(
-                  height: sizeFostiLogo,
-                  width: sizeFostiLogo,
-                  margin: const EdgeInsets.only(left: 0, right: 6),
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 1, color: Colors.white),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(sizeFostiLogo),
-                    child: Image.asset("assets/images/fosti_rectangle_logo.png",
-                        fit: BoxFit.cover),
-                  ),
-                ),
-              ),
-              const TextSpan(text: "Presence"),
-            ],
-          ),
-        ),
-      ),
+          duration: const Duration(seconds: 3),
+          child: FosPresenceWithLogo(sizeFostiLogo: 40, textSize: textWhite26)),
       background: Stack(
         fit: StackFit.expand,
         alignment: Alignment.center,

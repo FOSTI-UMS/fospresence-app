@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/core/constants/font.dart';
 
 import '../../../../../core/constants/colors.dart';
@@ -47,16 +49,20 @@ class DetailEventSearch extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20),
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 0.2),
-                    color: primaryColor.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10)),
-                child: SvgPicture.asset(
-                  "assets/svg/scan_qr_code.svg",
-                  colorFilter:
-                      const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, RouteName.qrCodeScannerScreen),
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 0.2),
+                      color: primaryColor.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: SvgPicture.asset(
+                    "assets/svg/scan_qr_code.svg",
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                  ),
                 ),
               ),
               const SizedBox(width: 10)

@@ -8,7 +8,7 @@ import 'package:fospresence/core/constants/pass.dart';
 
 import '../../../features/my_app.dart';
 import '../../constants/font.dart';
-import 'custom_toast.dart';
+import 'custom_toast_w_border.dart';
 
 class ConfirmPassDialog {
   ConfirmPassDialog._();
@@ -82,7 +82,7 @@ class ConfirmPassDialog {
             const Duration(milliseconds: 300),
           );
           fToast.showToast(
-            child: const CustomToast(
+            child: const CustomToastWithBorder(
                 message: "Password is wrong", isSuccess: false),
             gravity: ToastGravity.BOTTOM,
           );

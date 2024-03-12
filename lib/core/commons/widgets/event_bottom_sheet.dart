@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
@@ -14,7 +13,7 @@ import '../../constants/colors.dart';
 import '../../constants/font.dart';
 import '../../constants/helper.dart';
 import '../../constants/pass.dart';
-import 'custom_toast.dart';
+import 'custom_toast_w_border.dart';
 
 class EventBottomSheet {
   EventBottomSheet._();
@@ -110,7 +109,8 @@ class EventBottomSheet {
                           child: Text(
                             "Delete",
                             textAlign: TextAlign.center,
-                            style: textWhite14.copyWith(color: Colors.red),
+                            style:
+                                textWhite14.copyWith(color: Colors.redAccent),
                           ),
                         ),
                       ),
@@ -171,7 +171,7 @@ class EventBottomSheet {
             const Duration(milliseconds: 300),
           );
           fToast.showToast(
-            child: const CustomToast(
+            child: const CustomToastWithBorder(
                 message: "Password is wrong", isSuccess: false),
             gravity: ToastGravity.BOTTOM,
           );
