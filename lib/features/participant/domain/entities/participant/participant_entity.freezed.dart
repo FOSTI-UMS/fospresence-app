@@ -133,7 +133,7 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ParticipantEntityImpl implements _ParticipantEntity {
-  const _$ParticipantEntityImpl(
+  _$ParticipantEntityImpl(
       {required this.ref,
       required this.name,
       required this.nim,
@@ -194,7 +194,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
 }
 
 abstract class _ParticipantEntity implements ParticipantEntity {
-  const factory _ParticipantEntity(
+  factory _ParticipantEntity(
       {required final DocumentReference<Object?> ref,
       required final String name,
       required final String nim,

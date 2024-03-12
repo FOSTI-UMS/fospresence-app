@@ -6,7 +6,7 @@ part 'participant_entity.freezed.dart';
 
 @freezed
 abstract class ParticipantEntity with _$ParticipantEntity {
-  const factory ParticipantEntity({
+  factory ParticipantEntity({
     required DocumentReference ref,
     required String name,
     required String nim,

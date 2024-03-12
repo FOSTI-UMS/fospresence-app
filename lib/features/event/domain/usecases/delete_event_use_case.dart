@@ -8,8 +8,8 @@ import '../../../../core/usecase/usecase.dart';
 class DeleteEventUseCase
     extends UseCase<Either<ValueFailure<String>, void>, EventEntity> {
   final EventRespository eventRespository;
-  DeleteEventUseCase({required this.eventRespository});
 
+  DeleteEventUseCase({required this.eventRespository});
   @override
   Future<Either<ValueFailure<String>, void>> call(
           {required EventEntity params}) async =>

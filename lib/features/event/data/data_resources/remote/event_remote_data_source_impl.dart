@@ -29,6 +29,15 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
     CollectionReference events =
         FirebaseFirestore.instance.collection('events');
 
+    QuerySnapshot participantSnapshot = await FirebaseFirestore.instance
+        .collection('participants')
+        .where('events', isEqualTo: event)
+        .get();
+
+    for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
+      await doc.reference.delete();
+    }
+
     return events
         .doc(event.ref.id)
         .delete()
@@ -36,17 +45,28 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   }
 
   @override
-  Future<void> editEvent({required EventEntity event}) {
+  Future<void> editEvent({required EventEntity event}) async {
     CollectionReference events =
         FirebaseFirestore.instance.collection('events');
 
-    return events.doc(event.ref.id).update(
-      {
+    QuerySnapshot participantSnapshot = await FirebaseFirestore.instance
+        .collection('participants')
+        .where('events', isEqualTo: event)
+        .get();
+
+    for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
+      await doc.reference.update({
         'name': event.name,
         'datetime': event.datetime,
         'perticipants': event.participants
-      },
-    ).then((value) => debugPrint("Event updated"));
+      });
+    }
+
+    return events.doc(event.ref.id).update({
+      'name': event.name,
+      'datetime': event.datetime,
+      'perticipants': event.participants
+    }).then((value) => debugPrint("Event updated"));
   }
 
   @override

@@ -14,13 +14,14 @@ abstract class EventEntity with _$EventEntity {
   }) = _EventEntity;
 
   factory EventEntity.fromFirestore(
-      DocumentSnapshot<Map<String, dynamic>> snapshot,
-      SnapshotOptions? options) {
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
     final data = snapshot.data();
 
     return EventEntity(
       ref: snapshot.reference,
-      name: data?["name"].toUpperCase(),
+      name: data?["name"].substring(0, 1).toUpperCase() + data?["name"].substring(1),
       datetime: (data?["datetime"] as Timestamp).toDate(),
       participants: data?["participants"] ?? [],
     );
