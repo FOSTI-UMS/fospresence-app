@@ -8,6 +8,7 @@ import 'package:fospresence/core/commons/widgets/fospresence_w_logo.dart';
 import 'package:fospresence/core/constants/font.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+import '../../../../core/constants/colors.dart';
 import '../../../my_app.dart';
 
 class QRCodeScannerScreen extends StatefulWidget {
@@ -40,6 +41,20 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              primaryColor.withOpacity(0.5),
+              Colors.black,
+              Colors.black,
+              Colors.black,
+              Colors.black,
+              primaryColor.withOpacity(0.5),
+            ],
+          ),
+        ),
         child: SafeArea(
           child: Column(
             children: [

@@ -83,7 +83,7 @@ class ConfirmPassDialog {
           );
           fToast.showToast(
             child: const CustomToastWithBorder(
-                message: "Password is wrong", isSuccess: false),
+                message: "Password salah", isSuccess: false),
             gravity: ToastGravity.BOTTOM,
           );
         }
@@ -103,7 +103,7 @@ class ConfirmPassDialog {
                 style: textWhite14,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "You must fill out this form";
+                    return "Wajib diisi";
                   }
                   return null;
                 },
@@ -112,7 +112,7 @@ class ConfirmPassDialog {
                   fillColor: Colors.black,
                   contentPadding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  hintText: "Type password...",
+                  hintText: "Ketikkan password...",
                   errorStyle: textDark10.copyWith(color: Colors.redAccent),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -144,14 +144,14 @@ class ConfirmPassDialog {
                   Expanded(
                     child: CupertinoDialogAction(
                       onPressed: () => back(),
-                      child: Text("Back",
+                      child: Text("Batal",
                           style: textWhite14.copyWith(color: Colors.redAccent)),
                     ),
                   ),
                   Expanded(
                     child: CupertinoDialogAction(
                       onPressed: () async => eventPressed(),
-                      child: Text("Confirm",
+                      child: Text("Konfirmasi",
                           style: textWhite14.copyWith(color: Colors.blue)),
                     ),
                   ),

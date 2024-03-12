@@ -66,8 +66,8 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Participants",
-                          style: textWhite16.copyWith(
+                      Text("Jumlah Peserta",
+                          style: textWhite18.copyWith(
                               fontWeight: FontWeight.w600)),
                       Container(
                         height: _sizeParticipantsCircle,

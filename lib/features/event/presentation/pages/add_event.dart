@@ -23,7 +23,7 @@ class AddEventScreen extends StatelessWidget {
           body: Stack(
             children: [
               const AddEventForm(),
-              const AppBarCustom(title: "Add Event"),
+              const AppBarCustom(title: "Tambah Proker"),
               state.isLoading ? const BlurLoading() : const SizedBox()
             ],
           ),

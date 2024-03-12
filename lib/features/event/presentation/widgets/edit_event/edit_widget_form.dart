@@ -42,7 +42,7 @@ class _EditEventFormState extends State<EditEventForm> {
       _edtEventName.text = _selectedEvent!.name.toLowerCase();
       _selectedDate = _selectedEvent!.datetime;
       _formattedDatetime =
-          DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
+          DateFormat('EEEE, dd MMM yyyy', 'id_ID').format(_selectedDate!);
       _isArgsInit = true;
     }
   }
@@ -55,7 +55,8 @@ class _EditEventFormState extends State<EditEventForm> {
     _formKeyDialog = GlobalKey<FormState>();
     _edtPassDialog = TextEditingController();
     _focusNodeDialog = FocusNode();
-    _formattedDatetime = DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
+    _formattedDatetime =
+        DateFormat('EEEE, dd MMM yyyy', 'id_ID').format(_selectedDate!);
   }
 
   @override
@@ -113,9 +114,9 @@ class _EditEventFormState extends State<EditEventForm> {
                       text: TextSpan(
                         style: textWhite12,
                         children: [
-                          const TextSpan(text: "Event name format: "),
+                          const TextSpan(text: "Format nama proker : "),
                           TextSpan(
-                            text: "eventname24",
+                            text: "namaproker24",
                             style: textWhite12.copyWith(
                                 fontWeight: FontWeight.bold),
                           ),
@@ -124,7 +125,8 @@ class _EditEventFormState extends State<EditEventForm> {
                             style: textWhite12.copyWith(
                                 fontWeight: FontWeight.bold),
                           ),
-                          const TextSpan(text: "24 is the year of the event")
+                          const TextSpan(
+                              text: "24 adalah tahun dilaksanakannya proker")
                         ],
                       ),
                     ),
@@ -134,16 +136,17 @@ class _EditEventFormState extends State<EditEventForm> {
             ),
             const SizedBox(height: 30),
             const Padding(
-                padding: EdgeInsets.only(left: 8.0), child: Text("Event")),
+                padding: EdgeInsets.only(left: 8.0), child: Text("Proker")),
             const SizedBox(height: 5),
             TextFormField(
               controller: _edtEventName,
               focusNode: _focusNode,
               style: textWhite14,
-              decoration: const InputDecoration(hintText: "Edit event name..."),
+              decoration:
+                  const InputDecoration(hintText: "Edit nama proker..."),
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "You must fill out this form";
+                  return "Wajib diisi";
                 } else {
                   return _valueValidator.validateEventName(value).fold(
                       (_) => null,
@@ -154,7 +157,7 @@ class _EditEventFormState extends State<EditEventForm> {
             ),
             const SizedBox(height: 20),
             const Padding(
-                padding: EdgeInsets.only(left: 8.0), child: Text("Due Date")),
+                padding: EdgeInsets.only(left: 8.0), child: Text("Tanggal")),
             const SizedBox(height: 5),
             Material(
               color: Colors.black,
@@ -167,8 +170,8 @@ class _EditEventFormState extends State<EditEventForm> {
                   _selectedDate =
                       await DatetimePicker.showDatetimePicker(context);
                   _selectedDate = _selectedDate ?? DateTime.now();
-                  _formattedDatetime =
-                      DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
+                  _formattedDatetime = DateFormat('EEEE, dd MMM yyyy', 'id_ID')
+                      .format(_selectedDate!);
                   setState(() {});
                 },
                 child: Container(
@@ -202,7 +205,7 @@ class _EditEventFormState extends State<EditEventForm> {
                         edtPass: _edtPassDialog);
                   }
                 },
-                child: const Text("Save"),
+                child: const Text("Simpan"),
               ),
             )
           ],

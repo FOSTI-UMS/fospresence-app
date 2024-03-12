@@ -57,7 +57,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     );
 
     _showToast(
-        result: result, successMessage: "Successfully edited ${event.name}");
+        result: result, successMessage: "Berhasil memperbarui ${event.name}");
   }
 
   Future<void> _deleteEvent(EventEntity event) async {
@@ -74,7 +74,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     );
 
     _showToast(
-        result: result, successMessage: "Successfully deleted ${event.name}");
+        result: result, successMessage: "Berhasil menghapus ${event.name}");
   }
 
   Future<void> _getEvents() async {
@@ -106,7 +106,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     );
 
     _showToast(
-        result: result, successMessage: "Successfully added ${event.name}");
+        result: result, successMessage: "Berhasil menambahkan ${event.name}");
   }
 
   void _showToast(

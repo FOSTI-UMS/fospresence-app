@@ -19,11 +19,11 @@ class EventRepositoryImpl extends EventRespository {
       if (e is Exception) {
         return const Left(
           ValueFailure.eventAlreadyExists(
-              errorMessage: "Event with the same name already exists"),
+              errorMessage: "Nama proker sudah terdaftar"),
         );
       } else {
         return const Left(
-          ValueFailure.firebaseError(errorMessage: "Failed to create event"),
+          ValueFailure.firebaseError(errorMessage: "Gagal menambahkan proker"),
         );
       }
     }
@@ -37,7 +37,7 @@ class EventRepositoryImpl extends EventRespository {
       return Right(result);
     } catch (e) {
       return const Left(
-        ValueFailure.firebaseError(errorMessage: "Failed to delete event"),
+        ValueFailure.firebaseError(errorMessage: "Gagal menghapus proker"),
       );
     }
   }
@@ -51,7 +51,7 @@ class EventRepositoryImpl extends EventRespository {
       return Right(result);
     } catch (e) {
       return const Left(
-        ValueFailure.firebaseError(errorMessage: "Failed to edit event"),
+        ValueFailure.firebaseError(errorMessage: "Gagal memperbarui proker"),
       );
     }
   }
@@ -63,7 +63,7 @@ class EventRepositoryImpl extends EventRespository {
       return Right(result);
     } catch (e) {
       return const Left(
-        ValueFailure.firebaseError(errorMessage: "Failed to get event"),
+        ValueFailure.firebaseError(errorMessage: "Koneksi buruk"),
       );
     }
   }

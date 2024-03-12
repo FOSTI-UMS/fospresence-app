@@ -86,8 +86,8 @@ class _EventCardState extends State<EventCard> {
       () => null,
       (a) => a.fold((l) => null, (r) => r[index]),
     );
-    String formattedDatetime =
-        DateFormat('EEEE, dd MMM yyyy').format(selectedEvent!.datetime);
+    String formattedDatetime = DateFormat('EEEE, dd MMM yyyy', 'id_ID')
+        .format(selectedEvent!.datetime);
     return Padding(
       padding: EdgeInsets.only(bottom: index == eventListLength - 1 ? 10 : 0),
       child: GestureDetector(

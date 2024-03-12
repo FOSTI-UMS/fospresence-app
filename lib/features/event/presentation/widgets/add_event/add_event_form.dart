@@ -38,7 +38,7 @@ class _AddEventFormState extends State<AddEventForm> {
     _formKeyDialog = GlobalKey<FormState>();
     _edtPassDialog = TextEditingController();
     _focusNodeDialog = FocusNode();
-    formattedDatetime = DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
+    formattedDatetime = DateFormat('EEEE, dd MMM yyyy','id_ID').format(_selectedDate!);
   }
 
   @override
@@ -98,9 +98,9 @@ class _AddEventFormState extends State<AddEventForm> {
                       text: TextSpan(
                         style: textWhite12,
                         children: [
-                          const TextSpan(text: "Event name format: "),
+                          const TextSpan(text: "Format nama proker: "),
                           TextSpan(
-                            text: "eventname24",
+                            text: "namaproker24",
                             style: textWhite12.copyWith(
                                 fontWeight: FontWeight.bold),
                           ),
@@ -109,7 +109,8 @@ class _AddEventFormState extends State<AddEventForm> {
                             style: textWhite12.copyWith(
                                 fontWeight: FontWeight.bold),
                           ),
-                          const TextSpan(text: "24 is the year of the event")
+                          const TextSpan(
+                              text: "24 adalah tahun dilaksanakannya proker")
                         ],
                       ),
                     ),
@@ -119,16 +120,17 @@ class _AddEventFormState extends State<AddEventForm> {
             ),
             const SizedBox(height: 30),
             const Padding(
-                padding: EdgeInsets.only(left: 8.0), child: Text("Event")),
+                padding: EdgeInsets.only(left: 8.0), child: Text("Proker")),
             const SizedBox(height: 5),
             TextFormField(
               controller: _edtEventName,
               focusNode: _focusNode,
               style: textWhite14,
-              decoration: const InputDecoration(hintText: "Type event name..."),
+              decoration:
+                  const InputDecoration(hintText: "Ketikkan nama proker..."),
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "You must fill out this form";
+                  return "Wajib diisi";
                 } else {
                   return valueValidator.validateEventName(value).fold(
                       (_) => null,
@@ -139,7 +141,7 @@ class _AddEventFormState extends State<AddEventForm> {
             ),
             const SizedBox(height: 20),
             const Padding(
-                padding: EdgeInsets.only(left: 8.0), child: Text("Due Date")),
+                padding: EdgeInsets.only(left: 8.0), child: Text("Tanggal")),
             const SizedBox(height: 5),
             Material(
               color: Colors.black,
@@ -153,7 +155,7 @@ class _AddEventFormState extends State<AddEventForm> {
                       await DatetimePicker.showDatetimePicker(context);
                   _selectedDate = _selectedDate ?? DateTime.now();
                   formattedDatetime =
-                      DateFormat('EEEE, dd MMM yyyy').format(_selectedDate!);
+                      DateFormat('EEEE, dd MMM yyyy','id_ID').format(_selectedDate!);
                   setState(() {});
                 },
                 child: Container(
@@ -187,7 +189,7 @@ class _AddEventFormState extends State<AddEventForm> {
                         edtPass: _edtPassDialog);
                   }
                 },
-                child: const Text("Save"),
+                child: const Text("Tambah"),
               ),
             )
           ],

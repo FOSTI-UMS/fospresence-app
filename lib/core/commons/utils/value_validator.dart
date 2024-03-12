@@ -5,7 +5,7 @@ class ValueValidator {
   Either<dynamic, ValueFailure<String>> validateEventName(String input) {
     const eventRegex = r'^[a-z0-9]+$';
     const String errorMessage =
-        "Event name should consist of only lowercase letters and no spaces (e.g: fostifest24, fosti_fest24)";
+        "Nama proker hanya terdiri dari huruf kecil dan tanpa spasi (contoh: fostifest, fostifest24)";
 
     return RegExp(eventRegex).hasMatch(input)
         ? const Left(null)

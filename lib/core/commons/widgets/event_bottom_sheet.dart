@@ -61,7 +61,7 @@ class EventBottomSheet {
                               end: Alignment.centerRight)),
                       child: const Padding(
                         padding: EdgeInsets.all(10.0),
-                        child: Text("Close", textAlign: TextAlign.center),
+                        child: Text("Batal", textAlign: TextAlign.center),
                       ),
                     ),
                   ),
@@ -107,7 +107,7 @@ class EventBottomSheet {
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Text(
-                            "Delete",
+                            "Hapus",
                             textAlign: TextAlign.center,
                             style:
                                 textWhite14.copyWith(color: Colors.redAccent),
@@ -142,7 +142,7 @@ class EventBottomSheet {
               _buildForm(formKey, selectedEvent, focusNode, edtPass, context),
         ),
       ),
-    ).then((_) => Navigator.of(context).pop());
+    );
   }
 
   static Form _buildForm(
@@ -172,7 +172,7 @@ class EventBottomSheet {
           );
           fToast.showToast(
             child: const CustomToastWithBorder(
-                message: "Password is wrong", isSuccess: false),
+                message: "Password salah", isSuccess: false),
             gravity: ToastGravity.BOTTOM,
           );
         }
@@ -182,16 +182,17 @@ class EventBottomSheet {
     return Form(
       key: formKey,
       child: SizedBox(
-        height: 185,
+        height: 205,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 10),
             Text.rich(
               textAlign: TextAlign.center,
               style: textWhite16,
               TextSpan(
                 children: [
-                  const TextSpan(text: "Are you sure to delete "),
+                  const TextSpan(text: "Apakah Anda yakin untuk menghapus "),
                   TextSpan(
                     text: selectedEvent.name,
                     style: textWhite14.copyWith(
@@ -209,7 +210,7 @@ class EventBottomSheet {
                 style: textWhite14,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return "You must fill out this form";
+                    return "Wajib diisi";
                   }
                   return null;
                 },
@@ -218,7 +219,7 @@ class EventBottomSheet {
                   fillColor: Colors.black,
                   contentPadding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  hintText: "Type password...",
+                  hintText: "Ketikkan password...",
                   errorStyle: textDark9.copyWith(color: Colors.redAccent),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -251,7 +252,7 @@ class EventBottomSheet {
                   Expanded(
                     child: CupertinoDialogAction(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: Text("Cancel",
+                      child: Text("Batal",
                           style: textWhite14.copyWith(color: Colors.blue)),
                     ),
                   ),
@@ -261,7 +262,7 @@ class EventBottomSheet {
                       builder: (context, state) {
                         return CupertinoDialogAction(
                           onPressed: () async => await deleteEventPressed(),
-                          child: Text("Delete",
+                          child: Text("Hapus",
                               style: textWhite14.copyWith(
                                   color: Colors.redAccent)),
                         );

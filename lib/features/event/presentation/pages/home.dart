@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/core/constants/colors.dart';
+import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_card.dart';
-import 'package:fospresence/features/event/presentation/widgets/home/event_year.dart';
 
 import '../../../../core/commons/widgets/background_w_logo.dart';
 import '../widgets/home/sliver_app_bar.dart';
@@ -20,11 +20,21 @@ class HomeScreen extends StatelessWidget {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) =>
                     [const HomeSliverAppBar()],
-            body: const Stack(
+            body: Stack(
               fit: StackFit.expand,
               children: [
-                BackgroundWithLogo(),
-                Column(children: [EventYear(), EventCard()])
+                const BackgroundWithLogo(),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 20.0, horizontal: 10),
+                    child: Text(
+                      "Program Kerja FOSTI",
+                      style: textWhite24.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  const EventCard(),
+                ])
               ],
             ),
           ),

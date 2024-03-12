@@ -23,7 +23,7 @@ class EditEventScreen extends StatelessWidget {
           body: Stack(
             children: [
               const EditEventForm(),
-              const AppBarCustom(title: "Edit Event"),
+              const AppBarCustom(title: "Edit Proker"),
               state.isLoading ? const BlurLoading() : const SizedBox()
             ],
           ),

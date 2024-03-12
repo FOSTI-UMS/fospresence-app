@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fospresence/config/routes/route_name.dart';
@@ -33,7 +32,7 @@ class DetailEventSearch extends StatelessWidget {
                       child: SvgPicture.asset("assets/svg/search.svg"),
                     ),
                     suffixIcon: const Icon(Icons.close),
-                    hintText: "Type in your search...",
+                    hintText: "Ketik nama peserta...",
                     contentPadding: const EdgeInsets.symmetric(
                         horizontal: 15, vertical: 10),
                     enabledBorder: OutlineInputBorder(
