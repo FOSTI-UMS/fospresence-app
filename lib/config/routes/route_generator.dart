@@ -19,6 +19,7 @@ class RouteGenerator {
         return PageTransition(
           child: const DetailEventScreen(),
           type: PageTransitionType.rightToLeft,
+          settings: settings,
           duration: const Duration(milliseconds: duration + 700),
           curve: curve,
           isIos: true,
@@ -43,6 +44,7 @@ class RouteGenerator {
       case RouteName.qrCodeScannerScreen:
         return PageTransition(
           child: const QRCodeScannerScreen(),
+          settings: settings,
           type: PageTransitionType.rightToLeft,
           duration: const Duration(milliseconds: duration),
           curve: curve,

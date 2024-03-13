@@ -91,7 +91,10 @@ class _EventCardState extends State<EventCard> {
     return Padding(
       padding: EdgeInsets.only(bottom: index == eventListLength - 1 ? 10 : 0),
       child: GestureDetector(
-        onTap: () => Navigator.pushNamed(context, RouteName.detailEventScreen),
+        onTap: () {
+          _eventBloc.add(EventEvent.selectedEventPressed(event: selectedEvent));
+          Navigator.pushNamed(context, RouteName.detailEventScreen);
+        },
         child: Container(
           height: 100,
           width: MediaQuery.sizeOf(context).width,
@@ -114,12 +117,15 @@ class _EventCardState extends State<EventCard> {
               ),
               subtitle: Text(formattedDatetime, style: textWhite12),
               trailing: GestureDetector(
-                onTap: () => EventBottomSheet.showSheet(
-                    context: context,
-                    selectedEvent: selectedEvent,
-                    formKey: _formKeyDialog,
-                    focusNode: _focusNodeDialog,
-                    edtPass: _edtPassDialog),
+                onTap: () {
+                  _eventBloc.add(
+                      EventEvent.selectedEventPressed(event: selectedEvent));
+                  EventBottomSheet.showSheet(
+                      context: context,
+                      formKey: _formKeyDialog,
+                      focusNode: _focusNodeDialog,
+                      edtPass: _edtPassDialog);
+                },
                 child: SvgPicture.asset("assets/svg/more_vert.svg"),
               ),
             ),

@@ -32,11 +32,13 @@ class EventBloc extends Bloc<EventEvent, EventState> {
       : super(EventState.started()) {
     on<EventEvent>(
       (event, emit) async {
-        await event.map(
+        event.map(
           getEvents: (value) async => await _getEvents(),
           createEventPressed: (value) async => await _createEvent(value.event),
           editEventPressed: (value) async => await _editEvent(value.event),
           deleteEventPressed: (value) async => await _deleteEvent(value.event),
+          selectedEventPressed: (value) =>
+              emit(state.copyWith(selectedEvent: value.event)),
         );
       },
     );
@@ -109,6 +111,10 @@ class EventBloc extends Bloc<EventEvent, EventState> {
         result: result, successMessage: "Berhasil menambahkan ${event.name}");
   }
 
+  // void _selectEvent(){
+
+  // }
+
   void _showToast(
       {required Either<ValueFailure<String>, void> result,
       required String successMessage}) {
@@ -128,7 +134,8 @@ class EventBloc extends Bloc<EventEvent, EventState> {
       },
       (success) {
         fToast.showToast(
-          child: CustomToastWithBorder(message: successMessage, isSuccess: true),
+          child:
+              CustomToastWithBorder(message: successMessage, isSuccess: true),
           gravity: ToastGravity.BOTTOM,
         );
       },

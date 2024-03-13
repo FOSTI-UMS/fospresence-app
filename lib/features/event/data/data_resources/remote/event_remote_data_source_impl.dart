@@ -34,8 +34,12 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
         .where('events', isEqualTo: event)
         .get();
 
-    for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
-      await doc.reference.delete();
+    if (participantSnapshot.docs.isNotEmpty) {
+      for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
+        await doc.reference.delete();
+      }
+    } else {
+      debugPrint("No participants found for this event.");
     }
 
     return events
@@ -54,19 +58,25 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
         .where('events', isEqualTo: event)
         .get();
 
-    for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
-      await doc.reference.update({
+    if (participantSnapshot.docs.isNotEmpty) {
+      for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
+        await doc.reference.update({
+          'name': event.name,
+          'datetime': event.datetime,
+          'perticipants': event.participants
+        });
+      }
+    } else {
+      debugPrint("No participants found for this event.");
+    }
+
+    return events.doc(event.ref.id).update(
+      {
         'name': event.name,
         'datetime': event.datetime,
         'perticipants': event.participants
-      });
-    }
-
-    return events.doc(event.ref.id).update({
-      'name': event.name,
-      'datetime': event.datetime,
-      'perticipants': event.participants
-    }).then((value) => debugPrint("Event updated"));
+      },
+    ).then((value) => debugPrint("Event updated"));
   }
 
   @override

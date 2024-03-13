@@ -29,18 +29,16 @@ class _EditEventFormState extends State<EditEventForm> {
   final _valueValidator = sl.get<ValueValidator>();
   DateTime? _selectedDate = DateTime.now();
   String? _formattedDatetime;
-  EventEntity? _selectedEvent;
   bool _isArgsInit = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!_isArgsInit) {
-      final args =
-          ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-      _selectedEvent = args["selected_event"];
-      _edtEventName.text = _selectedEvent!.name.toLowerCase();
-      _selectedDate = _selectedEvent!.datetime;
+      final selectedEvent =
+          BlocProvider.of<EventBloc>(context).state.selectedEvent;
+      _edtEventName.text = selectedEvent!.name.toLowerCase();
+      _selectedDate = selectedEvent.datetime;
       _formattedDatetime =
           DateFormat('EEEE, dd MMM yyyy', 'id_ID').format(_selectedDate!);
       _isArgsInit = true;
@@ -66,27 +64,18 @@ class _EditEventFormState extends State<EditEventForm> {
     super.dispose();
   }
 
-  void _editEvent(BuildContext ctx) {
-    final eventData = EventEntity(
-        ref: _selectedEvent!.ref,
-        name: _edtEventName.text,
-        datetime: _selectedDate ?? DateTime.now());
-    ctx.read<EventBloc>().add(EventEvent.editEventPressed(event: eventData));
-    _focusNode.unfocus();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: BlocBuilder<EventBloc, EventState>(
         bloc: BlocProvider.of<EventBloc>(context),
-        builder: (context, state) => _buildContent(context),
+        builder: (context, state) => _buildContent(context, state),
       ),
     );
   }
 
-  Padding _buildContent(BuildContext context) {
+  Padding _buildContent(BuildContext context, EventState state) {
     return Padding(
       padding:
           const EdgeInsets.only(left: 20, right: 20, top: distanceWithAppBar),
@@ -199,7 +188,15 @@ class _EditEventFormState extends State<EditEventForm> {
                     _focusNode.unfocus();
                     ConfirmPassDialog.showConfirmDialog(
                         context: context,
-                        onConfirm: _editEvent,
+                        onConfirm: (context) {
+                          final eventData = EventEntity(
+                              ref: state.selectedEvent!.ref,
+                              name: _edtEventName.text,
+                              datetime: _selectedDate ?? DateTime.now());
+                          context.read<EventBloc>().add(
+                              EventEvent.editEventPressed(event: eventData));
+                          _focusNode.unfocus();
+                        },
                         formKey: _formKeyDialog,
                         focusNode: _focusNodeDialog,
                         edtPass: _edtPassDialog);

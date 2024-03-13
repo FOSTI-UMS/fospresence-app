@@ -1,4 +1,3 @@
-import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,7 +9,7 @@ abstract class ParticipantEntity with _$ParticipantEntity {
     required DocumentReference ref,
     required String name,
     required String nim,
-    List<EventEntity>? events,
+    List<Map<String, Object?>>? events,
   }) = _ParticipantEntity;
 
   factory ParticipantEntity.fromFirestore(

@@ -11,6 +11,6 @@ class CreateParticipantUseCase
   CreateParticipantUseCase({required this.participantRespository});
   @override
   Future<Either<ValueFailure<String>, void>> call(
-          {required ParticipantEntity params}) async =>
-      await participantRespository.createParticipant(participant: params);
+          {required ParticipantEntity params,  Map<String, Object?>? event}) async =>
+      await participantRespository.createParticipant(participant: params, event: event);
 }

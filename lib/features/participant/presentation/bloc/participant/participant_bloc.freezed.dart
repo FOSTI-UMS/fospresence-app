@@ -18,39 +18,54 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ParticipantEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name, String event) createEvent,
+    required TResult Function() getParticipants,
+    required TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)
+        createParticipant,
+    required TResult Function(ParticipantEntity participant)
+        deleteParticipantPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name, String event)? createEvent,
+    TResult? Function()? getParticipants,
+    TResult? Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name, String event)? createEvent,
+    TResult Function()? getParticipants,
+    TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_GetParticipants value) getParticipants,
+    required TResult Function(_CreateParticipant value) createParticipant,
+    required TResult Function(_DeteleParticipantPressed value)
+        deleteParticipantPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_GetParticipants value)? getParticipants,
+    TResult? Function(_CreateParticipant value)? createParticipant,
+    TResult? Function(_DeteleParticipantPressed value)?
+        deleteParticipantPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_GetParticipants value)? getParticipants,
+    TResult Function(_CreateParticipant value)? createParticipant,
+    TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,35 +90,35 @@ class _$ParticipantEventCopyWithImpl<$Res, $Val extends ParticipantEvent>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$GetParticipantsImplCopyWith<$Res> {
+  factory _$$GetParticipantsImplCopyWith(_$GetParticipantsImpl value,
+          $Res Function(_$GetParticipantsImpl) then) =
+      __$$GetParticipantsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ParticipantEventCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$GetParticipantsImplCopyWithImpl<$Res>
+    extends _$ParticipantEventCopyWithImpl<$Res, _$GetParticipantsImpl>
+    implements _$$GetParticipantsImplCopyWith<$Res> {
+  __$$GetParticipantsImplCopyWithImpl(
+      _$GetParticipantsImpl _value, $Res Function(_$GetParticipantsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$GetParticipantsImpl implements _GetParticipants {
+  const _$GetParticipantsImpl();
 
   @override
   String toString() {
-    return 'ParticipantEvent.initial()';
+    return 'ParticipantEvent.getParticipants()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType && other is _$GetParticipantsImpl);
   }
 
   @override
@@ -112,30 +127,40 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name, String event) createEvent,
+    required TResult Function() getParticipants,
+    required TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)
+        createParticipant,
+    required TResult Function(ParticipantEntity participant)
+        deleteParticipantPressed,
   }) {
-    return initial();
+    return getParticipants();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name, String event)? createEvent,
+    TResult? Function()? getParticipants,
+    TResult? Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
   }) {
-    return initial?.call();
+    return getParticipants?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name, String event)? createEvent,
+    TResult Function()? getParticipants,
+    TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (getParticipants != null) {
+      return getParticipants();
     }
     return orElse();
   }
@@ -143,135 +168,172 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_GetParticipants value) getParticipants,
+    required TResult Function(_CreateParticipant value) createParticipant,
+    required TResult Function(_DeteleParticipantPressed value)
+        deleteParticipantPressed,
   }) {
-    return initial(this);
+    return getParticipants(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_GetParticipants value)? getParticipants,
+    TResult? Function(_CreateParticipant value)? createParticipant,
+    TResult? Function(_DeteleParticipantPressed value)?
+        deleteParticipantPressed,
   }) {
-    return initial?.call(this);
+    return getParticipants?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_GetParticipants value)? getParticipants,
+    TResult Function(_CreateParticipant value)? createParticipant,
+    TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (getParticipants != null) {
+      return getParticipants(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements ParticipantEvent {
-  const factory _Initial() = _$InitialImpl;
+abstract class _GetParticipants implements ParticipantEvent {
+  const factory _GetParticipants() = _$GetParticipantsImpl;
 }
 
 /// @nodoc
-abstract class _$$CreateEventImplCopyWith<$Res> {
-  factory _$$CreateEventImplCopyWith(
-          _$CreateEventImpl value, $Res Function(_$CreateEventImpl) then) =
-      __$$CreateEventImplCopyWithImpl<$Res>;
+abstract class _$$CreateParticipantImplCopyWith<$Res> {
+  factory _$$CreateParticipantImplCopyWith(_$CreateParticipantImpl value,
+          $Res Function(_$CreateParticipantImpl) then) =
+      __$$CreateParticipantImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name, String event});
+  $Res call({ParticipantEntity participant, Map<String, Object?>? event});
+
+  $ParticipantEntityCopyWith<$Res> get participant;
 }
 
 /// @nodoc
-class __$$CreateEventImplCopyWithImpl<$Res>
-    extends _$ParticipantEventCopyWithImpl<$Res, _$CreateEventImpl>
-    implements _$$CreateEventImplCopyWith<$Res> {
-  __$$CreateEventImplCopyWithImpl(
-      _$CreateEventImpl _value, $Res Function(_$CreateEventImpl) _then)
+class __$$CreateParticipantImplCopyWithImpl<$Res>
+    extends _$ParticipantEventCopyWithImpl<$Res, _$CreateParticipantImpl>
+    implements _$$CreateParticipantImplCopyWith<$Res> {
+  __$$CreateParticipantImplCopyWithImpl(_$CreateParticipantImpl _value,
+      $Res Function(_$CreateParticipantImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? event = null,
+    Object? participant = null,
+    Object? event = freezed,
   }) {
-    return _then(_$CreateEventImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      event: null == event
-          ? _value.event
+    return _then(_$CreateParticipantImpl(
+      participant: null == participant
+          ? _value.participant
+          : participant // ignore: cast_nullable_to_non_nullable
+              as ParticipantEntity,
+      event: freezed == event
+          ? _value._event
           : event // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Map<String, Object?>?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ParticipantEntityCopyWith<$Res> get participant {
+    return $ParticipantEntityCopyWith<$Res>(_value.participant, (value) {
+      return _then(_value.copyWith(participant: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$CreateEventImpl implements _CreateEvent {
-  const _$CreateEventImpl({required this.name, required this.event});
+class _$CreateParticipantImpl implements _CreateParticipant {
+  const _$CreateParticipantImpl(
+      {required this.participant, final Map<String, Object?>? event})
+      : _event = event;
 
   @override
-  final String name;
+  final ParticipantEntity participant;
+  final Map<String, Object?>? _event;
   @override
-  final String event;
+  Map<String, Object?>? get event {
+    final value = _event;
+    if (value == null) return null;
+    if (_event is EqualUnmodifiableMapView) return _event;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'ParticipantEvent.createEvent(name: $name, event: $event)';
+    return 'ParticipantEvent.createParticipant(participant: $participant, event: $event)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateEventImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.event, event) || other.event == event));
+            other is _$CreateParticipantImpl &&
+            (identical(other.participant, participant) ||
+                other.participant == participant) &&
+            const DeepCollectionEquality().equals(other._event, _event));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, event);
+  int get hashCode => Object.hash(
+      runtimeType, participant, const DeepCollectionEquality().hash(_event));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
-      __$$CreateEventImplCopyWithImpl<_$CreateEventImpl>(this, _$identity);
+  _$$CreateParticipantImplCopyWith<_$CreateParticipantImpl> get copyWith =>
+      __$$CreateParticipantImplCopyWithImpl<_$CreateParticipantImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name, String event) createEvent,
+    required TResult Function() getParticipants,
+    required TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)
+        createParticipant,
+    required TResult Function(ParticipantEntity participant)
+        deleteParticipantPressed,
   }) {
-    return createEvent(name, event);
+    return createParticipant(participant, event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name, String event)? createEvent,
+    TResult? Function()? getParticipants,
+    TResult? Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
   }) {
-    return createEvent?.call(name, event);
+    return createParticipant?.call(participant, event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name, String event)? createEvent,
+    TResult Function()? getParticipants,
+    TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
     required TResult orElse(),
   }) {
-    if (createEvent != null) {
-      return createEvent(name, event);
+    if (createParticipant != null) {
+      return createParticipant(participant, event);
     }
     return orElse();
   }
@@ -279,53 +341,223 @@ class _$CreateEventImpl implements _CreateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_CreateEvent value) createEvent,
+    required TResult Function(_GetParticipants value) getParticipants,
+    required TResult Function(_CreateParticipant value) createParticipant,
+    required TResult Function(_DeteleParticipantPressed value)
+        deleteParticipantPressed,
   }) {
-    return createEvent(this);
+    return createParticipant(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_CreateEvent value)? createEvent,
+    TResult? Function(_GetParticipants value)? getParticipants,
+    TResult? Function(_CreateParticipant value)? createParticipant,
+    TResult? Function(_DeteleParticipantPressed value)?
+        deleteParticipantPressed,
   }) {
-    return createEvent?.call(this);
+    return createParticipant?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_CreateEvent value)? createEvent,
+    TResult Function(_GetParticipants value)? getParticipants,
+    TResult Function(_CreateParticipant value)? createParticipant,
+    TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
     required TResult orElse(),
   }) {
-    if (createEvent != null) {
-      return createEvent(this);
+    if (createParticipant != null) {
+      return createParticipant(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateEvent implements ParticipantEvent {
-  const factory _CreateEvent(
-      {required final String name,
-      required final String event}) = _$CreateEventImpl;
+abstract class _CreateParticipant implements ParticipantEvent {
+  const factory _CreateParticipant(
+      {required final ParticipantEntity participant,
+      final Map<String, Object?>? event}) = _$CreateParticipantImpl;
 
-  String get name;
-  String get event;
+  ParticipantEntity get participant;
+  Map<String, Object?>? get event;
   @JsonKey(ignore: true)
-  _$$CreateEventImplCopyWith<_$CreateEventImpl> get copyWith =>
+  _$$CreateParticipantImplCopyWith<_$CreateParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeteleParticipantPressedImplCopyWith<$Res> {
+  factory _$$DeteleParticipantPressedImplCopyWith(
+          _$DeteleParticipantPressedImpl value,
+          $Res Function(_$DeteleParticipantPressedImpl) then) =
+      __$$DeteleParticipantPressedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ParticipantEntity participant});
+
+  $ParticipantEntityCopyWith<$Res> get participant;
+}
+
+/// @nodoc
+class __$$DeteleParticipantPressedImplCopyWithImpl<$Res>
+    extends _$ParticipantEventCopyWithImpl<$Res, _$DeteleParticipantPressedImpl>
+    implements _$$DeteleParticipantPressedImplCopyWith<$Res> {
+  __$$DeteleParticipantPressedImplCopyWithImpl(
+      _$DeteleParticipantPressedImpl _value,
+      $Res Function(_$DeteleParticipantPressedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? participant = null,
+  }) {
+    return _then(_$DeteleParticipantPressedImpl(
+      participant: null == participant
+          ? _value.participant
+          : participant // ignore: cast_nullable_to_non_nullable
+              as ParticipantEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ParticipantEntityCopyWith<$Res> get participant {
+    return $ParticipantEntityCopyWith<$Res>(_value.participant, (value) {
+      return _then(_value.copyWith(participant: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
+  const _$DeteleParticipantPressedImpl({required this.participant});
+
+  @override
+  final ParticipantEntity participant;
+
+  @override
+  String toString() {
+    return 'ParticipantEvent.deleteParticipantPressed(participant: $participant)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeteleParticipantPressedImpl &&
+            (identical(other.participant, participant) ||
+                other.participant == participant));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, participant);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeteleParticipantPressedImplCopyWith<_$DeteleParticipantPressedImpl>
+      get copyWith => __$$DeteleParticipantPressedImplCopyWithImpl<
+          _$DeteleParticipantPressedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getParticipants,
+    required TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)
+        createParticipant,
+    required TResult Function(ParticipantEntity participant)
+        deleteParticipantPressed,
+  }) {
+    return deleteParticipantPressed(participant);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getParticipants,
+    TResult? Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
+  }) {
+    return deleteParticipantPressed?.call(participant);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getParticipants,
+    TResult Function(
+            ParticipantEntity participant, Map<String, Object?>? event)?
+        createParticipant,
+    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
+    required TResult orElse(),
+  }) {
+    if (deleteParticipantPressed != null) {
+      return deleteParticipantPressed(participant);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetParticipants value) getParticipants,
+    required TResult Function(_CreateParticipant value) createParticipant,
+    required TResult Function(_DeteleParticipantPressed value)
+        deleteParticipantPressed,
+  }) {
+    return deleteParticipantPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetParticipants value)? getParticipants,
+    TResult? Function(_CreateParticipant value)? createParticipant,
+    TResult? Function(_DeteleParticipantPressed value)?
+        deleteParticipantPressed,
+  }) {
+    return deleteParticipantPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetParticipants value)? getParticipants,
+    TResult Function(_CreateParticipant value)? createParticipant,
+    TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    required TResult orElse(),
+  }) {
+    if (deleteParticipantPressed != null) {
+      return deleteParticipantPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeteleParticipantPressed implements ParticipantEvent {
+  const factory _DeteleParticipantPressed(
+          {required final ParticipantEntity participant}) =
+      _$DeteleParticipantPressedImpl;
+
+  ParticipantEntity get participant;
+  @JsonKey(ignore: true)
+  _$$DeteleParticipantPressedImplCopyWith<_$DeteleParticipantPressedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ParticipantState {
   bool get isLoading => throw _privateConstructorUsedError;
-  Option<Either<ValueFailure<String>, ParticipantEntity>>
-      get failureOrSuccess => throw _privateConstructorUsedError;
-  bool get isLoaded => throw _privateConstructorUsedError;
+  Option<Either<ValueFailure<String>, dynamic>> get failureOrSuccess =>
+      throw _privateConstructorUsedError;
+  Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+      get participantList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ParticipantStateCopyWith<ParticipantState> get copyWith =>
@@ -340,8 +572,9 @@ abstract class $ParticipantStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<ValueFailure<String>, ParticipantEntity>> failureOrSuccess,
-      bool isLoaded});
+      Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess,
+      Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+          participantList});
 }
 
 /// @nodoc
@@ -359,7 +592,7 @@ class _$ParticipantStateCopyWithImpl<$Res, $Val extends ParticipantState>
   $Res call({
     Object? isLoading = null,
     Object? failureOrSuccess = null,
-    Object? isLoaded = null,
+    Object? participantList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -369,11 +602,11 @@ class _$ParticipantStateCopyWithImpl<$Res, $Val extends ParticipantState>
       failureOrSuccess: null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure<String>, ParticipantEntity>>,
-      isLoaded: null == isLoaded
-          ? _value.isLoaded
-          : isLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as Option<Either<ValueFailure<String>, dynamic>>,
+      participantList: null == participantList
+          ? _value.participantList
+          : participantList // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, List<ParticipantEntity>>>,
     ) as $Val);
   }
 }
@@ -388,8 +621,9 @@ abstract class _$$ParticipantStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      Option<Either<ValueFailure<String>, ParticipantEntity>> failureOrSuccess,
-      bool isLoaded});
+      Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess,
+      Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+          participantList});
 }
 
 /// @nodoc
@@ -405,7 +639,7 @@ class __$$ParticipantStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? failureOrSuccess = null,
-    Object? isLoaded = null,
+    Object? participantList = null,
   }) {
     return _then(_$ParticipantStateImpl(
       isLoading: null == isLoading
@@ -415,11 +649,11 @@ class __$$ParticipantStateImplCopyWithImpl<$Res>
       failureOrSuccess: null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ValueFailure<String>, ParticipantEntity>>,
-      isLoaded: null == isLoaded
-          ? _value.isLoaded
-          : isLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as Option<Either<ValueFailure<String>, dynamic>>,
+      participantList: null == participantList
+          ? _value.participantList
+          : participantList // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, List<ParticipantEntity>>>,
     ));
   }
 }
@@ -430,20 +664,20 @@ class _$ParticipantStateImpl extends _ParticipantState {
   const _$ParticipantStateImpl(
       {required this.isLoading,
       required this.failureOrSuccess,
-      required this.isLoaded})
+      required this.participantList})
       : super._();
 
   @override
   final bool isLoading;
   @override
-  final Option<Either<ValueFailure<String>, ParticipantEntity>>
-      failureOrSuccess;
+  final Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess;
   @override
-  final bool isLoaded;
+  final Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+      participantList;
 
   @override
   String toString() {
-    return 'ParticipantState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, isLoaded: $isLoaded)';
+    return 'ParticipantState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, participantList: $participantList)';
   }
 
   @override
@@ -455,13 +689,13 @@ class _$ParticipantStateImpl extends _ParticipantState {
                 other.isLoading == isLoading) &&
             (identical(other.failureOrSuccess, failureOrSuccess) ||
                 other.failureOrSuccess == failureOrSuccess) &&
-            (identical(other.isLoaded, isLoaded) ||
-                other.isLoaded == isLoaded));
+            (identical(other.participantList, participantList) ||
+                other.participantList == participantList));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, isLoading, failureOrSuccess, isLoaded);
+      Object.hash(runtimeType, isLoading, failureOrSuccess, participantList);
 
   @JsonKey(ignore: true)
   @override
@@ -474,17 +708,20 @@ class _$ParticipantStateImpl extends _ParticipantState {
 abstract class _ParticipantState extends ParticipantState {
   const factory _ParticipantState(
       {required final bool isLoading,
-      required final Option<Either<ValueFailure<String>, ParticipantEntity>>
+      required final Option<Either<ValueFailure<String>, dynamic>>
           failureOrSuccess,
-      required final bool isLoaded}) = _$ParticipantStateImpl;
+      required final Option<
+              Either<ValueFailure<String>, List<ParticipantEntity>>>
+          participantList}) = _$ParticipantStateImpl;
   const _ParticipantState._() : super._();
 
   @override
   bool get isLoading;
   @override
-  Option<Either<ValueFailure<String>, ParticipantEntity>> get failureOrSuccess;
+  Option<Either<ValueFailure<String>, dynamic>> get failureOrSuccess;
   @override
-  bool get isLoaded;
+  Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+      get participantList;
   @override
   @JsonKey(ignore: true)
   _$$ParticipantStateImplCopyWith<_$ParticipantStateImpl> get copyWith =>

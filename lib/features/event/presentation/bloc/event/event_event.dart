@@ -9,4 +9,6 @@ class EventEvent with _$EventEvent {
       _EditEventPressed;
   const factory EventEvent.deleteEventPressed({required EventEntity event}) =
       _DeteleEventPressed;
+  const factory EventEvent.selectedEventPressed({required EventEntity event}) =
+      _SelectedEventPressed;
 }

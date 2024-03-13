@@ -7,7 +7,8 @@ import 'participant_remote_data_source.dart';
 class ParticipantRemoteDataSourceImpl extends ParticipantRemoteDataSource {
   @override
   Future<void> createParticipant(
-      {required ParticipantEntity participant}) async {
+      {required ParticipantEntity participant,
+      Map<String, Object?>? event}) async {
     final existingParticipant = await FirebaseFirestore.instance
         .collection('participants')
         .where('name', isEqualTo: participant.name)
@@ -15,15 +16,24 @@ class ParticipantRemoteDataSourceImpl extends ParticipantRemoteDataSource {
         .get();
 
     if (existingParticipant.docs.isNotEmpty) {
-      throw Exception();
-    }
+      final participantRef = existingParticipant.docs.first.reference;
+      final List<dynamic> existingEvents =
+          existingParticipant.docs.first['events'];
+      if (existingEvents
+          .any((existingEvent) => existingEvent["name"] == event!["name"])) {
+        throw Exception();
+      }
+      final List<dynamic> updatedEvents = List.from(existingEvents)..add(event);
 
-    final result = await FirebaseFirestore.instance
-        .collection('participants')
-        .add(participant.toFirestore())
-        .then((DocumentReference doc) =>
-            debugPrint('DocumentSnapshot added with ID: ${doc.id}'));
-    return result;
+      return await participantRef.update({'events': updatedEvents}).then(
+          (value) => debugPrint('Events added to existing participant'));
+    } else {
+      return await FirebaseFirestore.instance
+          .collection('participants')
+          .add(participant.toFirestore())
+          .then((DocumentReference doc) =>
+              debugPrint('DocumentSnapshot added with ID: ${doc.id}'));
+    }
   }
 
   @override

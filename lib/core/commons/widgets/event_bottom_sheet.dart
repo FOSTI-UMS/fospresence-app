@@ -19,7 +19,6 @@ class EventBottomSheet {
   EventBottomSheet._();
   static showSheet(
       {required BuildContext context,
-      required EventEntity selectedEvent,
       required GlobalKey<FormState> formKey,
       required TextEditingController edtPass,
       required FocusNode focusNode}) {
@@ -68,11 +67,7 @@ class EventBottomSheet {
                   actions: [
                     GestureDetector(
                       onTap: () => Navigator.of(context)
-                          .pushNamed(
-                            RouteName.editEventScreen,
-                            arguments: {"selected_event": selectedEvent}
-                                as Map<String, dynamic>,
-                          )
+                          .pushNamed(RouteName.editEventScreen)
                           .then((_) => Navigator.of(context).pop()),
                       child: Container(
                         decoration: BoxDecoration(
@@ -92,7 +87,7 @@ class EventBottomSheet {
                     ),
                     GestureDetector(
                       onTap: () => _showConfirmDialog(
-                          context, selectedEvent, formKey, edtPass, focusNode),
+                          context, formKey, edtPass, focusNode),
                       child: Container(
                         decoration: BoxDecoration(
                           border: globalWhiteBorder,
@@ -125,12 +120,8 @@ class EventBottomSheet {
     );
   }
 
-  static _showConfirmDialog(
-      BuildContext context,
-      EventEntity selectedEvent,
-      GlobalKey<FormState> formKey,
-      TextEditingController edtPass,
-      FocusNode focusNode) {
+  static _showConfirmDialog(BuildContext context, GlobalKey<FormState> formKey,
+      TextEditingController edtPass, FocusNode focusNode) {
     return showDialog(
       context: context,
       builder: (context) => Theme(
@@ -138,26 +129,21 @@ class EventBottomSheet {
         child: AlertDialog(
           elevation: 0,
           backgroundColor: appDarkBgColor,
-          content:
-              _buildForm(formKey, selectedEvent, focusNode, edtPass, context),
+          content: _buildForm(formKey, focusNode, edtPass, context),
         ),
       ),
     );
   }
 
-  static Form _buildForm(
-      GlobalKey<FormState> formKey,
-      EventEntity selectedEvent,
-      FocusNode focusNode,
-      TextEditingController edtPass,
-      BuildContext context) {
+  static Form _buildForm(GlobalKey<FormState> formKey, FocusNode focusNode,
+      TextEditingController edtPass, BuildContext context) {
     void back() {
       Navigator.pop(context);
       focusNode.unfocus();
       edtPass.clear();
     }
 
-    Future<void> deleteEventPressed() async {
+    Future<void> deleteEventPressed(EventEntity selectedEvent) async {
       if (formKey.currentState!.validate()) {
         if (edtPass.text.toLowerCase() == pass) {
           back();
@@ -183,96 +169,98 @@ class EventBottomSheet {
       key: formKey,
       child: SizedBox(
         height: 205,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 10),
-            Text.rich(
-              textAlign: TextAlign.center,
-              style: textWhite16,
-              TextSpan(
-                children: [
-                  const TextSpan(text: "Apakah Anda yakin untuk menghapus "),
+        child: BlocBuilder<EventBloc, EventState>(
+          bloc: BlocProvider.of<EventBloc>(context),
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 10),
+                Text.rich(
+                  textAlign: TextAlign.center,
+                  style: textWhite16,
                   TextSpan(
-                    text: selectedEvent.name,
-                    style: textWhite14.copyWith(
-                        fontWeight: FontWeight.bold, color: Colors.blue),
-                  ),
-                  const TextSpan(text: " ?"),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: TextFormField(
-                focusNode: focusNode,
-                controller: edtPass,
-                style: textWhite14,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Wajib diisi";
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.black,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  hintText: "Ketikkan password...",
-                  errorStyle: textDark9.copyWith(color: Colors.redAccent),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide:
-                        const BorderSide(width: 0.8, color: Colors.redAccent),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide:
-                        const BorderSide(width: 0.8, color: Colors.redAccent),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 0.2, color: lightGrey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide:
-                        const BorderSide(width: 0.8, color: Colors.white),
+                    children: [
+                      const TextSpan(
+                          text: "Apakah Anda yakin untuk menghapus "),
+                      TextSpan(
+                        text: state.selectedEvent!.name,
+                        style: textWhite14.copyWith(
+                            fontWeight: FontWeight.bold, color: Colors.blue),
+                      ),
+                      const TextSpan(text: " ?"),
+                    ],
                   ),
                 ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: 200,
-              height: 50,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: CupertinoDialogAction(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text("Batal",
-                          style: textWhite14.copyWith(color: Colors.blue)),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: TextFormField(
+                    focusNode: focusNode,
+                    controller: edtPass,
+                    style: textWhite14,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Wajib diisi";
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.black,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
+                      hintText: "Ketikkan password...",
+                      errorStyle: textDark9.copyWith(color: Colors.redAccent),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                            width: 0.8, color: Colors.redAccent),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                            width: 0.8, color: Colors.redAccent),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(width: 0.2, color: lightGrey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide:
+                            const BorderSide(width: 0.8, color: Colors.white),
+                      ),
                     ),
                   ),
-                  Expanded(
-                    child: BlocBuilder<EventBloc, EventState>(
-                      bloc: BlocProvider.of<EventBloc>(context),
-                      builder: (context, state) {
-                        return CupertinoDialogAction(
-                          onPressed: () async => await deleteEventPressed(),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CupertinoDialogAction(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text("Batal",
+                              style: textWhite14.copyWith(color: Colors.blue)),
+                        ),
+                      ),
+                      Expanded(
+                        child: CupertinoDialogAction(
+                          onPressed: () async =>
+                              await deleteEventPressed(state.selectedEvent!),
                           child: Text("Hapus",
                               style: textWhite14.copyWith(
                                   color: Colors.redAccent)),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )
-          ],
+                )
+              ],
+            );
+          },
         ),
       ),
     );

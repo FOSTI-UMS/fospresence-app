@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:fospresence/core/errors/failure.dart';
 import 'package:fospresence/features/event/data/data_resources/remote/event_remote_data_source.dart';
 import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
@@ -17,11 +18,13 @@ class EventRepositoryImpl extends EventRespository {
       return Right(result);
     } catch (e) {
       if (e is Exception) {
+        debugPrint("ERROR: $e");
         return const Left(
           ValueFailure.eventAlreadyExists(
               errorMessage: "Nama proker sudah terdaftar"),
         );
       } else {
+        debugPrint("ERROR: $e");
         return const Left(
           ValueFailure.firebaseError(errorMessage: "Gagal menambahkan proker"),
         );
@@ -36,6 +39,7 @@ class EventRepositoryImpl extends EventRespository {
       final result = await eventRemoteDataSource.deleteEvent(event: event);
       return Right(result);
     } catch (e) {
+      debugPrint("ERROR: $e");
       return const Left(
         ValueFailure.firebaseError(errorMessage: "Gagal menghapus proker"),
       );
@@ -50,6 +54,7 @@ class EventRepositoryImpl extends EventRespository {
       final result = await eventRemoteDataSource.editEvent(event: event);
       return Right(result);
     } catch (e) {
+      debugPrint("ERROR: $e");
       return const Left(
         ValueFailure.firebaseError(errorMessage: "Gagal memperbarui proker"),
       );
@@ -62,6 +67,7 @@ class EventRepositoryImpl extends EventRespository {
       final result = await eventRemoteDataSource.getEvents();
       return Right(result);
     } catch (e) {
+      debugPrint("ERROR: $e");
       return const Left(
         ValueFailure.firebaseError(errorMessage: "Koneksi buruk"),
       );
