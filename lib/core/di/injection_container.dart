@@ -12,6 +12,7 @@ import 'package:fospresence/features/participant/presentation/bloc/participant/p
 import 'package:get_it/get_it.dart';
 
 import '../../features/event/data/data_resources/remote/event_remote_data_source.dart';
+import '../../features/participant/domain/usecases/add_participant_to_event_use_case.dart';
 import '../../features/participant/data/data_resources/remote/participant_remote_data_source.dart';
 import '../../features/participant/data/data_resources/remote/participant_remote_data_source_impl.dart';
 import '../../features/participant/data/repositories/participant_repository_impl.dart';
@@ -35,6 +36,7 @@ Future<void> init() async {
       editEventUseCase: sl(),
       deleteEventUseCase: sl()));
   sl.registerFactory<ParticipantBloc>(() => ParticipantBloc(
+      addParticipantToEventUseCase: sl(),
       createParticipantUseCase: sl(),
       getParticipantsUseCase: sl(),
       deleteParticipantUseCase: sl()));
@@ -65,4 +67,6 @@ Future<void> init() async {
       CreateParticipantUseCase(participantRespository: sl()));
   sl.registerSingleton<DeleteParticipantUseCase>(
       DeleteParticipantUseCase(participantRespository: sl()));
+  sl.registerSingleton<AddParticipantToEventUseCase>(
+      AddParticipantToEventUseCase(participantRespository: sl()));
 }

@@ -2,10 +2,15 @@ part of 'participant_bloc.dart';
 
 @freezed
 class ParticipantEvent with _$ParticipantEvent {
-  const factory ParticipantEvent.getParticipants() = _GetParticipants;
+  const factory ParticipantEvent.getParticipants({required EventEntity event}) =
+      _GetParticipants;
   const factory ParticipantEvent.createParticipant(
       {required ParticipantEntity participant,
-      Map<String, Object?>? event}) = _CreateParticipant;
+      required EventEntity event}) = _CreateParticipant;
   const factory ParticipantEvent.deleteParticipantPressed(
-      {required ParticipantEntity participant}) = _DeteleParticipantPressed;
+      {required ParticipantEntity participant,
+      required EventEntity event}) = _DeteleParticipantPressed;
+  const factory ParticipantEvent.addParticipantToEvent(
+      {required EventEntity event,
+      required ParticipantEntity participant}) = _AddParticipantToEventEvent;
 }

@@ -10,6 +10,7 @@ import 'package:fospresence/features/event/domain/usecases/create_event_use_case
 import 'package:fospresence/features/event/domain/usecases/delete_event_use_case.dart';
 import 'package:fospresence/features/event/domain/usecases/edit_event_use_case.dart';
 import 'package:fospresence/features/event/domain/usecases/get_events_use_case.dart';
+import 'package:fospresence/features/participant/domain/entities/participant/participant_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../my_app.dart';
@@ -24,12 +25,13 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   final CreateEventUseCase createEventUseCase;
   final EditEventUseCase editEventUseCase;
   final DeleteEventUseCase deleteEventUseCase;
-  EventBloc(
-      {required this.createEventUseCase,
-      required this.getEventsUseCase,
-      required this.editEventUseCase,
-      required this.deleteEventUseCase})
-      : super(EventState.started()) {
+  EventBloc({
+    required this.createEventUseCase,
+    required this.getEventsUseCase,
+    required this.editEventUseCase,
+    required this.deleteEventUseCase,
+   
+  }) : super(EventState.started()) {
     on<EventEvent>(
       (event, emit) async {
         event.map(
@@ -37,6 +39,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
           createEventPressed: (value) async => await _createEvent(value.event),
           editEventPressed: (value) async => await _editEvent(value.event),
           deleteEventPressed: (value) async => await _deleteEvent(value.event),
+          
           selectedEventPressed: (value) =>
               emit(state.copyWith(selectedEvent: value.event)),
         );
@@ -44,11 +47,13 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     );
   }
 
+
+
   Future<void> _editEvent(EventEntity event) async {
     emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
 
     final result = await editEventUseCase(params: event);
-    final eventList = await getEventsUseCase(params: null);
+    final eventList = await getEventsUseCase();
 
     emit(
       state.copyWith(
@@ -66,7 +71,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     emit(state.copyWith(failureOrSuccess: none()));
 
     final result = await deleteEventUseCase(params: event);
-    final eventList = await getEventsUseCase(params: null);
+    final eventList = await getEventsUseCase();
 
     emit(
       state.copyWith(
@@ -83,7 +88,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     emit(state.copyWith(isLoading: true));
 
     await Future.delayed(const Duration(seconds: 3));
-    final eventList = await getEventsUseCase(params: null);
+    final eventList = await getEventsUseCase();
 
     emit(
       state.copyWith(
@@ -97,7 +102,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
 
     final result = await createEventUseCase(params: event);
-    final eventList = await getEventsUseCase(params: null);
+    final eventList = await getEventsUseCase();
 
     emit(
       state.copyWith(
@@ -110,10 +115,6 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     _showToast(
         result: result, successMessage: "Berhasil menambahkan ${event.name}");
   }
-
-  // void _selectEvent(){
-
-  // }
 
   void _showToast(
       {required Either<ValueFailure<String>, void> result,

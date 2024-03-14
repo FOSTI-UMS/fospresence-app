@@ -143,20 +143,17 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
         BlocProvider.of<EventBloc>(context).state.selectedEvent;
     if (qrCodeConvertResult.length == 3) {
       String name = qrCodeConvertResult[0];
-      String nim = qrCodeConvertResult[1];
+      String email = qrCodeConvertResult[1];
       String event = qrCodeConvertResult[2];
       if (event == selectedEvent!.name.toLowerCase()) {
         ParticipantEntity participantData = ParticipantEntity(
-          ref: FirebaseFirestore.instance.collection("events").doc(),
-          name: name,
-          nim: nim,
-          events: [selectedEvent.toFirestore()],
-        );
+            ref: FirebaseFirestore.instance.collection("events").doc(),
+            name: name,
+            email: email,
+            eventRaw: selectedEvent.ref.id);
         context.read<ParticipantBloc>().add(
-              ParticipantEvent.createParticipant(
-                participant: participantData,
-                event: selectedEvent.toFirestore(),
-              ),
+              ParticipantEvent.addParticipantToEvent(
+                  event: selectedEvent, participant: participantData),
             );
       } else {
         fToast.showToast(
@@ -181,7 +178,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
       });
 
       List<String> qrCodeConvertResult =
-          _result!.code!.toLowerCase().split("-");
+          _result!.code!.toLowerCase().split(",");
 
       await _createParticipant(qrCodeConvertResult);
 

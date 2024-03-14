@@ -13,4 +13,5 @@ abstract class EventRespository {
   Future<Either<ValueFailure<String>, void>> deleteEvent({
     required EventEntity event,
   });
+
 }

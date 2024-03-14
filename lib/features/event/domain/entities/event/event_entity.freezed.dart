@@ -19,7 +19,7 @@ mixin _$EventEntity {
   DocumentReference<Object?> get ref => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get datetime => throw _privateConstructorUsedError;
-  List<Map<String, Object?>>? get participants =>
+  List<ParticipantEntity>? get participants =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $EventEntityCopyWith<$Res> {
       {DocumentReference<Object?> ref,
       String name,
       DateTime datetime,
-      List<Map<String, Object?>>? participants});
+      List<ParticipantEntity>? participants});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$EventEntityCopyWithImpl<$Res, $Val extends EventEntity>
       participants: freezed == participants
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, Object?>>?,
+              as List<ParticipantEntity>?,
     ) as $Val);
   }
 }
@@ -91,7 +91,7 @@ abstract class _$$EventEntityImplCopyWith<$Res>
       {DocumentReference<Object?> ref,
       String name,
       DateTime datetime,
-      List<Map<String, Object?>>? participants});
+      List<ParticipantEntity>? participants});
 }
 
 /// @nodoc
@@ -126,7 +126,7 @@ class __$$EventEntityImplCopyWithImpl<$Res>
       participants: freezed == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, Object?>>?,
+              as List<ParticipantEntity>?,
     ));
   }
 }
@@ -138,7 +138,7 @@ class _$EventEntityImpl implements _EventEntity {
       {required this.ref,
       required this.name,
       required this.datetime,
-      final List<Map<String, Object?>>? participants})
+      final List<ParticipantEntity>? participants})
       : _participants = participants;
 
   @override
@@ -147,9 +147,9 @@ class _$EventEntityImpl implements _EventEntity {
   final String name;
   @override
   final DateTime datetime;
-  final List<Map<String, Object?>>? _participants;
+  final List<ParticipantEntity>? _participants;
   @override
-  List<Map<String, Object?>>? get participants {
+  List<ParticipantEntity>? get participants {
     final value = _participants;
     if (value == null) return null;
     if (_participants is EqualUnmodifiableListView) return _participants;
@@ -190,7 +190,6 @@ class _$EventEntityImpl implements _EventEntity {
     return {
       "name": name,
       "datetime": datetime,
-      "participants": participants,
     };
   }
 }
@@ -200,7 +199,7 @@ abstract class _EventEntity implements EventEntity {
       {required final DocumentReference<Object?> ref,
       required final String name,
       required final DateTime datetime,
-      final List<Map<String, Object?>>? participants}) = _$EventEntityImpl;
+      final List<ParticipantEntity>? participants}) = _$EventEntityImpl;
 
   @override
   DocumentReference<Object?> get ref;
@@ -209,7 +208,7 @@ abstract class _EventEntity implements EventEntity {
   @override
   DateTime get datetime;
   @override
-  List<Map<String, Object?>>? get participants;
+  List<ParticipantEntity>? get participants;
   @override
   @JsonKey(ignore: true)
   _$$EventEntityImplCopyWith<_$EventEntityImpl> get copyWith =>

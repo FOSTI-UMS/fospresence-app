@@ -11,4 +11,5 @@ class EventEvent with _$EventEvent {
       _DeteleEventPressed;
   const factory EventEvent.selectedEventPressed({required EventEntity event}) =
       _SelectedEventPressed;
+
 }

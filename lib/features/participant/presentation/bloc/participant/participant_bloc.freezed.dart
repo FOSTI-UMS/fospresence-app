@@ -16,32 +16,38 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ParticipantEvent {
+  EventEntity get event => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getParticipants,
-    required TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)
+    required TResult Function(EventEntity event) getParticipants,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         createParticipant,
-    required TResult Function(ParticipantEntity participant)
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         deleteParticipantPressed,
+    required TResult Function(EventEntity event, ParticipantEntity participant)
+        addParticipantToEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getParticipants,
-    TResult? Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult? Function(EventEntity event)? getParticipants,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult? Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getParticipants,
-    TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult Function(EventEntity event)? getParticipants,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +57,8 @@ mixin _$ParticipantEvent {
     required TResult Function(_CreateParticipant value) createParticipant,
     required TResult Function(_DeteleParticipantPressed value)
         deleteParticipantPressed,
+    required TResult Function(_AddParticipantToEventEvent value)
+        addParticipantToEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +67,7 @@ mixin _$ParticipantEvent {
     TResult? Function(_CreateParticipant value)? createParticipant,
     TResult? Function(_DeteleParticipantPressed value)?
         deleteParticipantPressed,
+    TResult? Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,8 +75,13 @@ mixin _$ParticipantEvent {
     TResult Function(_GetParticipants value)? getParticipants,
     TResult Function(_CreateParticipant value)? createParticipant,
     TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    TResult Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ParticipantEventCopyWith<ParticipantEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -76,6 +90,10 @@ abstract class $ParticipantEventCopyWith<$Res> {
   factory $ParticipantEventCopyWith(
           ParticipantEvent value, $Res Function(ParticipantEvent) then) =
       _$ParticipantEventCopyWithImpl<$Res, ParticipantEvent>;
+  @useResult
+  $Res call({EventEntity event});
+
+  $EventEntityCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -87,13 +105,41 @@ class _$ParticipantEventCopyWithImpl<$Res, $Val extends ParticipantEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_value.copyWith(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res> get event {
+    return $EventEntityCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$GetParticipantsImplCopyWith<$Res> {
+abstract class _$$GetParticipantsImplCopyWith<$Res>
+    implements $ParticipantEventCopyWith<$Res> {
   factory _$$GetParticipantsImplCopyWith(_$GetParticipantsImpl value,
           $Res Function(_$GetParticipantsImpl) then) =
       __$$GetParticipantsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({EventEntity event});
+
+  @override
+  $EventEntityCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -103,64 +149,94 @@ class __$$GetParticipantsImplCopyWithImpl<$Res>
   __$$GetParticipantsImplCopyWithImpl(
       _$GetParticipantsImpl _value, $Res Function(_$GetParticipantsImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_$GetParticipantsImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetParticipantsImpl implements _GetParticipants {
-  const _$GetParticipantsImpl();
+  const _$GetParticipantsImpl({required this.event});
+
+  @override
+  final EventEntity event;
 
   @override
   String toString() {
-    return 'ParticipantEvent.getParticipants()';
+    return 'ParticipantEvent.getParticipants(event: $event)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetParticipantsImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetParticipantsImpl &&
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetParticipantsImplCopyWith<_$GetParticipantsImpl> get copyWith =>
+      __$$GetParticipantsImplCopyWithImpl<_$GetParticipantsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getParticipants,
-    required TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)
+    required TResult Function(EventEntity event) getParticipants,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         createParticipant,
-    required TResult Function(ParticipantEntity participant)
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         deleteParticipantPressed,
+    required TResult Function(EventEntity event, ParticipantEntity participant)
+        addParticipantToEvent,
   }) {
-    return getParticipants();
+    return getParticipants(event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getParticipants,
-    TResult? Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult? Function(EventEntity event)? getParticipants,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult? Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
   }) {
-    return getParticipants?.call();
+    return getParticipants?.call(event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getParticipants,
-    TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult Function(EventEntity event)? getParticipants,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
     required TResult orElse(),
   }) {
     if (getParticipants != null) {
-      return getParticipants();
+      return getParticipants(event);
     }
     return orElse();
   }
@@ -172,6 +248,8 @@ class _$GetParticipantsImpl implements _GetParticipants {
     required TResult Function(_CreateParticipant value) createParticipant,
     required TResult Function(_DeteleParticipantPressed value)
         deleteParticipantPressed,
+    required TResult Function(_AddParticipantToEventEvent value)
+        addParticipantToEvent,
   }) {
     return getParticipants(this);
   }
@@ -183,6 +261,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
     TResult? Function(_CreateParticipant value)? createParticipant,
     TResult? Function(_DeteleParticipantPressed value)?
         deleteParticipantPressed,
+    TResult? Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
   }) {
     return getParticipants?.call(this);
   }
@@ -193,6 +272,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
     TResult Function(_GetParticipants value)? getParticipants,
     TResult Function(_CreateParticipant value)? createParticipant,
     TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    TResult Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
     required TResult orElse(),
   }) {
     if (getParticipants != null) {
@@ -203,18 +283,30 @@ class _$GetParticipantsImpl implements _GetParticipants {
 }
 
 abstract class _GetParticipants implements ParticipantEvent {
-  const factory _GetParticipants() = _$GetParticipantsImpl;
+  const factory _GetParticipants({required final EventEntity event}) =
+      _$GetParticipantsImpl;
+
+  @override
+  EventEntity get event;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetParticipantsImplCopyWith<_$GetParticipantsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CreateParticipantImplCopyWith<$Res> {
+abstract class _$$CreateParticipantImplCopyWith<$Res>
+    implements $ParticipantEventCopyWith<$Res> {
   factory _$$CreateParticipantImplCopyWith(_$CreateParticipantImpl value,
           $Res Function(_$CreateParticipantImpl) then) =
       __$$CreateParticipantImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({ParticipantEntity participant, Map<String, Object?>? event});
+  $Res call({ParticipantEntity participant, EventEntity event});
 
   $ParticipantEntityCopyWith<$Res> get participant;
+  @override
+  $EventEntityCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -229,17 +321,17 @@ class __$$CreateParticipantImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? participant = null,
-    Object? event = freezed,
+    Object? event = null,
   }) {
     return _then(_$CreateParticipantImpl(
       participant: null == participant
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
               as ParticipantEntity,
-      event: freezed == event
-          ? _value._event
+      event: null == event
+          ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as Map<String, Object?>?,
+              as EventEntity,
     ));
   }
 
@@ -256,20 +348,12 @@ class __$$CreateParticipantImplCopyWithImpl<$Res>
 
 class _$CreateParticipantImpl implements _CreateParticipant {
   const _$CreateParticipantImpl(
-      {required this.participant, final Map<String, Object?>? event})
-      : _event = event;
+      {required this.participant, required this.event});
 
   @override
   final ParticipantEntity participant;
-  final Map<String, Object?>? _event;
   @override
-  Map<String, Object?>? get event {
-    final value = _event;
-    if (value == null) return null;
-    if (_event is EqualUnmodifiableMapView) return _event;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
+  final EventEntity event;
 
   @override
   String toString() {
@@ -283,12 +367,11 @@ class _$CreateParticipantImpl implements _CreateParticipant {
             other is _$CreateParticipantImpl &&
             (identical(other.participant, participant) ||
                 other.participant == participant) &&
-            const DeepCollectionEquality().equals(other._event, _event));
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, participant, const DeepCollectionEquality().hash(_event));
+  int get hashCode => Object.hash(runtimeType, participant, event);
 
   @JsonKey(ignore: true)
   @override
@@ -300,12 +383,13 @@ class _$CreateParticipantImpl implements _CreateParticipant {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getParticipants,
-    required TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)
+    required TResult Function(EventEntity event) getParticipants,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         createParticipant,
-    required TResult Function(ParticipantEntity participant)
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         deleteParticipantPressed,
+    required TResult Function(EventEntity event, ParticipantEntity participant)
+        addParticipantToEvent,
   }) {
     return createParticipant(participant, event);
   }
@@ -313,11 +397,13 @@ class _$CreateParticipantImpl implements _CreateParticipant {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getParticipants,
-    TResult? Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult? Function(EventEntity event)? getParticipants,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult? Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
   }) {
     return createParticipant?.call(participant, event);
   }
@@ -325,11 +411,13 @@ class _$CreateParticipantImpl implements _CreateParticipant {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getParticipants,
-    TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult Function(EventEntity event)? getParticipants,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
     required TResult orElse(),
   }) {
     if (createParticipant != null) {
@@ -345,6 +433,8 @@ class _$CreateParticipantImpl implements _CreateParticipant {
     required TResult Function(_CreateParticipant value) createParticipant,
     required TResult Function(_DeteleParticipantPressed value)
         deleteParticipantPressed,
+    required TResult Function(_AddParticipantToEventEvent value)
+        addParticipantToEvent,
   }) {
     return createParticipant(this);
   }
@@ -356,6 +446,7 @@ class _$CreateParticipantImpl implements _CreateParticipant {
     TResult? Function(_CreateParticipant value)? createParticipant,
     TResult? Function(_DeteleParticipantPressed value)?
         deleteParticipantPressed,
+    TResult? Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
   }) {
     return createParticipant?.call(this);
   }
@@ -366,6 +457,7 @@ class _$CreateParticipantImpl implements _CreateParticipant {
     TResult Function(_GetParticipants value)? getParticipants,
     TResult Function(_CreateParticipant value)? createParticipant,
     TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    TResult Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
     required TResult orElse(),
   }) {
     if (createParticipant != null) {
@@ -378,25 +470,31 @@ class _$CreateParticipantImpl implements _CreateParticipant {
 abstract class _CreateParticipant implements ParticipantEvent {
   const factory _CreateParticipant(
       {required final ParticipantEntity participant,
-      final Map<String, Object?>? event}) = _$CreateParticipantImpl;
+      required final EventEntity event}) = _$CreateParticipantImpl;
 
   ParticipantEntity get participant;
-  Map<String, Object?>? get event;
+  @override
+  EventEntity get event;
+  @override
   @JsonKey(ignore: true)
   _$$CreateParticipantImplCopyWith<_$CreateParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeteleParticipantPressedImplCopyWith<$Res> {
+abstract class _$$DeteleParticipantPressedImplCopyWith<$Res>
+    implements $ParticipantEventCopyWith<$Res> {
   factory _$$DeteleParticipantPressedImplCopyWith(
           _$DeteleParticipantPressedImpl value,
           $Res Function(_$DeteleParticipantPressedImpl) then) =
       __$$DeteleParticipantPressedImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({ParticipantEntity participant});
+  $Res call({ParticipantEntity participant, EventEntity event});
 
   $ParticipantEntityCopyWith<$Res> get participant;
+  @override
+  $EventEntityCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -412,8 +510,203 @@ class __$$DeteleParticipantPressedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? participant = null,
+    Object? event = null,
   }) {
     return _then(_$DeteleParticipantPressedImpl(
+      participant: null == participant
+          ? _value.participant
+          : participant // ignore: cast_nullable_to_non_nullable
+              as ParticipantEntity,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ParticipantEntityCopyWith<$Res> get participant {
+    return $ParticipantEntityCopyWith<$Res>(_value.participant, (value) {
+      return _then(_value.copyWith(participant: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
+  const _$DeteleParticipantPressedImpl(
+      {required this.participant, required this.event});
+
+  @override
+  final ParticipantEntity participant;
+  @override
+  final EventEntity event;
+
+  @override
+  String toString() {
+    return 'ParticipantEvent.deleteParticipantPressed(participant: $participant, event: $event)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeteleParticipantPressedImpl &&
+            (identical(other.participant, participant) ||
+                other.participant == participant) &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, participant, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeteleParticipantPressedImplCopyWith<_$DeteleParticipantPressedImpl>
+      get copyWith => __$$DeteleParticipantPressedImplCopyWithImpl<
+          _$DeteleParticipantPressedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EventEntity event) getParticipants,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
+        createParticipant,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
+        deleteParticipantPressed,
+    required TResult Function(EventEntity event, ParticipantEntity participant)
+        addParticipantToEvent,
+  }) {
+    return deleteParticipantPressed(participant, event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EventEntity event)? getParticipants,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        createParticipant,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult? Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
+  }) {
+    return deleteParticipantPressed?.call(participant, event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EventEntity event)? getParticipants,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        createParticipant,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteParticipantPressed != null) {
+      return deleteParticipantPressed(participant, event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetParticipants value) getParticipants,
+    required TResult Function(_CreateParticipant value) createParticipant,
+    required TResult Function(_DeteleParticipantPressed value)
+        deleteParticipantPressed,
+    required TResult Function(_AddParticipantToEventEvent value)
+        addParticipantToEvent,
+  }) {
+    return deleteParticipantPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetParticipants value)? getParticipants,
+    TResult? Function(_CreateParticipant value)? createParticipant,
+    TResult? Function(_DeteleParticipantPressed value)?
+        deleteParticipantPressed,
+    TResult? Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
+  }) {
+    return deleteParticipantPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetParticipants value)? getParticipants,
+    TResult Function(_CreateParticipant value)? createParticipant,
+    TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    TResult Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteParticipantPressed != null) {
+      return deleteParticipantPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeteleParticipantPressed implements ParticipantEvent {
+  const factory _DeteleParticipantPressed(
+      {required final ParticipantEntity participant,
+      required final EventEntity event}) = _$DeteleParticipantPressedImpl;
+
+  ParticipantEntity get participant;
+  @override
+  EventEntity get event;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeteleParticipantPressedImplCopyWith<_$DeteleParticipantPressedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddParticipantToEventEventImplCopyWith<$Res>
+    implements $ParticipantEventCopyWith<$Res> {
+  factory _$$AddParticipantToEventEventImplCopyWith(
+          _$AddParticipantToEventEventImpl value,
+          $Res Function(_$AddParticipantToEventEventImpl) then) =
+      __$$AddParticipantToEventEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({EventEntity event, ParticipantEntity participant});
+
+  @override
+  $EventEntityCopyWith<$Res> get event;
+  $ParticipantEntityCopyWith<$Res> get participant;
+}
+
+/// @nodoc
+class __$$AddParticipantToEventEventImplCopyWithImpl<$Res>
+    extends _$ParticipantEventCopyWithImpl<$Res,
+        _$AddParticipantToEventEventImpl>
+    implements _$$AddParticipantToEventEventImplCopyWith<$Res> {
+  __$$AddParticipantToEventEventImplCopyWithImpl(
+      _$AddParticipantToEventEventImpl _value,
+      $Res Function(_$AddParticipantToEventEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+    Object? participant = null,
+  }) {
+    return _then(_$AddParticipantToEventEventImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
       participant: null == participant
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
@@ -432,73 +725,82 @@ class __$$DeteleParticipantPressedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
-  const _$DeteleParticipantPressedImpl({required this.participant});
+class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
+  const _$AddParticipantToEventEventImpl(
+      {required this.event, required this.participant});
 
+  @override
+  final EventEntity event;
   @override
   final ParticipantEntity participant;
 
   @override
   String toString() {
-    return 'ParticipantEvent.deleteParticipantPressed(participant: $participant)';
+    return 'ParticipantEvent.addParticipantToEvent(event: $event, participant: $participant)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeteleParticipantPressedImpl &&
+            other is _$AddParticipantToEventEventImpl &&
+            (identical(other.event, event) || other.event == event) &&
             (identical(other.participant, participant) ||
                 other.participant == participant));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, participant);
+  int get hashCode => Object.hash(runtimeType, event, participant);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeteleParticipantPressedImplCopyWith<_$DeteleParticipantPressedImpl>
-      get copyWith => __$$DeteleParticipantPressedImplCopyWithImpl<
-          _$DeteleParticipantPressedImpl>(this, _$identity);
+  _$$AddParticipantToEventEventImplCopyWith<_$AddParticipantToEventEventImpl>
+      get copyWith => __$$AddParticipantToEventEventImplCopyWithImpl<
+          _$AddParticipantToEventEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getParticipants,
-    required TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)
+    required TResult Function(EventEntity event) getParticipants,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         createParticipant,
-    required TResult Function(ParticipantEntity participant)
+    required TResult Function(ParticipantEntity participant, EventEntity event)
         deleteParticipantPressed,
+    required TResult Function(EventEntity event, ParticipantEntity participant)
+        addParticipantToEvent,
   }) {
-    return deleteParticipantPressed(participant);
+    return addParticipantToEvent(event, participant);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getParticipants,
-    TResult? Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult? Function(EventEntity event)? getParticipants,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult? Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult? Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
   }) {
-    return deleteParticipantPressed?.call(participant);
+    return addParticipantToEvent?.call(event, participant);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getParticipants,
-    TResult Function(
-            ParticipantEntity participant, Map<String, Object?>? event)?
+    TResult Function(EventEntity event)? getParticipants,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
         createParticipant,
-    TResult Function(ParticipantEntity participant)? deleteParticipantPressed,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
     required TResult orElse(),
   }) {
-    if (deleteParticipantPressed != null) {
-      return deleteParticipantPressed(participant);
+    if (addParticipantToEvent != null) {
+      return addParticipantToEvent(event, participant);
     }
     return orElse();
   }
@@ -510,8 +812,10 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     required TResult Function(_CreateParticipant value) createParticipant,
     required TResult Function(_DeteleParticipantPressed value)
         deleteParticipantPressed,
+    required TResult Function(_AddParticipantToEventEvent value)
+        addParticipantToEvent,
   }) {
-    return deleteParticipantPressed(this);
+    return addParticipantToEvent(this);
   }
 
   @override
@@ -521,8 +825,9 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     TResult? Function(_CreateParticipant value)? createParticipant,
     TResult? Function(_DeteleParticipantPressed value)?
         deleteParticipantPressed,
+    TResult? Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
   }) {
-    return deleteParticipantPressed?.call(this);
+    return addParticipantToEvent?.call(this);
   }
 
   @override
@@ -531,23 +836,28 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     TResult Function(_GetParticipants value)? getParticipants,
     TResult Function(_CreateParticipant value)? createParticipant,
     TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    TResult Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
     required TResult orElse(),
   }) {
-    if (deleteParticipantPressed != null) {
-      return deleteParticipantPressed(this);
+    if (addParticipantToEvent != null) {
+      return addParticipantToEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class _DeteleParticipantPressed implements ParticipantEvent {
-  const factory _DeteleParticipantPressed(
-          {required final ParticipantEntity participant}) =
-      _$DeteleParticipantPressedImpl;
+abstract class _AddParticipantToEventEvent implements ParticipantEvent {
+  const factory _AddParticipantToEventEvent(
+          {required final EventEntity event,
+          required final ParticipantEntity participant}) =
+      _$AddParticipantToEventEventImpl;
 
+  @override
+  EventEntity get event;
   ParticipantEntity get participant;
+  @override
   @JsonKey(ignore: true)
-  _$$DeteleParticipantPressedImplCopyWith<_$DeteleParticipantPressedImpl>
+  _$$AddParticipantToEventEventImplCopyWith<_$AddParticipantToEventEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

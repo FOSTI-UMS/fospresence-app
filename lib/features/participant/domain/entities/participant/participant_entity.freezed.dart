@@ -18,8 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ParticipantEntity {
   DocumentReference<Object?> get ref => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get nim => throw _privateConstructorUsedError;
-  List<Map<String, Object?>>? get events => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get eventRaw => throw _privateConstructorUsedError;
+  EventEntity? get event => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ParticipantEntityCopyWith<ParticipantEntity> get copyWith =>
@@ -35,8 +36,11 @@ abstract class $ParticipantEntityCopyWith<$Res> {
   $Res call(
       {DocumentReference<Object?> ref,
       String name,
-      String nim,
-      List<Map<String, Object?>>? events});
+      String email,
+      String eventRaw,
+      EventEntity? event});
+
+  $EventEntityCopyWith<$Res>? get event;
 }
 
 /// @nodoc
@@ -54,8 +58,9 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
   $Res call({
     Object? ref = null,
     Object? name = null,
-    Object? nim = null,
-    Object? events = freezed,
+    Object? email = null,
+    Object? eventRaw = null,
+    Object? event = freezed,
   }) {
     return _then(_value.copyWith(
       ref: null == ref
@@ -66,15 +71,31 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      nim: null == nim
-          ? _value.nim
-          : nim // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      events: freezed == events
-          ? _value.events
-          : events // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, Object?>>?,
+      eventRaw: null == eventRaw
+          ? _value.eventRaw
+          : eventRaw // ignore: cast_nullable_to_non_nullable
+              as String,
+      event: freezed == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res>? get event {
+    if (_value.event == null) {
+      return null;
+    }
+
+    return $EventEntityCopyWith<$Res>(_value.event!, (value) {
+      return _then(_value.copyWith(event: value) as $Val);
+    });
   }
 }
 
@@ -89,8 +110,12 @@ abstract class _$$ParticipantEntityImplCopyWith<$Res>
   $Res call(
       {DocumentReference<Object?> ref,
       String name,
-      String nim,
-      List<Map<String, Object?>>? events});
+      String email,
+      String eventRaw,
+      EventEntity? event});
+
+  @override
+  $EventEntityCopyWith<$Res>? get event;
 }
 
 /// @nodoc
@@ -106,8 +131,9 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? ref = null,
     Object? name = null,
-    Object? nim = null,
-    Object? events = freezed,
+    Object? email = null,
+    Object? eventRaw = null,
+    Object? event = freezed,
   }) {
     return _then(_$ParticipantEntityImpl(
       ref: null == ref
@@ -118,14 +144,18 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      nim: null == nim
-          ? _value.nim
-          : nim // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      events: freezed == events
-          ? _value._events
-          : events // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, Object?>>?,
+      eventRaw: null == eventRaw
+          ? _value.eventRaw
+          : eventRaw // ignore: cast_nullable_to_non_nullable
+              as String,
+      event: freezed == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity?,
     ));
   }
 }
@@ -136,29 +166,24 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
   _$ParticipantEntityImpl(
       {required this.ref,
       required this.name,
-      required this.nim,
-      final List<Map<String, Object?>>? events})
-      : _events = events;
+      required this.email,
+      required this.eventRaw,
+      this.event});
 
   @override
   final DocumentReference<Object?> ref;
   @override
   final String name;
   @override
-  final String nim;
-  final List<Map<String, Object?>>? _events;
+  final String email;
   @override
-  List<Map<String, Object?>>? get events {
-    final value = _events;
-    if (value == null) return null;
-    if (_events is EqualUnmodifiableListView) return _events;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String eventRaw;
+  @override
+  final EventEntity? event;
 
   @override
   String toString() {
-    return 'ParticipantEntity(ref: $ref, name: $name, nim: $nim, events: $events)';
+    return 'ParticipantEntity(ref: $ref, name: $name, email: $email, eventRaw: $eventRaw, event: $event)';
   }
 
   @override
@@ -168,13 +193,15 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
             other is _$ParticipantEntityImpl &&
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.nim, nim) || other.nim == nim) &&
-            const DeepCollectionEquality().equals(other._events, _events));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.eventRaw, eventRaw) ||
+                other.eventRaw == eventRaw) &&
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ref, name, nim,
-      const DeepCollectionEquality().hash(_events));
+  int get hashCode =>
+      Object.hash(runtimeType, ref, name, email, eventRaw, event);
 
   @JsonKey(ignore: true)
   @override
@@ -187,8 +214,8 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
   Map<String, Object?> toFirestore() {
     return {
       "name": name,
-      "nim": nim,
-      "events": events,
+      "email": email,
+      "events": event?.ref.id,
     };
   }
 }
@@ -197,17 +224,20 @@ abstract class _ParticipantEntity implements ParticipantEntity {
   factory _ParticipantEntity(
       {required final DocumentReference<Object?> ref,
       required final String name,
-      required final String nim,
-      final List<Map<String, Object?>>? events}) = _$ParticipantEntityImpl;
+      required final String email,
+      required final String eventRaw,
+      final EventEntity? event}) = _$ParticipantEntityImpl;
 
   @override
   DocumentReference<Object?> get ref;
   @override
   String get name;
   @override
-  String get nim;
+  String get email;
   @override
-  List<Map<String, Object?>>? get events;
+  String get eventRaw;
+  @override
+  EventEntity? get event;
   @override
   @JsonKey(ignore: true)
   _$$ParticipantEntityImplCopyWith<_$ParticipantEntityImpl> get copyWith =>

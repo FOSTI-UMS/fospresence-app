@@ -8,6 +8,8 @@ import 'package:fospresence/features/participant/domain/entities/participant/par
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/commons/widgets/custom_toast_w_border.dart';
+import '../../../../event/domain/entities/event/event_entity.dart';
+import '../../../domain/usecases/add_participant_to_event_use_case.dart';
 import '../../../../my_app.dart';
 import '../../../domain/usecases/create_participant_use_case.dart';
 import '../../../domain/usecases/delete_participant_use_case.dart';
@@ -21,29 +23,54 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
   final GetParticipantsUseCase getParticipantsUseCase;
   final CreateParticipantUseCase createParticipantUseCase;
   final DeleteParticipantUseCase deleteParticipantUseCase;
+  final AddParticipantToEventUseCase addParticipantToEventUseCase;
   ParticipantBloc(
       {required this.createParticipantUseCase,
       required this.getParticipantsUseCase,
-      required this.deleteParticipantUseCase})
+      required this.deleteParticipantUseCase,
+      required this.addParticipantToEventUseCase
+      })
       : super(ParticipantState.started()) {
     on<ParticipantEvent>(
       (event, emit) async {
         await event.map(
-          getParticipants: (value) async => await _getParticipants(),
+          getParticipants: (value) async => await _getParticipants(value.event),
           createParticipant: (value) async =>
               await _createParticipant(value.participant, value.event),
           deleteParticipantPressed: (value) async =>
-              await _deleteParticipant(value.participant),
+              await _deleteParticipant(value.participant, value.event),
+              addParticipantToEvent: (value) async =>
+              _addParticipant(value.event, value.participant),
         );
       },
     );
   }
 
-  Future<void> _deleteParticipant(ParticipantEntity participant) async {
+    Future<void> _addParticipant(
+      EventEntity event, ParticipantEntity participant) async {
+    emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
+
+    final result = await addParticipantToEventUseCase(
+        params: event, participant: participant);
+
+    emit(
+      state.copyWith(
+        isLoading: false,
+        failureOrSuccess: some(result),
+      ),
+    );
+
+    _showToast(
+        result: result,
+        successMessage: "Berhasil menambahkan ${participant.name}");
+  }
+
+  Future<void> _deleteParticipant(
+      ParticipantEntity participant, EventEntity event) async {
     emit(state.copyWith(failureOrSuccess: none()));
 
     final result = await deleteParticipantUseCase(params: participant);
-    final participantList = await getParticipantsUseCase(params: null);
+    final participantList = await getParticipantsUseCase(params: event);
 
     emit(
       state.copyWith(
@@ -57,11 +84,11 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
         successMessage: "Berhasil menghapus ${participant.name}");
   }
 
-  Future<void> _getParticipants() async {
+  Future<void> _getParticipants(EventEntity event) async {
     emit(state.copyWith(isLoading: true));
 
     await Future.delayed(const Duration(seconds: 3));
-    final participantList = await getParticipantsUseCase(params: null);
+    final participantList = await getParticipantsUseCase(params: event);
 
     emit(
       state.copyWith(
@@ -72,12 +99,12 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
   }
 
   Future<void> _createParticipant(
-      ParticipantEntity participant, Map<String, Object?>? event) async {
+      ParticipantEntity participant, EventEntity event) async {
     emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
 
-    final result =
-        await createParticipantUseCase(params: participant, event: event);
-    final participantList = await getParticipantsUseCase(params: null);
+    final result = await createParticipantUseCase(
+        params: participant, event: event.toFirestore());
+    final participantList = await getParticipantsUseCase(params: event);
     emit(
       state.copyWith(
         isLoading: false,

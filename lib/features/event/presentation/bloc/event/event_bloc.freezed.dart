@@ -873,6 +873,8 @@ mixin _$EventState {
   Option<Either<ValueFailure<String>, List<EventEntity>>> get eventList =>
       throw _privateConstructorUsedError;
   EventEntity? get selectedEvent => throw _privateConstructorUsedError;
+  Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+      get participantList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventStateCopyWith<EventState> get copyWith =>
@@ -889,7 +891,9 @@ abstract class $EventStateCopyWith<$Res> {
       {bool isLoading,
       Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess,
       Option<Either<ValueFailure<String>, List<EventEntity>>> eventList,
-      EventEntity? selectedEvent});
+      EventEntity? selectedEvent,
+      Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+          participantList});
 
   $EventEntityCopyWith<$Res>? get selectedEvent;
 }
@@ -911,6 +915,7 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
     Object? failureOrSuccess = null,
     Object? eventList = null,
     Object? selectedEvent = freezed,
+    Object? participantList = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -929,6 +934,10 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
           ? _value.selectedEvent
           : selectedEvent // ignore: cast_nullable_to_non_nullable
               as EventEntity?,
+      participantList: null == participantList
+          ? _value.participantList
+          : participantList // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, List<ParticipantEntity>>>,
     ) as $Val);
   }
 
@@ -957,7 +966,9 @@ abstract class _$$EventStateImplCopyWith<$Res>
       {bool isLoading,
       Option<Either<ValueFailure<String>, dynamic>> failureOrSuccess,
       Option<Either<ValueFailure<String>, List<EventEntity>>> eventList,
-      EventEntity? selectedEvent});
+      EventEntity? selectedEvent,
+      Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+          participantList});
 
   @override
   $EventEntityCopyWith<$Res>? get selectedEvent;
@@ -978,6 +989,7 @@ class __$$EventStateImplCopyWithImpl<$Res>
     Object? failureOrSuccess = null,
     Object? eventList = null,
     Object? selectedEvent = freezed,
+    Object? participantList = null,
   }) {
     return _then(_$EventStateImpl(
       isLoading: null == isLoading
@@ -996,6 +1008,10 @@ class __$$EventStateImplCopyWithImpl<$Res>
           ? _value.selectedEvent
           : selectedEvent // ignore: cast_nullable_to_non_nullable
               as EventEntity?,
+      participantList: null == participantList
+          ? _value.participantList
+          : participantList // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ValueFailure<String>, List<ParticipantEntity>>>,
     ));
   }
 }
@@ -1007,7 +1023,8 @@ class _$EventStateImpl extends _EventState {
       {required this.isLoading,
       required this.failureOrSuccess,
       required this.eventList,
-      required this.selectedEvent})
+      required this.selectedEvent,
+      required this.participantList})
       : super._();
 
   @override
@@ -1018,10 +1035,13 @@ class _$EventStateImpl extends _EventState {
   final Option<Either<ValueFailure<String>, List<EventEntity>>> eventList;
   @override
   final EventEntity? selectedEvent;
+  @override
+  final Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+      participantList;
 
   @override
   String toString() {
-    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, eventList: $eventList, selectedEvent: $selectedEvent)';
+    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, eventList: $eventList, selectedEvent: $selectedEvent, participantList: $participantList)';
   }
 
   @override
@@ -1036,12 +1056,14 @@ class _$EventStateImpl extends _EventState {
             (identical(other.eventList, eventList) ||
                 other.eventList == eventList) &&
             (identical(other.selectedEvent, selectedEvent) ||
-                other.selectedEvent == selectedEvent));
+                other.selectedEvent == selectedEvent) &&
+            (identical(other.participantList, participantList) ||
+                other.participantList == participantList));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, failureOrSuccess, eventList, selectedEvent);
+  int get hashCode => Object.hash(runtimeType, isLoading, failureOrSuccess,
+      eventList, selectedEvent, participantList);
 
   @JsonKey(ignore: true)
   @override
@@ -1057,7 +1079,10 @@ abstract class _EventState extends EventState {
           failureOrSuccess,
       required final Option<Either<ValueFailure<String>, List<EventEntity>>>
           eventList,
-      required final EventEntity? selectedEvent}) = _$EventStateImpl;
+      required final EventEntity? selectedEvent,
+      required final Option<
+              Either<ValueFailure<String>, List<ParticipantEntity>>>
+          participantList}) = _$EventStateImpl;
   const _EventState._() : super._();
 
   @override
@@ -1068,6 +1093,9 @@ abstract class _EventState extends EventState {
   Option<Either<ValueFailure<String>, List<EventEntity>>> get eventList;
   @override
   EventEntity? get selectedEvent;
+  @override
+  Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
+      get participantList;
   @override
   @JsonKey(ignore: true)
   _$$EventStateImplCopyWith<_$EventStateImpl> get copyWith =>
