@@ -30,7 +30,6 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     required this.getEventsUseCase,
     required this.editEventUseCase,
     required this.deleteEventUseCase,
-   
   }) : super(EventState.started()) {
     on<EventEvent>(
       (event, emit) async {
@@ -38,7 +37,8 @@ class EventBloc extends Bloc<EventEvent, EventState> {
           getEvents: (value) async => await _getEvents(),
           createEventPressed: (value) async => await _createEvent(value.event),
           editEventPressed: (value) async => await _editEvent(value.event),
-          deleteEventPressed: (value) async => await _deleteEvent(value.event),   
+          deleteEventPressed: (value) async => await _deleteEvent(value.event),
+          searchEvent: (value) => _searchEvent(value.searchText),
           selectedEventPressed: (value) =>
               emit(state.copyWith(selectedEvent: value.event)),
         );
@@ -46,7 +46,22 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     );
   }
 
-
+  void _searchEvent(String searchText) {
+    final query = searchText.toLowerCase();
+    final searchResult = state.eventList.fold<List<EventEntity>>(
+      () => [],
+      (eitherList) => eitherList.fold(
+        (_) => [],
+        (events) {
+          return events.where((event) {
+            final name = event.name.toLowerCase();
+            return name.contains(query);
+          }).toList();
+        },
+      ),
+    );
+    emit(state.copyWith(searchEventResult: searchResult));
+  }
 
   Future<void> _editEvent(EventEntity event) async {
     emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
@@ -59,6 +74,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
         isLoading: false,
         failureOrSuccess: some(result),
         eventList: some(eventList),
+        searchEventResult: _getEventListUpdated(eventList),
       ),
     );
 
@@ -76,6 +92,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
       state.copyWith(
         failureOrSuccess: some(result),
         eventList: some(eventList),
+        searchEventResult: _getEventListUpdated(eventList),
       ),
     );
 
@@ -93,6 +110,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
       state.copyWith(
         isLoading: false,
         eventList: some(eventList),
+        searchEventResult: _getEventListUpdated(eventList),
       ),
     );
   }
@@ -108,6 +126,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
         isLoading: false,
         failureOrSuccess: some(result),
         eventList: some(eventList),
+        searchEventResult: _getEventListUpdated(eventList),
       ),
     );
 
@@ -140,5 +159,10 @@ class EventBloc extends Bloc<EventEvent, EventState> {
         );
       },
     );
+  }
+
+  List<EventEntity> _getEventListUpdated(
+      Either<ValueFailure<String>, List<EventEntity>> participantList) {
+    return participantList.fold((_) => [], (r) => r);
   }
 }

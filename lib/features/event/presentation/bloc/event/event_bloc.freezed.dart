@@ -23,6 +23,7 @@ mixin _$EventEvent {
     required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
     required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$EventEvent {
     TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
     TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$EventEvent {
     TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$EventEvent {
     required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
     required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$EventEvent {
     TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$EventEvent {
     TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$GetEventsImpl implements _GetEvents {
     required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
     required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
   }) {
     return getEvents();
   }
@@ -147,6 +154,7 @@ class _$GetEventsImpl implements _GetEvents {
     TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
     TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
   }) {
     return getEvents?.call();
   }
@@ -159,6 +167,7 @@ class _$GetEventsImpl implements _GetEvents {
     TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -175,6 +184,7 @@ class _$GetEventsImpl implements _GetEvents {
     required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
     required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
   }) {
     return getEvents(this);
   }
@@ -187,6 +197,7 @@ class _$GetEventsImpl implements _GetEvents {
     TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
   }) {
     return getEvents?.call(this);
   }
@@ -199,6 +210,7 @@ class _$GetEventsImpl implements _GetEvents {
     TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -292,6 +304,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
     required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
     required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
   }) {
     return createEventPressed(event);
   }
@@ -304,6 +317,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
     TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
     TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
   }) {
     return createEventPressed?.call(event);
   }
@@ -316,6 +330,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
     TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
     required TResult orElse(),
   }) {
     if (createEventPressed != null) {
@@ -332,6 +347,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
     required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
     required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
   }) {
     return createEventPressed(this);
   }
@@ -344,6 +360,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
     TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
   }) {
     return createEventPressed?.call(this);
   }
@@ -356,6 +373,7 @@ class _$CreateEventPressedImpl implements _CreateEventPressed {
     TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
     required TResult orElse(),
   }) {
     if (createEventPressed != null) {
@@ -455,6 +473,7 @@ class _$EditEventPressedImpl implements _EditEventPressed {
     required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
     required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
   }) {
     return editEventPressed(event);
   }
@@ -467,6 +486,7 @@ class _$EditEventPressedImpl implements _EditEventPressed {
     TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
     TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
   }) {
     return editEventPressed?.call(event);
   }
@@ -479,6 +499,7 @@ class _$EditEventPressedImpl implements _EditEventPressed {
     TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
     required TResult orElse(),
   }) {
     if (editEventPressed != null) {
@@ -495,6 +516,7 @@ class _$EditEventPressedImpl implements _EditEventPressed {
     required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
     required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
   }) {
     return editEventPressed(this);
   }
@@ -507,6 +529,7 @@ class _$EditEventPressedImpl implements _EditEventPressed {
     TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
   }) {
     return editEventPressed?.call(this);
   }
@@ -519,6 +542,7 @@ class _$EditEventPressedImpl implements _EditEventPressed {
     TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
     required TResult orElse(),
   }) {
     if (editEventPressed != null) {
@@ -618,6 +642,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
     required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
     required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
   }) {
     return deleteEventPressed(event);
   }
@@ -630,6 +655,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
     TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
     TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
   }) {
     return deleteEventPressed?.call(event);
   }
@@ -642,6 +668,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
     TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
     required TResult orElse(),
   }) {
     if (deleteEventPressed != null) {
@@ -658,6 +685,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
     required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
     required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
   }) {
     return deleteEventPressed(this);
   }
@@ -670,6 +698,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
     TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
   }) {
     return deleteEventPressed?.call(this);
   }
@@ -682,6 +711,7 @@ class _$DeteleEventPressedImpl implements _DeteleEventPressed {
     TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
     required TResult orElse(),
   }) {
     if (deleteEventPressed != null) {
@@ -782,6 +812,7 @@ class _$SelectedEventPressedImpl implements _SelectedEventPressed {
     required TResult Function(EventEntity event) editEventPressed,
     required TResult Function(EventEntity event) deleteEventPressed,
     required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
   }) {
     return selectedEventPressed(event);
   }
@@ -794,6 +825,7 @@ class _$SelectedEventPressedImpl implements _SelectedEventPressed {
     TResult? Function(EventEntity event)? editEventPressed,
     TResult? Function(EventEntity event)? deleteEventPressed,
     TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
   }) {
     return selectedEventPressed?.call(event);
   }
@@ -806,6 +838,7 @@ class _$SelectedEventPressedImpl implements _SelectedEventPressed {
     TResult Function(EventEntity event)? editEventPressed,
     TResult Function(EventEntity event)? deleteEventPressed,
     TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
     required TResult orElse(),
   }) {
     if (selectedEventPressed != null) {
@@ -822,6 +855,7 @@ class _$SelectedEventPressedImpl implements _SelectedEventPressed {
     required TResult Function(_EditEventPressed value) editEventPressed,
     required TResult Function(_DeteleEventPressed value) deleteEventPressed,
     required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
   }) {
     return selectedEventPressed(this);
   }
@@ -834,6 +868,7 @@ class _$SelectedEventPressedImpl implements _SelectedEventPressed {
     TResult? Function(_EditEventPressed value)? editEventPressed,
     TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
   }) {
     return selectedEventPressed?.call(this);
   }
@@ -846,6 +881,7 @@ class _$SelectedEventPressedImpl implements _SelectedEventPressed {
     TResult Function(_EditEventPressed value)? editEventPressed,
     TResult Function(_DeteleEventPressed value)? deleteEventPressed,
     TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
     required TResult orElse(),
   }) {
     if (selectedEventPressed != null) {
@@ -866,6 +902,165 @@ abstract class _SelectedEventPressed implements EventEvent {
 }
 
 /// @nodoc
+abstract class _$$SearchEventImplCopyWith<$Res> {
+  factory _$$SearchEventImplCopyWith(
+          _$SearchEventImpl value, $Res Function(_$SearchEventImpl) then) =
+      __$$SearchEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String searchText});
+}
+
+/// @nodoc
+class __$$SearchEventImplCopyWithImpl<$Res>
+    extends _$EventEventCopyWithImpl<$Res, _$SearchEventImpl>
+    implements _$$SearchEventImplCopyWith<$Res> {
+  __$$SearchEventImplCopyWithImpl(
+      _$SearchEventImpl _value, $Res Function(_$SearchEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchText = null,
+  }) {
+    return _then(_$SearchEventImpl(
+      searchText: null == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchEventImpl implements _SearchEvent {
+  const _$SearchEventImpl({required this.searchText});
+
+  @override
+  final String searchText;
+
+  @override
+  String toString() {
+    return 'EventEvent.searchEvent(searchText: $searchText)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchEventImpl &&
+            (identical(other.searchText, searchText) ||
+                other.searchText == searchText));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchText);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchEventImplCopyWith<_$SearchEventImpl> get copyWith =>
+      __$$SearchEventImplCopyWithImpl<_$SearchEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getEvents,
+    required TResult Function(EventEntity event) createEventPressed,
+    required TResult Function(EventEntity event) editEventPressed,
+    required TResult Function(EventEntity event) deleteEventPressed,
+    required TResult Function(EventEntity event) selectedEventPressed,
+    required TResult Function(String searchText) searchEvent,
+  }) {
+    return searchEvent(searchText);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getEvents,
+    TResult? Function(EventEntity event)? createEventPressed,
+    TResult? Function(EventEntity event)? editEventPressed,
+    TResult? Function(EventEntity event)? deleteEventPressed,
+    TResult? Function(EventEntity event)? selectedEventPressed,
+    TResult? Function(String searchText)? searchEvent,
+  }) {
+    return searchEvent?.call(searchText);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getEvents,
+    TResult Function(EventEntity event)? createEventPressed,
+    TResult Function(EventEntity event)? editEventPressed,
+    TResult Function(EventEntity event)? deleteEventPressed,
+    TResult Function(EventEntity event)? selectedEventPressed,
+    TResult Function(String searchText)? searchEvent,
+    required TResult orElse(),
+  }) {
+    if (searchEvent != null) {
+      return searchEvent(searchText);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetEvents value) getEvents,
+    required TResult Function(_CreateEventPressed value) createEventPressed,
+    required TResult Function(_EditEventPressed value) editEventPressed,
+    required TResult Function(_DeteleEventPressed value) deleteEventPressed,
+    required TResult Function(_SelectedEventPressed value) selectedEventPressed,
+    required TResult Function(_SearchEvent value) searchEvent,
+  }) {
+    return searchEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetEvents value)? getEvents,
+    TResult? Function(_CreateEventPressed value)? createEventPressed,
+    TResult? Function(_EditEventPressed value)? editEventPressed,
+    TResult? Function(_DeteleEventPressed value)? deleteEventPressed,
+    TResult? Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult? Function(_SearchEvent value)? searchEvent,
+  }) {
+    return searchEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetEvents value)? getEvents,
+    TResult Function(_CreateEventPressed value)? createEventPressed,
+    TResult Function(_EditEventPressed value)? editEventPressed,
+    TResult Function(_DeteleEventPressed value)? deleteEventPressed,
+    TResult Function(_SelectedEventPressed value)? selectedEventPressed,
+    TResult Function(_SearchEvent value)? searchEvent,
+    required TResult orElse(),
+  }) {
+    if (searchEvent != null) {
+      return searchEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchEvent implements EventEvent {
+  const factory _SearchEvent({required final String searchText}) =
+      _$SearchEventImpl;
+
+  String get searchText;
+  @JsonKey(ignore: true)
+  _$$SearchEventImplCopyWith<_$SearchEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$EventState {
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<ValueFailure<String>, dynamic>> get failureOrSuccess =>
@@ -875,6 +1070,7 @@ mixin _$EventState {
   EventEntity? get selectedEvent => throw _privateConstructorUsedError;
   Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
       get participantList => throw _privateConstructorUsedError;
+  List<EventEntity> get searchEventResult => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventStateCopyWith<EventState> get copyWith =>
@@ -893,7 +1089,8 @@ abstract class $EventStateCopyWith<$Res> {
       Option<Either<ValueFailure<String>, List<EventEntity>>> eventList,
       EventEntity? selectedEvent,
       Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
-          participantList});
+          participantList,
+      List<EventEntity> searchEventResult});
 
   $EventEntityCopyWith<$Res>? get selectedEvent;
 }
@@ -916,6 +1113,7 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
     Object? eventList = null,
     Object? selectedEvent = freezed,
     Object? participantList = null,
+    Object? searchEventResult = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -938,6 +1136,10 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
           ? _value.participantList
           : participantList // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure<String>, List<ParticipantEntity>>>,
+      searchEventResult: null == searchEventResult
+          ? _value.searchEventResult
+          : searchEventResult // ignore: cast_nullable_to_non_nullable
+              as List<EventEntity>,
     ) as $Val);
   }
 
@@ -968,7 +1170,8 @@ abstract class _$$EventStateImplCopyWith<$Res>
       Option<Either<ValueFailure<String>, List<EventEntity>>> eventList,
       EventEntity? selectedEvent,
       Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
-          participantList});
+          participantList,
+      List<EventEntity> searchEventResult});
 
   @override
   $EventEntityCopyWith<$Res>? get selectedEvent;
@@ -990,6 +1193,7 @@ class __$$EventStateImplCopyWithImpl<$Res>
     Object? eventList = null,
     Object? selectedEvent = freezed,
     Object? participantList = null,
+    Object? searchEventResult = null,
   }) {
     return _then(_$EventStateImpl(
       isLoading: null == isLoading
@@ -1012,6 +1216,10 @@ class __$$EventStateImplCopyWithImpl<$Res>
           ? _value.participantList
           : participantList // ignore: cast_nullable_to_non_nullable
               as Option<Either<ValueFailure<String>, List<ParticipantEntity>>>,
+      searchEventResult: null == searchEventResult
+          ? _value._searchEventResult
+          : searchEventResult // ignore: cast_nullable_to_non_nullable
+              as List<EventEntity>,
     ));
   }
 }
@@ -1024,8 +1232,10 @@ class _$EventStateImpl extends _EventState {
       required this.failureOrSuccess,
       required this.eventList,
       required this.selectedEvent,
-      required this.participantList})
-      : super._();
+      required this.participantList,
+      required final List<EventEntity> searchEventResult})
+      : _searchEventResult = searchEventResult,
+        super._();
 
   @override
   final bool isLoading;
@@ -1038,10 +1248,18 @@ class _$EventStateImpl extends _EventState {
   @override
   final Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
       participantList;
+  final List<EventEntity> _searchEventResult;
+  @override
+  List<EventEntity> get searchEventResult {
+    if (_searchEventResult is EqualUnmodifiableListView)
+      return _searchEventResult;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchEventResult);
+  }
 
   @override
   String toString() {
-    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, eventList: $eventList, selectedEvent: $selectedEvent, participantList: $participantList)';
+    return 'EventState(isLoading: $isLoading, failureOrSuccess: $failureOrSuccess, eventList: $eventList, selectedEvent: $selectedEvent, participantList: $participantList, searchEventResult: $searchEventResult)';
   }
 
   @override
@@ -1058,12 +1276,20 @@ class _$EventStateImpl extends _EventState {
             (identical(other.selectedEvent, selectedEvent) ||
                 other.selectedEvent == selectedEvent) &&
             (identical(other.participantList, participantList) ||
-                other.participantList == participantList));
+                other.participantList == participantList) &&
+            const DeepCollectionEquality()
+                .equals(other._searchEventResult, _searchEventResult));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, failureOrSuccess,
-      eventList, selectedEvent, participantList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      failureOrSuccess,
+      eventList,
+      selectedEvent,
+      participantList,
+      const DeepCollectionEquality().hash(_searchEventResult));
 
   @JsonKey(ignore: true)
   @override
@@ -1082,7 +1308,8 @@ abstract class _EventState extends EventState {
       required final EventEntity? selectedEvent,
       required final Option<
               Either<ValueFailure<String>, List<ParticipantEntity>>>
-          participantList}) = _$EventStateImpl;
+          participantList,
+      required final List<EventEntity> searchEventResult}) = _$EventStateImpl;
   const _EventState._() : super._();
 
   @override
@@ -1096,6 +1323,8 @@ abstract class _EventState extends EventState {
   @override
   Option<Either<ValueFailure<String>, List<ParticipantEntity>>>
       get participantList;
+  @override
+  List<EventEntity> get searchEventResult;
   @override
   @JsonKey(ignore: true)
   _$$EventStateImplCopyWith<_$EventStateImpl> get copyWith =>

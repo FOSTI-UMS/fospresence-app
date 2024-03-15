@@ -11,5 +11,6 @@ class EventEvent with _$EventEvent {
       _DeteleEventPressed;
   const factory EventEvent.selectedEventPressed({required EventEntity event}) =
       _SelectedEventPressed;
-
+  const factory EventEvent.searchEvent(
+      {required String searchText}) = _SearchEvent;
 }

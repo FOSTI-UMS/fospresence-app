@@ -71,6 +71,10 @@ ThemeData get darkThemeData => ThemeData(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(width: 0.8, color: Colors.redAccent),
         ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(width: 0.2, color: lightGrey),
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(width: 0.2, color: lightGrey),

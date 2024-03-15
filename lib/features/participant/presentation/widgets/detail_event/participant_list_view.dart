@@ -73,7 +73,7 @@ class _ParticipantListViewState extends State<ParticipantListView> {
               separatorBuilder: (context, index) => const SizedBox(height: 5),
               itemBuilder: (context, index) => state.isLoading
                   ? CardShimmer(index: index)
-                  : _buildParticipantCard(
+                  : _buildParticipantListView(
                       index, participantListLength, context, state),
             ),
           );
@@ -82,7 +82,7 @@ class _ParticipantListViewState extends State<ParticipantListView> {
     );
   }
 
-  Padding _buildParticipantCard(int index, int participantListLength,
+  Padding _buildParticipantListView(int index, int participantListLength,
       BuildContext context, ParticipantState state) {
     ParticipantEntity? selectedParticipant =
         state.searchParticipantResult[index];

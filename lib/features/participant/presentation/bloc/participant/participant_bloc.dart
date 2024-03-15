@@ -58,11 +58,7 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
         },
       ),
     );
-    emit(
-      state.copyWith(
-        searchParticipantResult: searchResult,
-      ),
-    );
+    emit(state.copyWith(searchParticipantResult: searchResult));
   }
 
   Future<void> _addParticipant(
@@ -72,15 +68,13 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
     final result = await addParticipantToEventUseCase(
         event: event, participant: participant);
     final participantList = await getParticipantsUseCase(params: event);
-    List<ParticipantEntity> participantListResult =
-        participantList.fold((_) => [], (r) => r);
 
     emit(
       state.copyWith(
           isLoading: false,
           failureOrSuccess: some(result),
           participantList: some(participantList),
-          searchParticipantResult: participantListResult),
+          searchParticipantResult: _getParticipantListUpdated(participantList)),
     );
 
     _showToast(
@@ -95,14 +89,12 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
     final result =
         await deleteParticipantUseCase(participant: participant, event: event);
     final participantList = await getParticipantsUseCase(params: event);
-    List<ParticipantEntity> participantListResult =
-        participantList.fold((_) => [], (r) => r);
 
     emit(
       state.copyWith(
           failureOrSuccess: some(result),
           participantList: some(participantList),
-          searchParticipantResult: participantListResult),
+          searchParticipantResult: _getParticipantListUpdated(participantList)),
     );
 
     _showToast(
@@ -115,14 +107,12 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
 
     await Future.delayed(const Duration(milliseconds: 1500));
     final participantList = await getParticipantsUseCase(params: event);
-    List<ParticipantEntity> participantListResult =
-        participantList.fold((_) => [], (r) => r);
 
     emit(
       state.copyWith(
           isLoading: false,
           participantList: some(participantList),
-          searchParticipantResult: participantListResult),
+          searchParticipantResult: _getParticipantListUpdated(participantList)),
     );
   }
 
@@ -150,5 +140,10 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
         );
       },
     );
+  }
+
+  List<ParticipantEntity> _getParticipantListUpdated(
+      Either<ValueFailure<String>, List<ParticipantEntity>> participantList) {
+    return participantList.fold((_) => [], (r) => r);
   }
 }

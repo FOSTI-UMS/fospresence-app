@@ -51,15 +51,15 @@ class _EventListViewState extends State<EventListView> {
       child: BlocBuilder<EventBloc, EventState>(
         bloc: _eventBloc,
         builder: (context, state) {
-          List<EventEntity> eventList = state.isLoading
-              ? []
-              : state.eventList
-                  .fold(() => [], (a) => a.fold((l) => [], (r) => r));
+          List<EventEntity> eventList =
+              state.isLoading ? [] : state.searchEventResult;
           int eventListLength = state.isLoading ? 5 : eventList.length;
-
           if (!state.isLoading && eventList.isEmpty) {
-            return Text("No Events",
-                style: textWhite14.copyWith(color: Colors.grey));
+            return Text(
+              "No Events",
+              textAlign: TextAlign.center,
+              style: textWhite14.copyWith(color: Colors.grey),
+            );
           }
           return Expanded(
             child: Padding(
@@ -82,12 +82,9 @@ class _EventListViewState extends State<EventListView> {
 
   Padding _buildEventCard(
       int index, int eventListLength, BuildContext context, EventState state) {
-    EventEntity? selectedEvent = state.eventList.fold(
-      () => null,
-      (a) => a.fold((l) => null, (r) => r[index]),
-    );
-    String formattedDatetime = DateFormat('EEEE, dd MMM yyyy', 'id_ID')
-        .format(selectedEvent!.datetime);
+    EventEntity selectedEvent = state.searchEventResult[index];
+    String formattedDatetime =
+        DateFormat('EEEE, dd MMM yyyy', 'id_ID').format(selectedEvent.datetime);
     return Padding(
       padding: EdgeInsets.only(bottom: index == eventListLength - 1 ? 10 : 0),
       child: GestureDetector(

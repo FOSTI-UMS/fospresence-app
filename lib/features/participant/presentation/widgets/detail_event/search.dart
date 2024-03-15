@@ -16,11 +16,13 @@ class DetailEventSearch extends StatefulWidget {
 
 class _DetailEventSearchState extends State<DetailEventSearch> {
   late final TextEditingController _edtSearch;
+  late final ParticipantBloc _participantBloc;
   bool isSearchTextEmpty = true;
 
   @override
   void initState() {
     super.initState();
+    _participantBloc = BlocProvider.of<ParticipantBloc>(context);
     _edtSearch = TextEditingController();
   }
 
@@ -32,7 +34,6 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
 
   @override
   Widget build(BuildContext context) {
-    final participantBloc = BlocProvider.of<ParticipantBloc>(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Column(
@@ -48,13 +49,13 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
             children: [
               Expanded(
                 child: BlocBuilder<ParticipantBloc, ParticipantState>(
-                  bloc: participantBloc,
+                  bloc: _participantBloc,
                   builder: (context, state) {
-                    return _buildTextField(participantBloc, state);
+                    return _buildTextField(_participantBloc, state);
                   },
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 15),
               GestureDetector(
                 onTap: () =>
                     Navigator.pushNamed(context, RouteName.qrCodeScannerScreen),
@@ -110,12 +111,16 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
         hintText: "Ketik nama peserta...",
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: BorderSide(width: 0.2, color: lightGrey),
+        ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(25),
           borderSide: BorderSide(width: 0.2, color: lightGrey),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(25),
           borderSide: const BorderSide(width: 0.8, color: Colors.white),
         ),
       ),
