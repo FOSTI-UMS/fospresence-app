@@ -58,7 +58,7 @@ class _ParticipantListViewState extends State<ParticipantListView> {
             return Padding(
               padding: const EdgeInsets.only(top: 15),
               child: Text(
-                "No Participants",
+                "Peserta tidak ditemukan",
                 style: textWhite14.copyWith(color: Colors.grey),
                 textAlign: TextAlign.center,
               ),

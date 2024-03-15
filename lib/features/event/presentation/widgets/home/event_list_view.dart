@@ -54,12 +54,22 @@ class _EventListViewState extends State<EventListView> {
           List<EventEntity> eventList =
               state.isLoading ? [] : state.searchEventResult;
           int eventListLength = state.isLoading ? 5 : eventList.length;
-          if (!state.isLoading && eventList.isEmpty) {
+          if (!state.isLoading && eventList.isEmpty && state.whose == null) {
             return Text(
-              "No Events",
+              "Proker tidak ditemukan",
               textAlign: TextAlign.center,
               style: textWhite14.copyWith(color: Colors.grey),
             );
+          } else if (!state.isLoading &&
+              eventList.isEmpty &&
+              state.whose != null) {
+            if (state.whose == Wife.r) {
+              return _buildContainer(context, "assets/images/dududu.png");
+            } else if (state.whose == Wife.j) {
+              return _buildContainer(context, "assets/images/mantap.jpg");
+            } else {
+              return _buildContainer(context, "assets/images/hehe.jpg");
+            }
           }
           return Expanded(
             child: Padding(
@@ -129,6 +139,20 @@ class _EventListViewState extends State<EventListView> {
           ),
         ),
       ),
+    );
+  }
+
+  Container _buildContainer(BuildContext context, String image) {
+    return Container(
+      width: MediaQuery.sizeOf(context).width,
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(width: 1.5, color: Colors.white)),
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(image, fit: BoxFit.cover)),
     );
   }
 }

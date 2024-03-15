@@ -45,85 +45,87 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5), color: Colors.white),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: BlocBuilder<ParticipantBloc, ParticipantState>(
-                  bloc: _participantBloc,
-                  builder: (context, state) {
-                    return _buildTextField(_participantBloc, state);
-                  },
-                ),
-              ),
-              const SizedBox(width: 15),
-              GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, RouteName.qrCodeScannerScreen),
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 0.2),
-                      color: primaryColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SvgPicture.asset(
-                    "assets/svg/scan_qr_code.svg",
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10)
-            ],
+          BlocBuilder<ParticipantBloc, ParticipantState>(
+            bloc: _participantBloc,
+            builder: (context, state) {
+              return _buildRow(state, context);
+            },
           ),
         ],
       ),
     );
   }
 
-  TextField _buildTextField(
-      ParticipantBloc participantBloc, ParticipantState state) {
-    return TextField(
-      style: textWhite14,
-      controller: _edtSearch,
-      enabled: !state.isLoading,
-      onChanged: (value) {
-        isSearchTextEmpty = value.isEmpty;
-        participantBloc
-            .add(ParticipantEvent.searchParticipant(searchText: value));
-      },
-      decoration: InputDecoration(
-        prefixIcon: Padding(
-          padding: const EdgeInsets.all(13.0),
-          child: SvgPicture.asset("assets/svg/search.svg"),
+  Row _buildRow(ParticipantState state, BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            style: textWhite14,
+            controller: _edtSearch,
+            enabled: !state.isLoading,
+            onChanged: (value) {
+              isSearchTextEmpty = value.isEmpty;
+              _participantBloc
+                  .add(ParticipantEvent.searchParticipant(searchText: value));
+            },
+            decoration: InputDecoration(
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: SvgPicture.asset("assets/svg/search.svg"),
+              ),
+              suffixIcon: isSearchTextEmpty
+                  ? const SizedBox()
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isSearchTextEmpty = true;
+                        });
+                        _edtSearch.clear();
+                        _participantBloc.add(
+                            const ParticipantEvent.searchParticipant(
+                                searchText: ""));
+                      },
+                      child: const Icon(Icons.close)),
+              hintText: "Ketik nama peserta...",
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide(width: 0.2, color: lightGrey),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide(width: 0.2, color: lightGrey),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: const BorderSide(width: 0.8, color: Colors.white),
+              ),
+            ),
+          ),
         ),
-        suffixIcon: isSearchTextEmpty
-            ? const SizedBox()
-            : GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSearchTextEmpty = true;
-                  });
-                  _edtSearch.clear();
-                  participantBloc.add(
-                      const ParticipantEvent.searchParticipant(searchText: ""));
-                },
-                child: const Icon(Icons.close)),
-        hintText: "Ketik nama peserta...",
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
-          borderSide: BorderSide(width: 0.2, color: lightGrey),
+        const SizedBox(width: 15),
+        GestureDetector(
+          onTap: state.isLoading
+              ? () {}
+              : () =>
+                  Navigator.pushNamed(context, RouteName.qrCodeScannerScreen),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 0.2),
+                color: primaryColor.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(10)),
+            child: SvgPicture.asset(
+              "assets/svg/scan_qr_code.svg",
+              colorFilter:
+                  const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+            ),
+          ),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
-          borderSide: BorderSide(width: 0.2, color: lightGrey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
-          borderSide: const BorderSide(width: 0.8, color: Colors.white),
-        ),
-      ),
+        const SizedBox(width: 10)
+      ],
     );
   }
 }

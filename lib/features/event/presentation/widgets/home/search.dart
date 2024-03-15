@@ -16,7 +16,7 @@ class HomeSearch extends StatefulWidget {
 class _HomeSearchState extends State<HomeSearch> {
   late final TextEditingController _edtSearch;
   late final EventBloc _eventBloc;
-  bool isSearchTextEmpty = true;
+  bool _isSearchTextEmpty = true;
 
   @override
   void initState() {
@@ -49,7 +49,8 @@ class _HomeSearchState extends State<HomeSearch> {
         controller: _edtSearch,
         enabled: !state.isLoading,
         onChanged: (value) {
-          isSearchTextEmpty = value.isEmpty;
+          _checkWife(value);
+          _isSearchTextEmpty = value.isEmpty;
           _eventBloc.add(EventEvent.searchEvent(searchText: value));
         },
         decoration: InputDecoration(
@@ -57,16 +58,17 @@ class _HomeSearchState extends State<HomeSearch> {
             padding: const EdgeInsets.all(13.0),
             child: SvgPicture.asset("assets/svg/search.svg"),
           ),
-          suffixIcon: isSearchTextEmpty
+          suffixIcon: _isSearchTextEmpty
               ? const SizedBox()
               : GestureDetector(
                   onTap: () {
                     setState(() {
-                      isSearchTextEmpty = true;
+                      _isSearchTextEmpty = true;
                     });
                     _edtSearch.clear();
                     _eventBloc
                         .add(const EventEvent.searchEvent(searchText: ""));
+                    _eventBloc.add(const EventEvent.showEasterEgg(whose: null));
                   },
                   child: const Icon(Icons.close),
                 ),
@@ -88,5 +90,17 @@ class _HomeSearchState extends State<HomeSearch> {
         ),
       ),
     );
+  }
+
+  void _checkWife(String value) {
+    if (value.toLowerCase() == "istri rafli") {
+      _eventBloc.add(const EventEvent.showEasterEgg(whose: Wife.r));
+    } else if (value.toLowerCase() == "istri joko") {
+      _eventBloc.add(const EventEvent.showEasterEgg(whose: Wife.j));
+    } else if (value.toLowerCase() == "istri farhan") {
+      _eventBloc.add(const EventEvent.showEasterEgg(whose: Wife.f));
+    } else {
+      _eventBloc.add(const EventEvent.showEasterEgg(whose: null));
+    }
   }
 }

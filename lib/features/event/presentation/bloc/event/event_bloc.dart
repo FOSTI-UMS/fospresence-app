@@ -34,14 +34,16 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     on<EventEvent>(
       (event, emit) async {
         event.map(
-          getEvents: (value) async => await _getEvents(),
-          createEventPressed: (value) async => await _createEvent(value.event),
-          editEventPressed: (value) async => await _editEvent(value.event),
-          deleteEventPressed: (value) async => await _deleteEvent(value.event),
-          searchEvent: (value) => _searchEvent(value.searchText),
-          selectedEventPressed: (value) =>
-              emit(state.copyWith(selectedEvent: value.event)),
-        );
+            getEvents: (value) async => await _getEvents(),
+            createEventPressed: (value) async =>
+                await _createEvent(value.event),
+            editEventPressed: (value) async => await _editEvent(value.event),
+            deleteEventPressed: (value) async =>
+                await _deleteEvent(value.event),
+            searchEvent: (value) => _searchEvent(value.searchText),
+            selectedEventPressed: (value) =>
+                emit(state.copyWith(selectedEvent: value.event)),
+            showEasterEgg: (value) => emit(state.copyWith(whose: value.whose)));
       },
     );
   }
