@@ -52,13 +52,19 @@ dependencies:
   intl: ^0.19.0
   qr_code_scanner: ^1.0.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.7
   build_runner: ^2.4.8
   json_serializable: ^6.7.1
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/fosti_rectangle_logo.png"
+  min_sdk_android: 21 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

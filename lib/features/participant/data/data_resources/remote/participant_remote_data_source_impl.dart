@@ -8,7 +8,8 @@ import 'participant_remote_data_source.dart';
 class ParticipantRemoteDataSourceImpl extends ParticipantRemoteDataSource {
   @override
   Future<void> deleteParticipant(
-      {required ParticipantEntity participant,required EventEntity event}) async {
+      {required ParticipantEntity participant,
+      required EventEntity event}) async {
     CollectionReference participants = FirebaseFirestore.instance
         .collection("events")
         .doc(event.ref.id)
@@ -28,6 +29,7 @@ class ParticipantRemoteDataSourceImpl extends ParticipantRemoteDataSource {
         .collection("events")
         .doc(event.ref.id)
         .collection("participants")
+        .orderBy("name")
         .withConverter(
             fromFirestore: ParticipantEntity.fromFirestore,
             toFirestore: (ParticipantEntity participant, _) =>
