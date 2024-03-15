@@ -2,7 +2,7 @@ name: fospresence
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -52,19 +51,20 @@ dependencies:
   intl: ^0.19.0
   qr_code_scanner: ^1.0.1
 
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/logo_dark.png
+  color_dark: "#000000"
+  image_dark: assets/images/logo_dark.png
+  web: false
+  android: false
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.7
   build_runner: ^2.4.8
   json_serializable: ^6.7.1
-  flutter_launcher_icons: "^0.13.1"
-
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/fosti_rectangle_logo.png"
-  min_sdk_android: 21 
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -78,7 +78,6 @@ flutter_launcher_icons:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -150,18 +149,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/images/logo_light.png
-  branding: assets/images/brand_light.png
-  color_dark: "#0B0B0D"
-  image_dark: assets/images/logo_dark.png
-  branding_dark: assets/images/brand_dark.png
-
-  android_12:
-    image: assets/images/logo_light.png
-    icon_background_color: "#ffffff"
-    image_dark: assets/images/logo_dark.png
-    icon_background_color_dark: "#0B0B0D"
-
-  web: false
