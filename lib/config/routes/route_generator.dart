@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/features/event/presentation/pages/add_event.dart';
-import 'package:fospresence/features/event/presentation/pages/detail_event.dart';
+import 'package:fospresence/features/participant/presentation/pages/detail_event.dart';
 import 'package:fospresence/features/event/presentation/pages/edit_event.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 import 'package:fospresence/features/participant/presentation/pages/qr_code_scanner_screen.dart';

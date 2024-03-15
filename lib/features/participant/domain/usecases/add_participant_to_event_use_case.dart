@@ -9,8 +9,8 @@ class AddParticipantToEventUseCase {
 
   AddParticipantToEventUseCase({required this.participantRespository});
   Future<Either<ValueFailure<String>, void>> call(
-          {required EventEntity params,
+          {required EventEntity event,
           required ParticipantEntity participant}) async =>
       await participantRespository.addParticipantToEvent(
-          event: params, participant: participant);
+          event: event, participant: participant);
 }

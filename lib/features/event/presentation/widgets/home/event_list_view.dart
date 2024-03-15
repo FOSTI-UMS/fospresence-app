@@ -12,14 +12,14 @@ import '../../../../../config/routes/route_name.dart';
 import '../../../../../core/constants/helper.dart';
 import '../../../domain/entities/event/event_entity.dart';
 
-class EventCard extends StatefulWidget {
-  const EventCard({super.key});
+class EventListView extends StatefulWidget {
+  const EventListView({super.key});
 
   @override
-  State<EventCard> createState() => _EventCardState();
+  State<EventListView> createState() => _EventListViewState();
 }
 
-class _EventCardState extends State<EventCard> {
+class _EventListViewState extends State<EventListView> {
   late final EventBloc _eventBloc;
   late final GlobalKey<FormState> _formKeyDialog;
   late final TextEditingController _edtPassDialog;
@@ -71,7 +71,7 @@ class _EventCardState extends State<EventCard> {
                 separatorBuilder: (context, index) => const SizedBox(height: 5),
                 itemBuilder: (context, index) => state.isLoading
                     ? CardShimmer(index: index)
-                    : _buildContent(index, eventListLength, context, state),
+                    : _buildEventCard(index, eventListLength, context, state),
               ),
             ),
           );
@@ -80,7 +80,7 @@ class _EventCardState extends State<EventCard> {
     );
   }
 
-  Padding _buildContent(
+  Padding _buildEventCard(
       int index, int eventListLength, BuildContext context, EventState state) {
     EventEntity? selectedEvent = state.eventList.fold(
       () => null,

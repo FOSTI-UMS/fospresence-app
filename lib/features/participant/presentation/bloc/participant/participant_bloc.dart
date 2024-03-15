@@ -11,7 +11,6 @@ import '../../../../../core/commons/widgets/custom_toast_w_border.dart';
 import '../../../../event/domain/entities/event/event_entity.dart';
 import '../../../domain/usecases/add_participant_to_event_use_case.dart';
 import '../../../../my_app.dart';
-import '../../../domain/usecases/create_participant_use_case.dart';
 import '../../../domain/usecases/delete_participant_use_case.dart';
 import '../../../domain/usecases/get_participant_use_case.dart';
 
@@ -21,43 +20,67 @@ part 'participant_bloc.freezed.dart';
 
 class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
   final GetParticipantsUseCase getParticipantsUseCase;
-  final CreateParticipantUseCase createParticipantUseCase;
   final DeleteParticipantUseCase deleteParticipantUseCase;
   final AddParticipantToEventUseCase addParticipantToEventUseCase;
   ParticipantBloc(
-      {required this.createParticipantUseCase,
-      required this.getParticipantsUseCase,
+      {required this.getParticipantsUseCase,
       required this.deleteParticipantUseCase,
-      required this.addParticipantToEventUseCase
-      })
+      required this.addParticipantToEventUseCase})
       : super(ParticipantState.started()) {
     on<ParticipantEvent>(
       (event, emit) async {
-        await event.map(
+        event.map(
           getParticipants: (value) async => await _getParticipants(value.event),
-          createParticipant: (value) async =>
-              await _createParticipant(value.participant, value.event),
           deleteParticipantPressed: (value) async =>
               await _deleteParticipant(value.participant, value.event),
-              addParticipantToEvent: (value) async =>
+          addParticipantToEvent: (value) async =>
               _addParticipant(value.event, value.participant),
+          searchParticipant: (value) async =>
+              _searchParticipant(value.searchText),
+          selectedParticipantPressed: (value) =>
+              emit(state.copyWith(selectedParticipant: value.participant)),
         );
       },
     );
   }
 
-    Future<void> _addParticipant(
+  void _searchParticipant(String searchText) {
+    final query = searchText.toLowerCase();
+    final searchResult = state.participantList.fold<List<ParticipantEntity>>(
+      () => [],
+      (eitherList) => eitherList.fold(
+        (_) => [],
+        (participants) {
+          return participants.where((participant) {
+            final name = participant.name.toLowerCase();
+            return name.contains(query);
+          }).toList();
+        },
+      ),
+    );
+    emit(
+      state.copyWith(
+        searchParticipantResult: searchResult,
+      ),
+    );
+  }
+
+  Future<void> _addParticipant(
       EventEntity event, ParticipantEntity participant) async {
-    emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
+    emit(state.copyWith(failureOrSuccess: none()));
 
     final result = await addParticipantToEventUseCase(
-        params: event, participant: participant);
+        event: event, participant: participant);
+    final participantList = await getParticipantsUseCase(params: event);
+    List<ParticipantEntity> participantListResult =
+        participantList.fold((_) => [], (r) => r);
 
     emit(
       state.copyWith(
-        isLoading: false,
-        failureOrSuccess: some(result),
-      ),
+          isLoading: false,
+          failureOrSuccess: some(result),
+          participantList: some(participantList),
+          searchParticipantResult: participantListResult),
     );
 
     _showToast(
@@ -69,14 +92,17 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
       ParticipantEntity participant, EventEntity event) async {
     emit(state.copyWith(failureOrSuccess: none()));
 
-    final result = await deleteParticipantUseCase(params: participant);
+    final result =
+        await deleteParticipantUseCase(participant: participant, event: event);
     final participantList = await getParticipantsUseCase(params: event);
+    List<ParticipantEntity> participantListResult =
+        participantList.fold((_) => [], (r) => r);
 
     emit(
       state.copyWith(
-        failureOrSuccess: some(result),
-        participantList: some(participantList),
-      ),
+          failureOrSuccess: some(result),
+          participantList: some(participantList),
+          searchParticipantResult: participantListResult),
     );
 
     _showToast(
@@ -87,35 +113,17 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
   Future<void> _getParticipants(EventEntity event) async {
     emit(state.copyWith(isLoading: true));
 
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(milliseconds: 1500));
     final participantList = await getParticipantsUseCase(params: event);
+    List<ParticipantEntity> participantListResult =
+        participantList.fold((_) => [], (r) => r);
 
     emit(
       state.copyWith(
-        isLoading: false,
-        participantList: some(participantList),
-      ),
+          isLoading: false,
+          participantList: some(participantList),
+          searchParticipantResult: participantListResult),
     );
-  }
-
-  Future<void> _createParticipant(
-      ParticipantEntity participant, EventEntity event) async {
-    emit(state.copyWith(isLoading: true, failureOrSuccess: none()));
-
-    final result = await createParticipantUseCase(
-        params: participant, event: event.toFirestore());
-    final participantList = await getParticipantsUseCase(params: event);
-    emit(
-      state.copyWith(
-        isLoading: false,
-        failureOrSuccess: some(result),
-        participantList: some(participantList),
-      ),
-    );
-
-    _showToast(
-        result: result,
-        successMessage: "Berhasil menambahkan ${participant.name}");
   }
 
   void _showToast(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
-import 'package:fospresence/features/event/presentation/widgets/home/event_card.dart';
+import 'package:fospresence/features/event/presentation/widgets/home/event_list_view.dart';
 
 import '../../../../core/commons/widgets/background_w_logo.dart';
 import '../widgets/home/sliver_app_bar.dart';
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                       style: textWhite24.copyWith(fontWeight: FontWeight.w600),
                     ),
                   ),
-                  const EventCard(),
+                  const EventListView(),
                 ])
               ],
             ),

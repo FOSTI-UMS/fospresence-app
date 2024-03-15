@@ -185,7 +185,7 @@ class EventBottomSheet {
                           text: "Apakah Anda yakin untuk menghapus "),
                       TextSpan(
                         text: state.selectedEvent!.name,
-                        style: textWhite14.copyWith(
+                        style: textWhite16.copyWith(
                             fontWeight: FontWeight.bold, color: Colors.blue),
                       ),
                       const TextSpan(text: " ?"),

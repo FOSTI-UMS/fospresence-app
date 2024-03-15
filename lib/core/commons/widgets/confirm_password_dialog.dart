@@ -2,9 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/pass.dart';
+import 'package:fospresence/features/participant/presentation/bloc/participant/participant_bloc.dart';
 
 import '../../../features/my_app.dart';
 import '../../constants/font.dart';
@@ -18,7 +20,8 @@ class ConfirmPassDialog {
       required void Function(BuildContext context) onConfirm,
       required GlobalKey<FormState> formKey,
       required TextEditingController edtPass,
-      required FocusNode focusNode}) {
+      required FocusNode focusNode,
+      bool isParticipant = false}) {
     return showDialog(
       context: context,
       builder: (context) => SizedBox(
@@ -48,8 +51,8 @@ class ConfirmPassDialog {
                     style: textWhite20.copyWith(fontWeight: FontWeight.w700),
                     textAlign: TextAlign.center,
                   ),
-                  content: _buildForm(
-                      formKey, focusNode, edtPass, onConfirm, context),
+                  content: _buildForm(formKey, focusNode, edtPass, onConfirm,
+                      context, isParticipant),
                 ),
               ),
             ),
@@ -64,7 +67,8 @@ class ConfirmPassDialog {
       FocusNode focusNode,
       TextEditingController edtPass,
       void Function(BuildContext context) onConfirm,
-      BuildContext context) {
+      BuildContext context,
+      bool isParticipant) {
     void back() {
       Navigator.pop(context);
       focusNode.unfocus();
@@ -93,9 +97,39 @@ class ConfirmPassDialog {
     return Form(
       key: formKey,
       child: SizedBox(
-        height: 120,
+        height: isParticipant ? 230 : 120,
         child: Column(
           children: [
+            isParticipant
+                ? Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      BlocBuilder<ParticipantBloc, ParticipantState>(
+                        bloc: BlocProvider.of<ParticipantBloc>(context),
+                        builder: (context, state) {
+                          return Text.rich(
+                            textAlign: TextAlign.center,
+                            style: textWhite16,
+                            TextSpan(
+                              children: [
+                                const TextSpan(
+                                    text: "Apakah Anda yakin untuk menghapus "),
+                                TextSpan(
+                                  text: state.selectedParticipant!.name,
+                                  style: textWhite16.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue),
+                                ),
+                                const TextSpan(text: " ?"),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  )
+                : const SizedBox(),
             Expanded(
               child: TextFormField(
                 focusNode: focusNode,

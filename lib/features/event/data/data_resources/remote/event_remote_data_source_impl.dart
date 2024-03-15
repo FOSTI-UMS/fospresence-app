@@ -28,18 +28,14 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   Future<void> deleteEvent({required EventEntity event}) async {
     CollectionReference events =
         FirebaseFirestore.instance.collection('events');
-
-    QuerySnapshot participantSnapshot = await FirebaseFirestore.instance
-        .collection('participants')
-        .where('events', isEqualTo: event)
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection("events")
+        .doc(event.ref.id)
+        .collection("participants")
         .get();
 
-    if (participantSnapshot.docs.isNotEmpty) {
-      for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
-        await doc.reference.delete();
-      }
-    } else {
-      debugPrint("No participants found for this event.");
+    for (DocumentSnapshot doc in querySnapshot.docs) {
+      await doc.reference.delete();
     }
 
     return events
@@ -52,23 +48,6 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   Future<void> editEvent({required EventEntity event}) async {
     CollectionReference events =
         FirebaseFirestore.instance.collection('events');
-
-    QuerySnapshot participantSnapshot = await FirebaseFirestore.instance
-        .collection('participants')
-        .where('events', isEqualTo: event)
-        .get();
-
-    if (participantSnapshot.docs.isNotEmpty) {
-      for (QueryDocumentSnapshot doc in participantSnapshot.docs) {
-        await doc.reference.update({
-          'name': event.name,
-          'datetime': event.datetime,
-          'perticipants': event.participants
-        });
-      }
-    } else {
-      debugPrint("No participants found for this event.");
-    }
 
     return events.doc(event.ref.id).update(
       {
@@ -96,6 +75,4 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
     }
     return events;
   }
-
- 
 }

@@ -10,7 +10,7 @@ abstract class ParticipantEntity with _$ParticipantEntity {
     required DocumentReference ref,
     required String name,
     required String email,
-    required String eventRaw,
+    String? eventRaw,
     EventEntity? event,
   }) = _ParticipantEntity;
 
@@ -21,9 +21,15 @@ abstract class ParticipantEntity with _$ParticipantEntity {
 
     return ParticipantEntity(
       ref: snapshot.reference,
-      name: data?["name"],
+      name: data?["name"].toLowerCase().split(' ').map(
+        (word) {
+          return word.isNotEmpty
+              ? word[0].toUpperCase() + word.substring(1)
+              : "";
+        },
+      ).join(' '),
       email: data?["email"],
-      eventRaw: data?["events"] ?? [],
+      // eventRaw: data?["events"],
     );
   }
 
@@ -31,7 +37,9 @@ abstract class ParticipantEntity with _$ParticipantEntity {
     return {
       "name": name,
       "email": email,
-      "events": event?.ref.id,
+      // "events": event?.ref.id,
     };
   }
 }
+
+// BUAT FUNCTION BARU KAYAK INITEVENTS BUAT ISI, ISI EVENTSNYA

@@ -17,7 +17,6 @@ import '../../features/participant/data/data_resources/remote/participant_remote
 import '../../features/participant/data/data_resources/remote/participant_remote_data_source_impl.dart';
 import '../../features/participant/data/repositories/participant_repository_impl.dart';
 import '../../features/participant/domain/repositories/participant_repository.dart';
-import '../../features/participant/domain/usecases/create_participant_use_case.dart';
 import '../../features/participant/domain/usecases/delete_participant_use_case.dart';
 import '../../features/participant/domain/usecases/get_participant_use_case.dart';
 
@@ -37,7 +36,6 @@ Future<void> init() async {
       deleteEventUseCase: sl()));
   sl.registerFactory<ParticipantBloc>(() => ParticipantBloc(
       addParticipantToEventUseCase: sl(),
-      createParticipantUseCase: sl(),
       getParticipantsUseCase: sl(),
       deleteParticipantUseCase: sl()));
 
@@ -63,8 +61,6 @@ Future<void> init() async {
       DeleteEventUseCase(eventRespository: sl()));
   sl.registerSingleton<GetParticipantsUseCase>(
       GetParticipantsUseCase(participantRespository: sl()));
-  sl.registerSingleton<CreateParticipantUseCase>(
-      CreateParticipantUseCase(participantRespository: sl()));
   sl.registerSingleton<DeleteParticipantUseCase>(
       DeleteParticipantUseCase(participantRespository: sl()));
   sl.registerSingleton<AddParticipantToEventUseCase>(

@@ -19,7 +19,7 @@ mixin _$ParticipantEntity {
   DocumentReference<Object?> get ref => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get eventRaw => throw _privateConstructorUsedError;
+  String? get eventRaw => throw _privateConstructorUsedError;
   EventEntity? get event => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $ParticipantEntityCopyWith<$Res> {
       {DocumentReference<Object?> ref,
       String name,
       String email,
-      String eventRaw,
+      String? eventRaw,
       EventEntity? event});
 
   $EventEntityCopyWith<$Res>? get event;
@@ -59,7 +59,7 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
     Object? ref = null,
     Object? name = null,
     Object? email = null,
-    Object? eventRaw = null,
+    Object? eventRaw = freezed,
     Object? event = freezed,
   }) {
     return _then(_value.copyWith(
@@ -75,10 +75,10 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      eventRaw: null == eventRaw
+      eventRaw: freezed == eventRaw
           ? _value.eventRaw
           : eventRaw // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       event: freezed == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -111,7 +111,7 @@ abstract class _$$ParticipantEntityImplCopyWith<$Res>
       {DocumentReference<Object?> ref,
       String name,
       String email,
-      String eventRaw,
+      String? eventRaw,
       EventEntity? event});
 
   @override
@@ -132,7 +132,7 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
     Object? ref = null,
     Object? name = null,
     Object? email = null,
-    Object? eventRaw = null,
+    Object? eventRaw = freezed,
     Object? event = freezed,
   }) {
     return _then(_$ParticipantEntityImpl(
@@ -148,10 +148,10 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      eventRaw: null == eventRaw
+      eventRaw: freezed == eventRaw
           ? _value.eventRaw
           : eventRaw // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       event: freezed == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -167,7 +167,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
       {required this.ref,
       required this.name,
       required this.email,
-      required this.eventRaw,
+      this.eventRaw,
       this.event});
 
   @override
@@ -177,7 +177,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
   @override
   final String email;
   @override
-  final String eventRaw;
+  final String? eventRaw;
   @override
   final EventEntity? event;
 
@@ -215,7 +215,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
     return {
       "name": name,
       "email": email,
-      "events": event?.ref.id,
+      // "events": event?.ref.id,
     };
   }
 }
@@ -225,7 +225,7 @@ abstract class _ParticipantEntity implements ParticipantEntity {
       {required final DocumentReference<Object?> ref,
       required final String name,
       required final String email,
-      required final String eventRaw,
+      final String? eventRaw,
       final EventEntity? event}) = _$ParticipantEntityImpl;
 
   @override
@@ -235,7 +235,7 @@ abstract class _ParticipantEntity implements ParticipantEntity {
   @override
   String get email;
   @override
-  String get eventRaw;
+  String? get eventRaw;
   @override
   EventEntity? get event;
   @override

@@ -13,7 +13,7 @@ class EventRepositoryImpl extends EventRespository {
   Future<Either<ValueFailure<String>, void>> createEvent(
       {required EventEntity event}) async {
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 1500));
       final result = await eventRemoteDataSource.createEvent(event: event);
       return Right(result);
     } catch (e) {
@@ -50,7 +50,7 @@ class EventRepositoryImpl extends EventRespository {
   Future<Either<ValueFailure<String>, void>> editEvent(
       {required EventEntity event}) async {
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 1500));
       final result = await eventRemoteDataSource.editEvent(event: event);
       return Right(result);
     } catch (e) {

@@ -13,35 +13,12 @@ class ParticipantRepositoryImpl extends ParticipantRespository {
   ParticipantRepositoryImpl({required this.participantRemoteDataSource});
 
   @override
-  Future<Either<ValueFailure<String>, void>> createParticipant(
-      {required ParticipantEntity participant,
-      Map<String, Object?>? event}) async {
-    try {
-      final result = await participantRemoteDataSource.createParticipant(
-          participant: participant, event: event);
-      return Right(result);
-    } catch (e) {
-      if (e is Exception) {
-        debugPrint("PARTICIPANT ERROR: $e");
-        return const Left(
-          ValueFailure.participantAlreadyExists(
-              errorMessage: "Nama peserta sudah terdaftar"),
-        );
-      } else {
-        debugPrint("PARTICIPANT ERROR: $e");
-        return const Left(
-          ValueFailure.firebaseError(errorMessage: "Gagal menambahkan peserta"),
-        );
-      }
-    }
-  }
-
-  @override
   Future<Either<ValueFailure<String>, void>> deleteParticipant(
-      {required ParticipantEntity participant}) async {
+      {required ParticipantEntity participant,required EventEntity event}) async {
     try {
       final result = await participantRemoteDataSource.deleteParticipant(
-          participant: participant);
+          participant: participant,
+          event: event);
       return Right(result);
     } catch (e) {
       debugPrint("PARTICIPANT ERROR: $e");

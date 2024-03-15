@@ -38,8 +38,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
           getEvents: (value) async => await _getEvents(),
           createEventPressed: (value) async => await _createEvent(value.event),
           editEventPressed: (value) async => await _editEvent(value.event),
-          deleteEventPressed: (value) async => await _deleteEvent(value.event),
-          
+          deleteEventPressed: (value) async => await _deleteEvent(value.event),   
           selectedEventPressed: (value) =>
               emit(state.copyWith(selectedEvent: value.event)),
         );
@@ -87,7 +86,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   Future<void> _getEvents() async {
     emit(state.copyWith(isLoading: true));
 
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(milliseconds: 1500));
     final eventList = await getEventsUseCase();
 
     emit(
