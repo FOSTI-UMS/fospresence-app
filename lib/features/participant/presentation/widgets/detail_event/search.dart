@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:fospresence/features/participant/presentation/bloc/participant/participant_bloc.dart';
 
+import '../../../../../core/commons/widgets/confirm_password_dialog.dart';
 import '../../../../../core/constants/colors.dart';
 
 class DetailEventSearch extends StatefulWidget {
@@ -18,6 +18,10 @@ class DetailEventSearch extends StatefulWidget {
 class _DetailEventSearchState extends State<DetailEventSearch> {
   late final TextEditingController _edtSearch;
   late final ParticipantBloc _participantBloc;
+  late final TextEditingController _edtPassDialog;
+  late final GlobalKey<FormState> _formKeyDialog;
+  late final FocusNode _focusNodeDialog;
+
   bool isSearchTextEmpty = true;
 
   @override
@@ -25,11 +29,16 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
     super.initState();
     _participantBloc = BlocProvider.of<ParticipantBloc>(context);
     _edtSearch = TextEditingController();
+    _edtPassDialog = TextEditingController();
+    _focusNodeDialog = FocusNode();
+    _formKeyDialog = GlobalKey<FormState>();
   }
 
   @override
   void dispose() {
     _edtSearch.dispose();
+    _edtPassDialog.dispose();
+    _focusNodeDialog.dispose();
     super.dispose();
   }
 
@@ -109,28 +118,25 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
         const SizedBox(width: 15),
         BlocBuilder<EventBloc, EventState>(
           bloc: BlocProvider.of<EventBloc>(context),
-          builder: (context, state) {
+          builder: (context, eventState) {
             return GestureDetector(
               onTap: state.isLoading
                   ? () {}
-                  : () {
-                      _participantBloc.add(
+                  : () => ConfirmPassDialog.showConfirmDialog(
+                      context: context,
+                      onConfirm: (context) => _participantBloc.add(
                           ParticipantEvent.addParticipantsToExcel(
-                              event: state.selectedEvent!));
-                    },
-              // : () => Navigator.pushNamed(
-              //     context, RouteName.qrCodeScannerScreen),
+                              event: eventState.selectedEvent!)),
+                      formKey: _formKeyDialog,
+                      edtPass: _edtPassDialog,
+                      focusNode: _focusNodeDialog),
               child: Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.white, width: 0.2),
                     color: primaryColor.withOpacity(0.5),
                     borderRadius: BorderRadius.circular(10)),
-                child: SvgPicture.asset(
-                  "assets/svg/scan_qr_code.svg",
-                  colorFilter:
-                      const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                ),
+                child: const Icon(Icons.download_rounded),
               ),
             );
           },

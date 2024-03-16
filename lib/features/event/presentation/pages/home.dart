@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
 
   Positioned _buildFloatingActionButton(BuildContext context) {
     final player = AudioPlayer();
-    Timer? timer;
+    bool isPlayingSound = false;
     return Positioned(
       bottom: 20,
       right: 20,
@@ -60,14 +60,21 @@ class HomeScreen extends StatelessWidget {
         builder: (context, state) {
           return GestureDetector(
             onLongPressStart: (_) {
-              timer = Timer(const Duration(seconds: 10), () {
-                player.play(AssetSource("svg/kimi_no_koto_ga_suki_dakara.mp3"));
-                fToast.showToast(
-                    child: const CustomToastWithBorder(
-                        message: "Playing Kimi No Koto Ga Suki Dakara by JKT48",
-                        isSuccess: true));
+              isPlayingSound = true;
+              Timer(const Duration(seconds: 5), () {
+                if (isPlayingSound) {
+                  player
+                      .play(AssetSource("svg/kimi_no_koto_ga_suki_dakara.mp3"));
+                  fToast.showToast(
+                      child: const CustomToastWithBorder(
+                          message:
+                              "Playing Kimi No Koto Ga Suki Dakara by JKT48",
+                          isSuccess: true));
+                }
               });
             },
+            onLongPressCancel: () => isPlayingSound = false,
+            onLongPressUp: () => isPlayingSound = false,
             child: FloatingActionButton(
               onPressed: state.isLoading
                   ? () {}

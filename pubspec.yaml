@@ -51,18 +51,26 @@ dependencies:
   intl: ^0.19.0
   qr_code_scanner: ^1.0.1
   audioplayers: ^5.2.1
-  excel: ^4.0.2
   path_provider: ^2.1.2
   syncfusion_flutter_xlsio: ^25.1.35
   open_file: ^3.3.2
+  url_launcher: ^6.2.5
 
 flutter_native_splash:
-  color: "#000000"
-  image: assets/images/logo_dark.png
-  color_dark: "#000000"
+  color: "#ffffff"
+  image: assets/images/logo_light.png
+  branding: assets/images/brand_light.png
+  color_dark: "#0B0B0D"
   image_dark: assets/images/logo_dark.png
+  branding_dark: assets/images/brand_dark.png
+
+  android_12:
+    image: assets/images/logo_light.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/images/logo_dark.png
+    icon_background_color_dark: "#0B0B0D"
+
   web: false
-  android: false
 
 dev_dependencies:
   flutter_test:

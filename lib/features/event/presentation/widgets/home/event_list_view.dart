@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/core/commons/widgets/card_shimmer.dart';
 import 'package:fospresence/core/commons/widgets/event_bottom_sheet.dart';
 import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../config/routes/route_name.dart';
+import '../../../../../core/commons/widgets/custom_toast_w_border.dart';
 import '../../../../../core/constants/helper.dart';
+import '../../../../my_app.dart';
 import '../../../domain/entities/event/event_entity.dart';
 
 class EventListView extends StatefulWidget {
@@ -64,11 +68,13 @@ class _EventListViewState extends State<EventListView> {
               eventList.isEmpty &&
               state.whose != null) {
             if (state.whose == Wife.r) {
-              return _buildContainer(context, "assets/images/dududu.png");
+              return _buildContainer(
+                  context, "assets/images/dududu.png", Wife.r);
             } else if (state.whose == Wife.j) {
-              return _buildContainer(context, "assets/images/mantap.jpg");
+              return _buildContainer(
+                  context, "assets/images/mantap.jpg", Wife.j);
             } else {
-              return _buildContainer(context, "assets/images/hehe.jpg");
+              return _buildContainer(context, "assets/images/hehe.jpg", Wife.f);
             }
           }
           return Expanded(
@@ -145,17 +151,55 @@ class _EventListViewState extends State<EventListView> {
     );
   }
 
-  Container _buildContainer(BuildContext context, String image) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width,
-      margin: const EdgeInsets.symmetric(horizontal: 15),
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(width: 1.5, color: Colors.white)),
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.asset(image, fit: BoxFit.cover)),
+  GestureDetector _buildContainer(
+      BuildContext context, String image, Wife whose) {
+    return GestureDetector(
+      onTap: () {
+        switch (whose) {
+          case Wife.r:
+            _launchURL("https://www.instagram.com/raflisilehu_/");
+          case Wife.j:
+            _launchURL("https://www.instagram.com/josutomaru/");
+          case Wife.f:
+            _launchURL("https://www.instagram.com/mfl__4/");
+          default:
+            fToast.showToast(
+              child: const Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: CustomToastWithBorder(
+                    message: "Halo ini kami dari Overlogic", isSuccess: true),
+              ),
+              gravity: ToastGravity.BOTTOM,
+            );
+        }
+      },
+      child: Container(
+        width: MediaQuery.sizeOf(context).width,
+        margin: const EdgeInsets.symmetric(horizontal: 15),
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(width: 1.5, color: Colors.white)),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(image, fit: BoxFit.cover)),
+      ),
     );
+  }
+
+  void _launchURL(String stringUrl) async {
+    final url = Uri.parse(stringUrl);
+    if (await launchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      fToast.showToast(
+        child: const Padding(
+          padding: EdgeInsets.only(bottom: 10),
+          child: CustomToastWithBorder(
+              message: "Halo ini kami dari Overlogic", isSuccess: true),
+        ),
+        gravity: ToastGravity.BOTTOM,
+      );
+    }
   }
 }

@@ -21,7 +21,8 @@ class ConfirmPassDialog {
       required GlobalKey<FormState> formKey,
       required TextEditingController edtPass,
       required FocusNode focusNode,
-      bool isParticipant = false}) {
+      bool isParticipant = false, 
+      bool isExcel = false}) {
     return showDialog(
       context: context,
       builder: (context) => SizedBox(
@@ -46,13 +47,16 @@ class ConfirmPassDialog {
                 child: AlertDialog(
                   elevation: 0,
                   backgroundColor: appDarkBgColor,
-                  title: Text(
-                    "Password",
-                    style: textWhite20.copyWith(fontWeight: FontWeight.w700),
-                    textAlign: TextAlign.center,
-                  ),
+                  title: isParticipant || isExcel
+                      ? const SizedBox()
+                      : Text(
+                          "Password",
+                          style:
+                              textWhite20.copyWith(fontWeight: FontWeight.w700),
+                          textAlign: TextAlign.center,
+                        ),
                   content: _buildForm(formKey, focusNode, edtPass, onConfirm,
-                      context, isParticipant),
+                      context, isParticipant, isExcel),
                 ),
               ),
             ),
@@ -68,7 +72,9 @@ class ConfirmPassDialog {
       TextEditingController edtPass,
       void Function(BuildContext context) onConfirm,
       BuildContext context,
-      bool isParticipant) {
+      bool isParticipant,
+      bool isExcel,
+      ) {
     void back() {
       Navigator.pop(context);
       focusNode.unfocus();

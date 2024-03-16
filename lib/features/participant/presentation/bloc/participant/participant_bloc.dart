@@ -55,7 +55,7 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
     final participantList = await getParticipantsUseCase(params: event);
     final participantListUpdated = _getParticipantListUpdated(participantList);
 
-    if (participantListUpdated != []) {
+    if (participantListUpdated.isNotEmpty) {
       final Workbook workbook = Workbook();
       final Worksheet sheet = workbook.worksheets[0];
       sheet.getRangeByIndex(1, 1).setText("No");

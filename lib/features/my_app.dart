@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       scrollBehavior: const ScrollBehavior()
-          .copyWith(overscroll: false, physics: const BouncingScrollPhysics()),
+          .copyWith(overscroll: false, physics: const ClampingScrollPhysics()),
       builder: FToastBuilder(),
       navigatorKey: navigatorKey,
       onGenerateRoute: RouteGenerator.onGenerateRoute,

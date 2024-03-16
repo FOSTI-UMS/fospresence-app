@@ -5,16 +5,37 @@ import 'package:fospresence/features/participant/presentation/widgets/detail_eve
 import 'package:fospresence/features/participant/presentation/widgets/detail_event/participant_list_view.dart';
 import 'package:fospresence/core/commons/widgets/background_w_logo.dart';
 import '../../../../core/constants/colors.dart';
+import '../widgets/detail_event/scan_button.dart';
 import '../widgets/detail_event/sliver_app_bar.dart';
 
-class DetailEventScreen extends StatelessWidget {
+class DetailEventScreen extends StatefulWidget {
   const DetailEventScreen({super.key});
+
+  @override
+  State<DetailEventScreen> createState() => _DetailEventScreenState();
+}
+
+class _DetailEventScreenState extends State<DetailEventScreen> {
+  late final ScrollController _scrollController;
+  bool isBtnShown = false;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: NestedScrollView(
+        controller: _scrollController,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
             [
           BlocBuilder<EventBloc, EventState>(
@@ -38,6 +59,9 @@ class DetailEventScreen extends StatelessWidget {
                         builder: (context, state) => ParticipantListView(
                             selectedEvent: state.selectedEvent!),
                       ),
+                      ScanButton(
+                          scrollController: _scrollController,
+                          isBtnShown: isBtnShown)
                     ],
                   ),
                 )
