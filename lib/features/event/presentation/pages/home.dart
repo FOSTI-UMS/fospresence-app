@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
           return GestureDetector(
             onLongPressStart: (_) {
               isPlayingSound = true;
-              Timer(const Duration(seconds: 5), () {
+              Timer(const Duration(seconds: 10), () {
                 if (isPlayingSound) {
                   player
                       .play(AssetSource("svg/kimi_no_koto_ga_suki_dakara.mp3"));
