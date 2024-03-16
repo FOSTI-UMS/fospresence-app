@@ -141,15 +141,18 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
   Future<void> _createParticipant(List<String> qrCodeConvertResult) async {
     final selectedEvent =
         BlocProvider.of<EventBloc>(context).state.selectedEvent;
-    if (qrCodeConvertResult.length == 3) {
+    if (qrCodeConvertResult.length == 4) {
       String name = qrCodeConvertResult[0];
       String email = qrCodeConvertResult[1];
-      String event = qrCodeConvertResult[2];
+      String division = qrCodeConvertResult[2];
+      String event = qrCodeConvertResult[3];
       if (event == selectedEvent!.name.toLowerCase()) {
         ParticipantEntity participantData = ParticipantEntity(
             ref: FirebaseFirestore.instance.collection("events").doc(),
             name: name,
             email: email,
+            division: division,
+            datetime: DateTime.now(),
             eventRaw: selectedEvent.ref.id);
         context.read<ParticipantBloc>().add(
               ParticipantEvent.addParticipantToEvent(
@@ -160,11 +163,21 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
           child: const Padding(
             padding: EdgeInsets.only(bottom: 10),
             child: CustomToastWithBorder(
-                message: "Kode QR tidak valid", isSuccess: false),
+                message: "Nama proker tidak cocok dengan kode QR",
+                isSuccess: false),
           ),
           gravity: ToastGravity.BOTTOM,
         );
       }
+    } else {
+      fToast.showToast(
+        child: const Padding(
+          padding: EdgeInsets.only(bottom: 10),
+          child: CustomToastWithBorder(
+              message: "Kode QR tidak valid", isSuccess: false),
+        ),
+        gravity: ToastGravity.BOTTOM,
+      );
     }
   }
 
@@ -178,7 +191,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
       });
 
       List<String> qrCodeConvertResult =
-          _result!.code!.toLowerCase().split(",");
+          _result!.code!.toLowerCase().split("-");
 
       await _createParticipant(qrCodeConvertResult);
 

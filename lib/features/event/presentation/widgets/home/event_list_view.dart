@@ -120,7 +120,10 @@ class _EventListViewState extends State<EventListView> {
             child: ListTile(
               title: Text(
                 selectedEvent.name,
-                style: textWhite18.copyWith(fontWeight: FontWeight.w700),
+                maxLines: 2,
+                style: textWhite18.copyWith(
+                    fontWeight: FontWeight.w700,
+                    overflow: TextOverflow.ellipsis),
               ),
               subtitle: Text(formattedDatetime, style: textWhite12),
               trailing: GestureDetector(

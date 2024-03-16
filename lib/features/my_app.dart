@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/config/themes/dark_theme.dart';
-import 'package:fospresence/config/themes/light_theme.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 
 import '../config/routes/route_generator.dart';
@@ -38,8 +37,7 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: navigatorKey,
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteName.homeScreen,
-      theme: lightThemeData,
-      darkTheme: darkThemeData,
+      theme: darkThemeData,
       home: const HomeScreen(),
     );
   }

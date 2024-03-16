@@ -26,6 +26,7 @@ mixin _$ParticipantEvent {
     required TResult Function(ParticipantEntity participant)
         selectedParticipantPressed,
     required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$ParticipantEvent {
     TResult? Function(ParticipantEntity participant)?
         selectedParticipantPressed,
     TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +51,7 @@ mixin _$ParticipantEvent {
         addParticipantToEvent,
     TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
     TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +65,8 @@ mixin _$ParticipantEvent {
     required TResult Function(_SelectedParticipantPressed value)
         selectedParticipantPressed,
     required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +78,7 @@ mixin _$ParticipantEvent {
     TResult? Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +89,7 @@ mixin _$ParticipantEvent {
     TResult Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +196,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
     required TResult Function(ParticipantEntity participant)
         selectedParticipantPressed,
     required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
   }) {
     return getParticipants(event);
   }
@@ -204,6 +212,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
     TResult? Function(ParticipantEntity participant)?
         selectedParticipantPressed,
     TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
   }) {
     return getParticipants?.call(event);
   }
@@ -218,6 +227,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
         addParticipantToEvent,
     TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
     TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (getParticipants != null) {
@@ -237,6 +247,8 @@ class _$GetParticipantsImpl implements _GetParticipants {
     required TResult Function(_SelectedParticipantPressed value)
         selectedParticipantPressed,
     required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
   }) {
     return getParticipants(this);
   }
@@ -251,6 +263,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
     TResult? Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
   }) {
     return getParticipants?.call(this);
   }
@@ -264,6 +277,7 @@ class _$GetParticipantsImpl implements _GetParticipants {
     TResult Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (getParticipants != null) {
@@ -387,6 +401,7 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     required TResult Function(ParticipantEntity participant)
         selectedParticipantPressed,
     required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
   }) {
     return deleteParticipantPressed(participant, event);
   }
@@ -402,6 +417,7 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     TResult? Function(ParticipantEntity participant)?
         selectedParticipantPressed,
     TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
   }) {
     return deleteParticipantPressed?.call(participant, event);
   }
@@ -416,6 +432,7 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
         addParticipantToEvent,
     TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
     TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (deleteParticipantPressed != null) {
@@ -435,6 +452,8 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     required TResult Function(_SelectedParticipantPressed value)
         selectedParticipantPressed,
     required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
   }) {
     return deleteParticipantPressed(this);
   }
@@ -449,6 +468,7 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     TResult? Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
   }) {
     return deleteParticipantPressed?.call(this);
   }
@@ -462,6 +482,7 @@ class _$DeteleParticipantPressedImpl implements _DeteleParticipantPressed {
     TResult Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (deleteParticipantPressed != null) {
@@ -588,6 +609,7 @@ class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
     required TResult Function(ParticipantEntity participant)
         selectedParticipantPressed,
     required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
   }) {
     return addParticipantToEvent(event, participant);
   }
@@ -603,6 +625,7 @@ class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
     TResult? Function(ParticipantEntity participant)?
         selectedParticipantPressed,
     TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
   }) {
     return addParticipantToEvent?.call(event, participant);
   }
@@ -617,6 +640,7 @@ class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
         addParticipantToEvent,
     TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
     TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (addParticipantToEvent != null) {
@@ -636,6 +660,8 @@ class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
     required TResult Function(_SelectedParticipantPressed value)
         selectedParticipantPressed,
     required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
   }) {
     return addParticipantToEvent(this);
   }
@@ -650,6 +676,7 @@ class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
     TResult? Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
   }) {
     return addParticipantToEvent?.call(this);
   }
@@ -663,6 +690,7 @@ class _$AddParticipantToEventEventImpl implements _AddParticipantToEventEvent {
     TResult Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (addParticipantToEvent != null) {
@@ -772,6 +800,7 @@ class _$SelectedParticipantPressedImpl implements _SelectedParticipantPressed {
     required TResult Function(ParticipantEntity participant)
         selectedParticipantPressed,
     required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
   }) {
     return selectedParticipantPressed(participant);
   }
@@ -787,6 +816,7 @@ class _$SelectedParticipantPressedImpl implements _SelectedParticipantPressed {
     TResult? Function(ParticipantEntity participant)?
         selectedParticipantPressed,
     TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
   }) {
     return selectedParticipantPressed?.call(participant);
   }
@@ -801,6 +831,7 @@ class _$SelectedParticipantPressedImpl implements _SelectedParticipantPressed {
         addParticipantToEvent,
     TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
     TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (selectedParticipantPressed != null) {
@@ -820,6 +851,8 @@ class _$SelectedParticipantPressedImpl implements _SelectedParticipantPressed {
     required TResult Function(_SelectedParticipantPressed value)
         selectedParticipantPressed,
     required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
   }) {
     return selectedParticipantPressed(this);
   }
@@ -834,6 +867,7 @@ class _$SelectedParticipantPressedImpl implements _SelectedParticipantPressed {
     TResult? Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
   }) {
     return selectedParticipantPressed?.call(this);
   }
@@ -847,6 +881,7 @@ class _$SelectedParticipantPressedImpl implements _SelectedParticipantPressed {
     TResult Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (selectedParticipantPressed != null) {
@@ -941,6 +976,7 @@ class _$SearchParticipantImpl implements _SearchParticipant {
     required TResult Function(ParticipantEntity participant)
         selectedParticipantPressed,
     required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
   }) {
     return searchParticipant(searchText);
   }
@@ -956,6 +992,7 @@ class _$SearchParticipantImpl implements _SearchParticipant {
     TResult? Function(ParticipantEntity participant)?
         selectedParticipantPressed,
     TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
   }) {
     return searchParticipant?.call(searchText);
   }
@@ -970,6 +1007,7 @@ class _$SearchParticipantImpl implements _SearchParticipant {
         addParticipantToEvent,
     TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
     TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (searchParticipant != null) {
@@ -989,6 +1027,8 @@ class _$SearchParticipantImpl implements _SearchParticipant {
     required TResult Function(_SelectedParticipantPressed value)
         selectedParticipantPressed,
     required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
   }) {
     return searchParticipant(this);
   }
@@ -1003,6 +1043,7 @@ class _$SearchParticipantImpl implements _SearchParticipant {
     TResult? Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
   }) {
     return searchParticipant?.call(this);
   }
@@ -1016,6 +1057,7 @@ class _$SearchParticipantImpl implements _SearchParticipant {
     TResult Function(_SelectedParticipantPressed value)?
         selectedParticipantPressed,
     TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
     required TResult orElse(),
   }) {
     if (searchParticipant != null) {
@@ -1033,6 +1075,192 @@ abstract class _SearchParticipant implements ParticipantEvent {
   @JsonKey(ignore: true)
   _$$SearchParticipantImplCopyWith<_$SearchParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddParticipantsToExcelImplCopyWith<$Res> {
+  factory _$$AddParticipantsToExcelImplCopyWith(
+          _$AddParticipantsToExcelImpl value,
+          $Res Function(_$AddParticipantsToExcelImpl) then) =
+      __$$AddParticipantsToExcelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EventEntity event});
+
+  $EventEntityCopyWith<$Res> get event;
+}
+
+/// @nodoc
+class __$$AddParticipantsToExcelImplCopyWithImpl<$Res>
+    extends _$ParticipantEventCopyWithImpl<$Res, _$AddParticipantsToExcelImpl>
+    implements _$$AddParticipantsToExcelImplCopyWith<$Res> {
+  __$$AddParticipantsToExcelImplCopyWithImpl(
+      _$AddParticipantsToExcelImpl _value,
+      $Res Function(_$AddParticipantsToExcelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_$AddParticipantsToExcelImpl(
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as EventEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventEntityCopyWith<$Res> get event {
+    return $EventEntityCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddParticipantsToExcelImpl implements _AddParticipantsToExcel {
+  const _$AddParticipantsToExcelImpl({required this.event});
+
+  @override
+  final EventEntity event;
+
+  @override
+  String toString() {
+    return 'ParticipantEvent.addParticipantsToExcel(event: $event)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddParticipantsToExcelImpl &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddParticipantsToExcelImplCopyWith<_$AddParticipantsToExcelImpl>
+      get copyWith => __$$AddParticipantsToExcelImplCopyWithImpl<
+          _$AddParticipantsToExcelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EventEntity event) getParticipants,
+    required TResult Function(ParticipantEntity participant, EventEntity event)
+        deleteParticipantPressed,
+    required TResult Function(EventEntity event, ParticipantEntity participant)
+        addParticipantToEvent,
+    required TResult Function(ParticipantEntity participant)
+        selectedParticipantPressed,
+    required TResult Function(String searchText) searchParticipant,
+    required TResult Function(EventEntity event) addParticipantsToExcel,
+  }) {
+    return addParticipantsToExcel(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EventEntity event)? getParticipants,
+    TResult? Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult? Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
+    TResult? Function(ParticipantEntity participant)?
+        selectedParticipantPressed,
+    TResult? Function(String searchText)? searchParticipant,
+    TResult? Function(EventEntity event)? addParticipantsToExcel,
+  }) {
+    return addParticipantsToExcel?.call(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EventEntity event)? getParticipants,
+    TResult Function(ParticipantEntity participant, EventEntity event)?
+        deleteParticipantPressed,
+    TResult Function(EventEntity event, ParticipantEntity participant)?
+        addParticipantToEvent,
+    TResult Function(ParticipantEntity participant)? selectedParticipantPressed,
+    TResult Function(String searchText)? searchParticipant,
+    TResult Function(EventEntity event)? addParticipantsToExcel,
+    required TResult orElse(),
+  }) {
+    if (addParticipantsToExcel != null) {
+      return addParticipantsToExcel(event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetParticipants value) getParticipants,
+    required TResult Function(_DeteleParticipantPressed value)
+        deleteParticipantPressed,
+    required TResult Function(_AddParticipantToEventEvent value)
+        addParticipantToEvent,
+    required TResult Function(_SelectedParticipantPressed value)
+        selectedParticipantPressed,
+    required TResult Function(_SearchParticipant value) searchParticipant,
+    required TResult Function(_AddParticipantsToExcel value)
+        addParticipantsToExcel,
+  }) {
+    return addParticipantsToExcel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetParticipants value)? getParticipants,
+    TResult? Function(_DeteleParticipantPressed value)?
+        deleteParticipantPressed,
+    TResult? Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
+    TResult? Function(_SelectedParticipantPressed value)?
+        selectedParticipantPressed,
+    TResult? Function(_SearchParticipant value)? searchParticipant,
+    TResult? Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
+  }) {
+    return addParticipantsToExcel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetParticipants value)? getParticipants,
+    TResult Function(_DeteleParticipantPressed value)? deleteParticipantPressed,
+    TResult Function(_AddParticipantToEventEvent value)? addParticipantToEvent,
+    TResult Function(_SelectedParticipantPressed value)?
+        selectedParticipantPressed,
+    TResult Function(_SearchParticipant value)? searchParticipant,
+    TResult Function(_AddParticipantsToExcel value)? addParticipantsToExcel,
+    required TResult orElse(),
+  }) {
+    if (addParticipantsToExcel != null) {
+      return addParticipantsToExcel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddParticipantsToExcel implements ParticipantEvent {
+  const factory _AddParticipantsToExcel({required final EventEntity event}) =
+      _$AddParticipantsToExcelImpl;
+
+  EventEntity get event;
+  @JsonKey(ignore: true)
+  _$$AddParticipantsToExcelImplCopyWith<_$AddParticipantsToExcelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

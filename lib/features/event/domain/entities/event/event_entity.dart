@@ -20,10 +20,11 @@ abstract class EventEntity with _$EventEntity {
     final data = snapshot.data();
 
     return EventEntity(
-      ref: snapshot.reference,
-      name: data?["name"].substring(0, 1).toUpperCase() + data?["name"].substring(1),
-      datetime: (data?["datetime"] as Timestamp).toDate(),
-    );
+        ref: snapshot.reference,
+        name: data?["name"].substring(0, 1).toUpperCase() +
+            data?["name"].substring(1),
+        datetime: (data?["datetime"] as Timestamp).toDate(),
+        participants: data?["participants"]);
   }
 
   Map<String, Object?> toFirestore() {

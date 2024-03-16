@@ -106,7 +106,7 @@ class _ParticipantListViewState extends State<ParticipantListView> {
         child: Center(
           child: ListTile(
             title: Text(
-              selectedParticipant.name,
+              "${selectedParticipant.name} (${selectedParticipant.division})",
               maxLines: 2,
               style: textWhite18.copyWith(
                   fontWeight: FontWeight.w700, overflow: TextOverflow.ellipsis),

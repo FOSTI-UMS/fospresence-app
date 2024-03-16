@@ -19,6 +19,8 @@ mixin _$ParticipantEntity {
   DocumentReference<Object?> get ref => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get division => throw _privateConstructorUsedError;
+  DateTime get datetime => throw _privateConstructorUsedError;
   String? get eventRaw => throw _privateConstructorUsedError;
   EventEntity? get event => throw _privateConstructorUsedError;
 
@@ -37,6 +39,8 @@ abstract class $ParticipantEntityCopyWith<$Res> {
       {DocumentReference<Object?> ref,
       String name,
       String email,
+      String division,
+      DateTime datetime,
       String? eventRaw,
       EventEntity? event});
 
@@ -59,6 +63,8 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
     Object? ref = null,
     Object? name = null,
     Object? email = null,
+    Object? division = null,
+    Object? datetime = null,
     Object? eventRaw = freezed,
     Object? event = freezed,
   }) {
@@ -75,6 +81,14 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      division: null == division
+          ? _value.division
+          : division // ignore: cast_nullable_to_non_nullable
+              as String,
+      datetime: null == datetime
+          ? _value.datetime
+          : datetime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       eventRaw: freezed == eventRaw
           ? _value.eventRaw
           : eventRaw // ignore: cast_nullable_to_non_nullable
@@ -111,6 +125,8 @@ abstract class _$$ParticipantEntityImplCopyWith<$Res>
       {DocumentReference<Object?> ref,
       String name,
       String email,
+      String division,
+      DateTime datetime,
       String? eventRaw,
       EventEntity? event});
 
@@ -132,6 +148,8 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
     Object? ref = null,
     Object? name = null,
     Object? email = null,
+    Object? division = null,
+    Object? datetime = null,
     Object? eventRaw = freezed,
     Object? event = freezed,
   }) {
@@ -148,6 +166,14 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      division: null == division
+          ? _value.division
+          : division // ignore: cast_nullable_to_non_nullable
+              as String,
+      datetime: null == datetime
+          ? _value.datetime
+          : datetime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       eventRaw: freezed == eventRaw
           ? _value.eventRaw
           : eventRaw // ignore: cast_nullable_to_non_nullable
@@ -167,6 +193,8 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
       {required this.ref,
       required this.name,
       required this.email,
+      required this.division,
+      required this.datetime,
       this.eventRaw,
       this.event});
 
@@ -177,13 +205,17 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
   @override
   final String email;
   @override
+  final String division;
+  @override
+  final DateTime datetime;
+  @override
   final String? eventRaw;
   @override
   final EventEntity? event;
 
   @override
   String toString() {
-    return 'ParticipantEntity(ref: $ref, name: $name, email: $email, eventRaw: $eventRaw, event: $event)';
+    return 'ParticipantEntity(ref: $ref, name: $name, email: $email, division: $division, datetime: $datetime, eventRaw: $eventRaw, event: $event)';
   }
 
   @override
@@ -194,14 +226,18 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
             (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.division, division) ||
+                other.division == division) &&
+            (identical(other.datetime, datetime) ||
+                other.datetime == datetime) &&
             (identical(other.eventRaw, eventRaw) ||
                 other.eventRaw == eventRaw) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, ref, name, email, eventRaw, event);
+  int get hashCode => Object.hash(
+      runtimeType, ref, name, email, division, datetime, eventRaw, event);
 
   @JsonKey(ignore: true)
   @override
@@ -215,6 +251,8 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
     return {
       "name": name,
       "email": email,
+      "division": division,
+      "datetime": datetime,
       // "events": event?.ref.id,
     };
   }
@@ -225,6 +263,8 @@ abstract class _ParticipantEntity implements ParticipantEntity {
       {required final DocumentReference<Object?> ref,
       required final String name,
       required final String email,
+      required final String division,
+      required final DateTime datetime,
       final String? eventRaw,
       final EventEntity? event}) = _$ParticipantEntityImpl;
 
@@ -234,6 +274,10 @@ abstract class _ParticipantEntity implements ParticipantEntity {
   String get name;
   @override
   String get email;
+  @override
+  String get division;
+  @override
+  DateTime get datetime;
   @override
   String? get eventRaw;
   @override
