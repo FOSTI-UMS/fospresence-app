@@ -45,7 +45,7 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(bottom: 10.0, left: 8, right: 8),
       child: Column(
         children: [
           Container(
@@ -68,6 +68,7 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
 
   Row _buildRow(ParticipantState state, BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           child: TextField(

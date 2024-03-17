@@ -44,29 +44,26 @@ class _DetailEventScreenState extends State<DetailEventScreen> {
         ],
         body: Container(
           decoration: BoxDecoration(color: appDarkBgColor),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Column(
-              children: [
-                const DetailEventSearch(),
-                Expanded(
-                  child: Stack(
-                    fit: StackFit.expand,
-                    alignment: Alignment.center,
-                    children: [
-                      const BackgroundWithLogo(),
-                      BlocBuilder<EventBloc, EventState>(
-                        builder: (context, state) => ParticipantListView(
-                            selectedEvent: state.selectedEvent!),
-                      ),
-                      ScanButton(
-                          scrollController: _scrollController,
-                          isBtnShown: isBtnShown)
-                    ],
-                  ),
-                )
-              ],
-            ),
+          child: Column(
+            children: [
+              const DetailEventSearch(),
+              Expanded(
+                child: Stack(
+                  fit: StackFit.expand,
+                  alignment: Alignment.center,
+                  children: [
+                    const BackgroundWithLogo(),
+                    BlocBuilder<EventBloc, EventState>(
+                      builder: (context, state) => ParticipantListView(
+                          selectedEvent: state.selectedEvent!),
+                    ),
+                    ScanButton(
+                        scrollController: _scrollController,
+                        isBtnShown: isBtnShown)
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),

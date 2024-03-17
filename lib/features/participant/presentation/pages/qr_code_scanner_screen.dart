@@ -163,8 +163,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
           child: const Padding(
             padding: EdgeInsets.only(bottom: 10),
             child: CustomToastWithBorder(
-                message: "Nama proker tidak cocok dengan kode QR",
-                isSuccess: false),
+                message: "Kode QR tidak valid", isSuccess: false),
           ),
           gravity: ToastGravity.BOTTOM,
         );

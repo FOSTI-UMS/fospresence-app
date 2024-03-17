@@ -64,18 +64,15 @@ class _ParticipantListViewState extends State<ParticipantListView> {
               ),
             );
           }
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: participantListLength,
-              separatorBuilder: (context, index) => const SizedBox(height: 5),
-              itemBuilder: (context, index) => state.isLoading
-                  ? CardShimmer(index: index)
-                  : _buildParticipantListView(
-                      index, participantListLength, context, state),
-            ),
+          return ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: participantListLength,
+            separatorBuilder: (context, index) => const SizedBox(height: 5),
+            itemBuilder: (context, index) => state.isLoading
+                ? CardShimmer(index: index)
+                : _buildParticipantListView(
+                    index, participantListLength, context, state),
           );
         },
       ),
@@ -88,7 +85,7 @@ class _ParticipantListViewState extends State<ParticipantListView> {
         state.searchParticipantResult[index];
     return Padding(
       padding:
-          EdgeInsets.only(bottom: index == participantListLength - 1 ? 10 : 0),
+          EdgeInsets.only(bottom: index == participantListLength - 1 ? 10 : 0, right: 8, left: 8),
       child: Container(
         height: 100,
         width: MediaQuery.sizeOf(context).width,

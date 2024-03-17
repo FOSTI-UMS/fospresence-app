@@ -78,17 +78,14 @@ class _EventListViewState extends State<EventListView> {
             }
           }
           return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: eventListLength,
-                separatorBuilder: (context, index) => const SizedBox(height: 5),
-                itemBuilder: (context, index) => state.isLoading
-                    ? CardShimmer(index: index)
-                    : _buildEventCard(index, eventListLength, context, state),
-              ),
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: eventListLength,
+              separatorBuilder: (context, index) => const SizedBox(height: 5),
+              itemBuilder: (context, index) => state.isLoading
+                  ? CardShimmer(index: index)
+                  : _buildEventCard(index, eventListLength, context, state),
             ),
           );
         },
@@ -102,7 +99,8 @@ class _EventListViewState extends State<EventListView> {
     String formattedDatetime =
         DateFormat('EEEE, dd MMM yyyy', 'id_ID').format(selectedEvent.datetime);
     return Padding(
-      padding: EdgeInsets.only(bottom: index == eventListLength - 1 ? 10 : 0),
+      padding: EdgeInsets.only(
+          bottom: index == eventListLength - 1 ? 10 : 0, right: 8, left: 8),
       child: GestureDetector(
         onTap: () {
           _eventBloc.add(EventEvent.selectedEventPressed(event: selectedEvent));

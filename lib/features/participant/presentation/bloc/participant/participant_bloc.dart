@@ -60,7 +60,7 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
       final Worksheet sheet = workbook.worksheets[0];
       sheet.getRangeByIndex(1, 1).setText("No");
       sheet.getRangeByIndex(1, 2).setText("Nama");
-      sheet.getRangeByIndex(1, 3).setText("Email");
+      sheet.getRangeByIndex(1, 3).setText("NIM");
       sheet.getRangeByIndex(1, 4).setText("Divisi");
       sheet.getRangeByIndex(1, 5).setText("Waktu Presensi");
 
@@ -69,9 +69,11 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
         String hour = participant.datetime.hour.toString().padLeft(2, '0');
         String minute = participant.datetime.minute.toString().padLeft(2, '0');
         String formattedTime = '$hour:$minute';
+        List<String> splittedEmail = participant.email.split("@");
+        String nim = splittedEmail[0];
         sheet.getRangeByIndex(i + 2, 1).setText("${i + 1}");
         sheet.getRangeByIndex(i + 2, 2).setText(participant.name);
-        sheet.getRangeByIndex(i + 2, 3).setText(participant.email);
+        sheet.getRangeByIndex(i + 2, 3).setText(nim);
         sheet
             .getRangeByIndex(i + 2, 4)
             .setText(participant.division.toUpperCase());

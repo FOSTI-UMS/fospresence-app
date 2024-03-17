@@ -21,7 +21,7 @@ class ConfirmPassDialog {
       required GlobalKey<FormState> formKey,
       required TextEditingController edtPass,
       required FocusNode focusNode,
-      bool isParticipant = false, 
+      bool isParticipant = false,
       bool isExcel = false}) {
     return showDialog(
       context: context,
@@ -56,7 +56,7 @@ class ConfirmPassDialog {
                           textAlign: TextAlign.center,
                         ),
                   content: _buildForm(formKey, focusNode, edtPass, onConfirm,
-                      context, isParticipant, isExcel),
+                      context, isParticipant),
                 ),
               ),
             ),
@@ -67,14 +67,13 @@ class ConfirmPassDialog {
   }
 
   static Form _buildForm(
-      GlobalKey<FormState> formKey,
-      FocusNode focusNode,
-      TextEditingController edtPass,
-      void Function(BuildContext context) onConfirm,
-      BuildContext context,
-      bool isParticipant,
-      bool isExcel,
-      ) {
+    GlobalKey<FormState> formKey,
+    FocusNode focusNode,
+    TextEditingController edtPass,
+    void Function(BuildContext context) onConfirm,
+    BuildContext context,
+    bool isParticipant,
+  ) {
     void back() {
       Navigator.pop(context);
       focusNode.unfocus();
