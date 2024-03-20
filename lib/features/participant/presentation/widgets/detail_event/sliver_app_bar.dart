@@ -54,6 +54,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
       automaticallyImplyLeading: false,
       centerTitle: true,
       toolbarHeight: 0.1,
+      // tool
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.zero,
         title: SingleChildScrollView(

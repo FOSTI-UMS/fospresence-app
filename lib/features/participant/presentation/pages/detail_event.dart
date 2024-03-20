@@ -4,7 +4,6 @@ import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.da
 import 'package:fospresence/features/participant/presentation/widgets/detail_event/search.dart';
 import 'package:fospresence/features/participant/presentation/widgets/detail_event/participant_list_view.dart';
 import 'package:fospresence/core/commons/widgets/background_w_logo.dart';
-import '../../../../core/constants/colors.dart';
 import '../widgets/detail_event/scan_button.dart';
 import '../widgets/detail_event/sliver_app_bar.dart';
 
@@ -43,7 +42,8 @@ class _DetailEventScreenState extends State<DetailEventScreen> {
                   DetailEventSliverAppBar(selectedEvent: state.selectedEvent!)),
         ],
         body: Container(
-          decoration: BoxDecoration(color: appDarkBgColor),
+          decoration:
+              BoxDecoration(color: Theme.of(context).colorScheme.background),
           child: Column(
             children: [
               const DetailEventSearch(),

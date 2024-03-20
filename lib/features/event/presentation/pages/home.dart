@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fospresence/config/routes/route_name.dart';
 import 'package:fospresence/core/commons/widgets/custom_toast_w_border.dart';
-import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_list_view.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/search.dart';
@@ -84,7 +83,8 @@ class HomeScreen extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white, width: 0.3),
+                  border: Border.all(
+                      color: Theme.of(context).colorScheme.surface, width: 0.3),
                   borderRadius: const BorderRadius.only(
                     bottomRight: Radius.circular(15),
                     topLeft: Radius.circular(15),
@@ -92,7 +92,10 @@ class HomeScreen extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: primaryGradientColor),
+                      colors: [
+                        Theme.of(context).colorScheme.secondary,
+                        Theme.of(context).colorScheme.primary
+                      ]),
                 ),
                 child: const Icon(Icons.add),
               ),

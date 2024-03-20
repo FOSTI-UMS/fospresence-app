@@ -49,10 +49,12 @@ class _HomeSliverAppBarState extends State<HomeSliverAppBar> {
               bottomLeft: Radius.circular(15),
               bottomRight: Radius.circular(15)),
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: primaryGradientColor,
-          ),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Theme.of(context).colorScheme.secondary,
+                Theme.of(context).colorScheme.primary
+              ]),
         ),
         child: _buildFlexibleSpaceBar(context),
       ),

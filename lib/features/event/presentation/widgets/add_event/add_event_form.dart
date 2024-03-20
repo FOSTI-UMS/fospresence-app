@@ -38,7 +38,8 @@ class _AddEventFormState extends State<AddEventForm> {
     _formKeyDialog = GlobalKey<FormState>();
     _edtPassDialog = TextEditingController();
     _focusNodeDialog = FocusNode();
-    formattedDatetime = DateFormat('EEEE, dd MMM yyyy','id_ID').format(_selectedDate!);
+    formattedDatetime =
+        DateFormat('EEEE, dd MMM yyyy', 'id_ID').format(_selectedDate!);
   }
 
   @override
@@ -154,18 +155,21 @@ class _AddEventFormState extends State<AddEventForm> {
                   _selectedDate =
                       await DatetimePicker.showDatetimePicker(context);
                   _selectedDate = _selectedDate ?? DateTime.now();
-                  formattedDatetime =
-                      DateFormat('EEEE, dd MMM yyyy','id_ID').format(_selectedDate!);
+                  formattedDatetime = DateFormat('EEEE, dd MMM yyyy', 'id_ID')
+                      .format(_selectedDate!);
                   setState(() {});
                 },
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  decoration: BoxDecoration(
+                    color: appDarkBgColor.withOpacity(0.4)
+                  ),
                   child: IntrinsicWidth(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("$formattedDatetime"),
+                        Text("$formattedDatetime", style: textDark14),
                         const SizedBox(width: 25),
                         const Icon(Icons.calendar_month, size: 20),
                       ],

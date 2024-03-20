@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/core/commons/widgets/card_shimmer.dart';
 import 'package:fospresence/core/commons/widgets/event_bottom_sheet.dart';
-import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../../../config/routes/route_name.dart';
 import '../../../../../core/commons/widgets/custom_toast_w_border.dart';
-import '../../../../../core/constants/helper.dart';
 import '../../../../my_app.dart';
 import '../../../domain/entities/event/event_entity.dart';
 
@@ -110,14 +106,18 @@ class _EventListViewState extends State<EventListView> {
           height: 100,
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
-            border: globalWhiteBorder,
+            border: Border.all(
+                color: Theme.of(context).colorScheme.surface, width: 0.2),
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20), topRight: Radius.circular(20)),
             color: Colors.white.withOpacity(0.9),
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [primaryColor.withOpacity(0.9), Colors.black],
+              colors: [
+                Theme.of(context).colorScheme.primary,
+                Theme.of(context).colorScheme.secondary
+              ],
             ),
           ),
           child: Center(
@@ -140,7 +140,10 @@ class _EventListViewState extends State<EventListView> {
                       focusNode: _focusNodeDialog,
                       edtPass: _edtPassDialog);
                 },
-                child: SvgPicture.asset("assets/svg/more_vert.svg"),
+                child: Icon(
+                  Icons.more_vert_rounded,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
               ),
             ),
           ),
@@ -188,7 +191,6 @@ class _EventListViewState extends State<EventListView> {
   void _launchURL(String stringUrl) async {
     final url = Uri.parse(stringUrl);
     if (await launchUrl(url)) {
-      await launchUrl(url);
     } else {
       fToast.showToast(
         child: const Padding(

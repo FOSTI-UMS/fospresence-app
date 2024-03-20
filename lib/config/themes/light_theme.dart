@@ -6,8 +6,8 @@ ThemeData get lightThemeData => ThemeData(
       scaffoldBackgroundColor: appLightBgColor,
       appBarTheme: AppBarTheme(
         scrolledUnderElevation: 0,
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
+        backgroundColor: primaryLightColor,
+        foregroundColor: const Color.fromARGB(255, 34, 34, 34),
         centerTitle: true,
         titleTextStyle: const TextStyle(
           fontFamily: "Nunito",
@@ -22,10 +22,11 @@ ThemeData get lightThemeData => ThemeData(
             borderRadius: BorderRadius.circular(10.0),
           ),
           padding: const EdgeInsets.symmetric(vertical: 10),
-          foregroundColor: Colors.white,
+          foregroundColor: appLightBgColor,
           elevation: 0.5,
-          textStyle: textWhite14.copyWith(fontWeight: FontWeight.w600),
-          backgroundColor: primaryColor,
+          textStyle: textWhite14.copyWith(
+              fontWeight: FontWeight.w600, color: Colors.red),
+          backgroundColor: primaryLightColor,
         ),
       ),
       splashFactory: InkRipple.splashFactory,
@@ -42,13 +43,13 @@ ThemeData get lightThemeData => ThemeData(
         headlineSmall: textDark12,
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: primaryColor,
+        backgroundColor: primaryLightColor,
         foregroundColor: Colors.white,
       ),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: Colors.black,
         selectionColor: primaryColor.withOpacity(0.3),
-        selectionHandleColor: primaryColor,
+        selectionHandleColor: primaryLightColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
         errorMaxLines: 3,
@@ -57,7 +58,7 @@ ThemeData get lightThemeData => ThemeData(
         hintStyle: textDark14.copyWith(color: Colors.grey),
         helperStyle: textDark14.copyWith(color: Colors.grey),
         errorStyle: textDark10.copyWith(color: Colors.redAccent),
-        fillColor: Colors.white,
+        fillColor: appDarkBgColor.withOpacity(0.7),
         labelStyle: textDark14.copyWith(color: Colors.black),
         filled: true,
         focusedErrorBorder: OutlineInputBorder(
@@ -116,10 +117,25 @@ ThemeData get lightThemeData => ThemeData(
           ),
         ),
       ),
+      colorScheme: ColorScheme(
+        brightness: Brightness.light,
+        primary: primaryLightColor,
+        onPrimary: primaryColor.withOpacity(0.8),
+        secondary: secondaryLightColor,
+        onSecondary: primaryColor.withOpacity(0.4),
+        primaryContainer: primaryColor.withOpacity(0.9),
+        secondaryContainer: appLightBgColor,
+        error: Colors.red,
+        onError: Colors.red,
+        background: appLightBgColor,
+        onBackground: primaryLightColor,
+        surface: appDarkBgColor,
+        onSurface: Colors.white,
+      ),
     );
 
 Theme lightTheme(Widget? child) => Theme(
     data: lightThemeData.copyWith(
-        primaryColor: primaryColor,
-        colorScheme: const ColorScheme.light(primary: Colors.blue)),
+      primaryColor: primaryLightColor,
+    ),
     child: child!);

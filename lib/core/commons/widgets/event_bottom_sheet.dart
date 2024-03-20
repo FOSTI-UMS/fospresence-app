@@ -11,7 +11,6 @@ import '../../../features/event/domain/entities/event/event_entity.dart';
 import '../../../features/my_app.dart';
 import '../../constants/colors.dart';
 import '../../constants/font.dart';
-import '../../constants/helper.dart';
 import '../../constants/pass.dart';
 import 'custom_toast_w_border.dart';
 
@@ -29,7 +28,8 @@ class EventBottomSheet {
       builder: (context) => Stack(
         children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface.withOpacity(0.2)),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -53,9 +53,14 @@ class EventBottomSheet {
                     onTap: () => Navigator.of(context).pop(),
                     child: Container(
                       decoration: BoxDecoration(
-                          border: globalWhiteBorder,
+                          border: Border.all(
+                              color: Theme.of(context).colorScheme.surface,
+                              width: 0.2),
                           gradient: LinearGradient(
-                              colors: primaryGradientColor,
+                              colors: [
+                                Theme.of(context).colorScheme.secondary,
+                                Theme.of(context).colorScheme.primary
+                              ],
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight)),
                       child: const Padding(
@@ -74,9 +79,14 @@ class EventBottomSheet {
                             borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(12.5),
                                 topRight: Radius.circular(12.5)),
-                            border: globalWhiteBorder,
+                            border: Border.all(
+                                color: Theme.of(context).colorScheme.surface,
+                                width: 0.2),
                             gradient: LinearGradient(
-                                colors: primaryGradientColor,
+                                colors: [
+                                  Theme.of(context).colorScheme.secondary,
+                                  Theme.of(context).colorScheme.primary
+                                ],
                                 end: Alignment.centerLeft,
                                 begin: Alignment.centerRight)),
                         child: const Padding(
@@ -90,12 +100,17 @@ class EventBottomSheet {
                           context, formKey, edtPass, focusNode),
                       child: Container(
                         decoration: BoxDecoration(
-                          border: globalWhiteBorder,
+                          border: Border.all(
+                              color: Theme.of(context).colorScheme.surface,
+                              width: 0.2),
                           borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(12.5),
                               bottomRight: Radius.circular(12.5)),
                           gradient: LinearGradient(
-                              colors: primaryGradientColor,
+                              colors: [
+                                Theme.of(context).colorScheme.secondary,
+                                Theme.of(context).colorScheme.primary
+                              ],
                               end: Alignment.centerLeft,
                               begin: Alignment.centerRight),
                         ),

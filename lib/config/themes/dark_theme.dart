@@ -3,6 +3,7 @@ import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/core/constants/font.dart';
 
 ThemeData get darkThemeData => ThemeData(
+      brightness: Brightness.dark,
       scaffoldBackgroundColor: appDarkBgColor,
       appBarTheme: AppBarTheme(
         scrolledUnderElevation: 0,
@@ -124,10 +125,25 @@ ThemeData get darkThemeData => ThemeData(
           ),
         ),
       ),
+      colorScheme: ColorScheme(
+          brightness: Brightness.dark,
+          primary: primaryColor,
+          onPrimary: primaryColor.withOpacity(0.9),
+          secondary: Colors.black,
+          onSecondary: primaryColor.withOpacity(0.4),
+          primaryContainer: Colors.orange,
+          error: Colors.red,
+          onError: Colors.red,
+          background: blue,
+          onBackground: primaryColor,
+          surface: appLightBgColor,
+          onSurface: primaryColor.withOpacity(0.9),
+          onPrimaryContainer: Colors.red,
+          onSecondaryContainer: appDarkBgColor),
     );
 
 Theme darkTheme(Widget? child) => Theme(
     data: darkThemeData.copyWith(
-        primaryColor: primaryColor,
-        colorScheme: const ColorScheme.dark(primary: Colors.blue)),
+      primaryColor: primaryColor,
+    ),
     child: child!);
