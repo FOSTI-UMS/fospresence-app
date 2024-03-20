@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../constants/colors.dart';
-import '../../constants/helper.dart';
 
 class CardShimmer extends StatelessWidget {
   final int index;
@@ -24,7 +23,7 @@ class CardShimmer extends StatelessWidget {
             padding: const EdgeInsets.all(0.5),
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
-              border: globalWhiteBorder,
+              border: globalBorder(context),
               borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   topRight: Radius.circular(20)),
@@ -32,7 +31,7 @@ class CardShimmer extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [primaryColor.withOpacity(0.9), Colors.black],
+                colors: lightCardGradientColor(context),
               ),
             ),
             child: Shimmer.fromColors(

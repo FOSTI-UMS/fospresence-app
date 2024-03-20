@@ -7,7 +7,6 @@ import 'package:fospresence/features/event/domain/entities/event/event_entity.da
 import 'package:fospresence/features/participant/presentation/bloc/participant/participant_bloc.dart';
 
 import '../../../../../core/commons/widgets/confirm_password_dialog.dart';
-import '../../../../../core/constants/helper.dart';
 import '../../../domain/entities/participant/participant_entity.dart';
 
 class ParticipantListView extends StatefulWidget {
@@ -90,14 +89,14 @@ class _ParticipantListViewState extends State<ParticipantListView> {
         height: 100,
         width: MediaQuery.sizeOf(context).width,
         decoration: BoxDecoration(
-          border: globalWhiteBorder,
+          border: globalBorder(context),
           borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20), topRight: Radius.circular(20)),
           color: Colors.white.withOpacity(0.9),
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [primaryColor.withOpacity(0.9), Colors.black],
+            colors: lightCardGradientColor(context),
           ),
         ),
         child: Center(

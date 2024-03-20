@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fospresence/core/constants/font.dart';
-import 'package:fospresence/core/constants/helper.dart';
+
+import '../../constants/colors.dart';
 
 class CustomToastWithBorder extends StatelessWidget {
   final String message;
@@ -14,7 +15,7 @@ class CustomToastWithBorder extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
       decoration: BoxDecoration(
-        border: globalWhiteBorder,
+        border: globalBorder(context),
         borderRadius: BorderRadius.circular(25.0),
         color: Colors.black,
       ),

@@ -88,7 +88,7 @@ class _EditEventFormState extends State<EditEventForm> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
-                  border: globalWhiteBorder,
+                  border: globalBorder(context),
                   color: Colors.blue.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(10)),
               child: Row(

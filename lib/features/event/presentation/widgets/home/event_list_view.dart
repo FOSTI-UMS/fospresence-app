@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../config/routes/route_name.dart';
 import '../../../../../core/commons/widgets/custom_toast_w_border.dart';
+import '../../../../../core/constants/colors.dart';
 import '../../../../my_app.dart';
 import '../../../domain/entities/event/event_entity.dart';
 
@@ -106,18 +107,14 @@ class _EventListViewState extends State<EventListView> {
           height: 100,
           width: MediaQuery.sizeOf(context).width,
           decoration: BoxDecoration(
-            border: Border.all(
-                color: Theme.of(context).colorScheme.surface, width: 0.2),
+            border: globalBorder(context),
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20), topRight: Radius.circular(20)),
             color: Colors.white.withOpacity(0.9),
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                Theme.of(context).colorScheme.primary,
-                Theme.of(context).colorScheme.secondary
-              ],
+              colors: lightCardGradientColor(context),
             ),
           ),
           child: Center(

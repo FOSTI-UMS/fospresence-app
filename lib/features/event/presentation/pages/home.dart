@@ -13,6 +13,7 @@ import 'package:fospresence/features/event/presentation/widgets/home/search.dart
 import 'package:fospresence/features/my_app.dart';
 
 import '../../../../core/commons/widgets/background_w_logo.dart';
+import '../../../../core/constants/colors.dart';
 import '../widgets/home/sliver_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -92,10 +93,7 @@ class HomeScreen extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [
-                        Theme.of(context).colorScheme.secondary,
-                        Theme.of(context).colorScheme.primary
-                      ]),
+                      colors: lightCardGradientColor2(context)),
                 ),
                 child: const Icon(Icons.add),
               ),
