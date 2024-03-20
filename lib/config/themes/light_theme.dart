@@ -47,7 +47,7 @@ ThemeData get lightThemeData => ThemeData(
         foregroundColor: Colors.white,
       ),
       textSelectionTheme: TextSelectionThemeData(
-        cursorColor: Colors.black,
+        cursorColor: Colors.white,
         selectionColor: primaryColor.withOpacity(0.3),
         selectionHandleColor: primaryLightColor,
       ),
@@ -130,7 +130,8 @@ ThemeData get lightThemeData => ThemeData(
         background: appLightBgColor,
         onBackground: primaryLightColor,
         surface: appDarkBgColor,
-        onSurface: Colors.white,
+        onSurface: const Color.fromARGB(255, 59, 59, 59),
+        shadow: shimmerLightColor,
       ),
     );
 

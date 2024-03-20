@@ -134,10 +134,14 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
               child: Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 0.2),
-                    color: primaryColor.withOpacity(0.5),
+                    border: globalBorder(context),
+                    color:
+                        Theme.of(context).colorScheme.surface.withOpacity(0.7),
                     borderRadius: BorderRadius.circular(10)),
-                child: const Icon(Icons.download_rounded),
+                child: Icon(
+                  Icons.download_rounded,
+                  color: Theme.of(context).colorScheme.background,
+                ),
               ),
             );
           },

@@ -29,7 +29,8 @@ class EventBottomSheet {
         children: [
           Container(
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface.withOpacity(0.2)),
+                color:
+                    Theme.of(context).colorScheme.background.withOpacity(0.2)),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,

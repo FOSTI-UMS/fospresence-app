@@ -163,15 +163,16 @@ class _AddEventFormState extends State<AddEventForm> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   decoration: BoxDecoration(
-                    color: appDarkBgColor.withOpacity(0.4)
-                  ),
+                      color: Theme.of(context).colorScheme.onSurface),
                   child: IntrinsicWidth(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("$formattedDatetime", style: textDark14),
+                        Text("$formattedDatetime",
+                            style: textDark14.copyWith(color: Colors.white)),
                         const SizedBox(width: 25),
-                        const Icon(Icons.calendar_month, size: 20),
+                        const Icon(Icons.calendar_month,
+                            size: 20, color: Colors.white),
                       ],
                     ),
                   ),

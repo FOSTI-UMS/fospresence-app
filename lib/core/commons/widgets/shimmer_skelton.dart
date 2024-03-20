@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fospresence/core/constants/colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerSkelton extends StatelessWidget {
@@ -18,8 +19,8 @@ class ShimmerSkelton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: const Color(0xFF01303f),
-      highlightColor: const Color(0xFF02577a),
+      baseColor: globalShimmerColor(context),
+      highlightColor: globalShimmerColor(context).withOpacity(0.7),
       child: Container(
         height: height,
         width: width,

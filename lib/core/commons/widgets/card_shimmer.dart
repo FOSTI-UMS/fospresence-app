@@ -36,7 +36,7 @@ class CardShimmer extends StatelessWidget {
             ),
             child: Shimmer.fromColors(
               baseColor: secondaryColor.withOpacity(0.1),
-              highlightColor: primaryColor.withOpacity(0.9),
+              highlightColor: globalShimmerColor(context),
               child: Container(
                 height: MediaQuery.sizeOf(context).height,
                 width: MediaQuery.sizeOf(context).width,

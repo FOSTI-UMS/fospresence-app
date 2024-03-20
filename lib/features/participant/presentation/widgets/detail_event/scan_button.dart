@@ -47,8 +47,8 @@ class _ScanButtonState extends State<ScanButton> {
           height: 50,
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: primaryGradientColor),
-            border: Border.all(width: 1, color: Colors.white),
+            gradient: LinearGradient(colors: lightCardGradientColor(context)),
+            border: globalBorder(context),
             borderRadius: BorderRadius.circular(30),
           ),
           child: Stack(

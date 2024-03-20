@@ -7,6 +7,7 @@ List<Color> get primaryGradientColor => [secondaryColor, primaryColor];
 Color get appDarkBgColor => const Color(0xFF0B0B0D);
 List<Color> get darkCardGradientColor =>
     [primaryColor.withOpacity(0.9), Colors.white];
+Color get shimmerDarkColor => const Color.fromARGB(255, 1, 55, 78);
 
 // ========== LIGHT COLOR ==============
 Color get appLightBgColor => const Color(0xFFEDF2F8);
@@ -22,8 +23,11 @@ List<Color> lightCardGradientColor2(BuildContext context) => [
       Theme.of(context).colorScheme.secondary,
       Theme.of(context).colorScheme.primary
     ];
+Color globalShimmerColor(BuildContext context) =>
+    Theme.of(context).colorScheme.shadow;
 final Border darkGlobalWhiteBorder =
     Border.all(color: appLightBgColor, width: 0.2);
+Color get shimmerLightColor => appDarkBgColor.withOpacity(0.8);
 
 // ============= GLOBAL COLOR ======================
 Color get lightGrey => const Color.fromARGB(255, 228, 226, 226);
