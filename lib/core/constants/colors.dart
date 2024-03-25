@@ -33,5 +33,22 @@ Color get shimmerLightColor => appDarkBgColor.withOpacity(0.8);
 Color get lightGrey => const Color.fromARGB(255, 228, 226, 226);
 Color get blue => Colors.blue;
 Color get splashColor => const Color.fromARGB(88, 0, 0, 0);
+Color onPrimaryColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onPrimary;
+Color onSecondaryColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onSecondary;
+Color primaryContainerColor(BuildContext context) =>
+    Theme.of(context).colorScheme.primaryContainer;
+Color secondaryContainerColor(BuildContext context) =>
+    Theme.of(context).colorScheme.secondaryContainer;
+Color onPrimaryContainerColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onPrimaryContainer;
+Color onSecondaryContainerColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onSecondaryContainer;
+Color surfaceColor(BuildContext context) =>
+    Theme.of(context).colorScheme.surface;
+Color onSurfaceColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onSurface;
+
 Border globalBorder(BuildContext context) =>
     Border.all(color: Theme.of(context).colorScheme.surface, width: 0.2);
