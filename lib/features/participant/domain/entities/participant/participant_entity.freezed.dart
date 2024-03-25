@@ -20,6 +20,7 @@ mixin _$ParticipantEntity {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get division => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
   DateTime get datetime => throw _privateConstructorUsedError;
   String? get eventRaw => throw _privateConstructorUsedError;
   EventEntity? get event => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ParticipantEntityCopyWith<$Res> {
       String name,
       String email,
       String division,
+      String role,
       DateTime datetime,
       String? eventRaw,
       EventEntity? event});
@@ -64,6 +66,7 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
     Object? name = null,
     Object? email = null,
     Object? division = null,
+    Object? role = null,
     Object? datetime = null,
     Object? eventRaw = freezed,
     Object? event = freezed,
@@ -84,6 +87,10 @@ class _$ParticipantEntityCopyWithImpl<$Res, $Val extends ParticipantEntity>
       division: null == division
           ? _value.division
           : division // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String,
       datetime: null == datetime
           ? _value.datetime
@@ -126,6 +133,7 @@ abstract class _$$ParticipantEntityImplCopyWith<$Res>
       String name,
       String email,
       String division,
+      String role,
       DateTime datetime,
       String? eventRaw,
       EventEntity? event});
@@ -149,6 +157,7 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
     Object? name = null,
     Object? email = null,
     Object? division = null,
+    Object? role = null,
     Object? datetime = null,
     Object? eventRaw = freezed,
     Object? event = freezed,
@@ -169,6 +178,10 @@ class __$$ParticipantEntityImplCopyWithImpl<$Res>
       division: null == division
           ? _value.division
           : division // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String,
       datetime: null == datetime
           ? _value.datetime
@@ -194,6 +207,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
       required this.name,
       required this.email,
       required this.division,
+      required this.role,
       required this.datetime,
       this.eventRaw,
       this.event});
@@ -207,6 +221,8 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
   @override
   final String division;
   @override
+  final String role;
+  @override
   final DateTime datetime;
   @override
   final String? eventRaw;
@@ -215,7 +231,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
 
   @override
   String toString() {
-    return 'ParticipantEntity(ref: $ref, name: $name, email: $email, division: $division, datetime: $datetime, eventRaw: $eventRaw, event: $event)';
+    return 'ParticipantEntity(ref: $ref, name: $name, email: $email, division: $division, role: $role, datetime: $datetime, eventRaw: $eventRaw, event: $event)';
   }
 
   @override
@@ -228,6 +244,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.division, division) ||
                 other.division == division) &&
+            (identical(other.role, role) || other.role == role) &&
             (identical(other.datetime, datetime) ||
                 other.datetime == datetime) &&
             (identical(other.eventRaw, eventRaw) ||
@@ -237,7 +254,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, ref, name, email, division, datetime, eventRaw, event);
+      runtimeType, ref, name, email, division, role, datetime, eventRaw, event);
 
   @JsonKey(ignore: true)
   @override
@@ -252,6 +269,7 @@ class _$ParticipantEntityImpl implements _ParticipantEntity {
       "name": name,
       "email": email,
       "division": division,
+      "role": role,
       "datetime": datetime,
       // "events": event?.ref.id,
     };
@@ -264,6 +282,7 @@ abstract class _ParticipantEntity implements ParticipantEntity {
       required final String name,
       required final String email,
       required final String division,
+      required final String role,
       required final DateTime datetime,
       final String? eventRaw,
       final EventEntity? event}) = _$ParticipantEntityImpl;
@@ -276,6 +295,8 @@ abstract class _ParticipantEntity implements ParticipantEntity {
   String get email;
   @override
   String get division;
+  @override
+  String get role;
   @override
   DateTime get datetime;
   @override

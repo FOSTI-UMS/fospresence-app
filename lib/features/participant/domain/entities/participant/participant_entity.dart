@@ -11,6 +11,7 @@ abstract class ParticipantEntity with _$ParticipantEntity {
     required String name,
     required String email,
     required String division,
+    required String role,
     required DateTime datetime,
     String? eventRaw,
     EventEntity? event,
@@ -22,19 +23,20 @@ abstract class ParticipantEntity with _$ParticipantEntity {
     final data = snapshot.data();
 
     return ParticipantEntity(
-        ref: snapshot.reference,
-        name: data?["name"].toLowerCase().split(' ').map(
-          (word) {
-            return word.isNotEmpty
-                ? word[0].toUpperCase() + word.substring(1)
-                : "";
-          },
-        ).join(' '),
-        email: data?["email"],
-        division: data?["division"].toUpperCase(),
-        datetime: (data?["datetime"] as Timestamp).toDate(),
-        // eventRaw: data?["events"],
-        );
+      ref: snapshot.reference,
+      name: data?["name"].toLowerCase().split(' ').map(
+        (word) {
+          return word.isNotEmpty
+              ? word[0].toUpperCase() + word.substring(1)
+              : "";
+        },
+      ).join(' '),
+      email: data?["email"],
+      division: data?["division"].toUpperCase(),
+      role: data?["role"].toUpperCase(),
+      datetime: (data?["datetime"] as Timestamp).toDate(),
+      // eventRaw: data?["events"],
+    );
   }
 
   Map<String, Object?> toFirestore() {
@@ -42,6 +44,7 @@ abstract class ParticipantEntity with _$ParticipantEntity {
       "name": name,
       "email": email,
       "division": division,
+      "role": role,
       "datetime": datetime,
       // "events": event?.ref.id,
     };

@@ -53,7 +53,8 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
             margin: const EdgeInsets.symmetric(vertical: 20),
             height: 4,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5), color: Colors.white),
+                borderRadius: BorderRadius.circular(5),
+                color: Theme.of(context).colorScheme.surface),
           ),
           BlocBuilder<ParticipantBloc, ParticipantState>(
             bloc: _participantBloc,

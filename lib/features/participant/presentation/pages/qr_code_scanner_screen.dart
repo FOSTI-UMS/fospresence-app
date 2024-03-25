@@ -145,13 +145,15 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
       String name = qrCodeConvertResult[0];
       String email = qrCodeConvertResult[1];
       String division = qrCodeConvertResult[2];
-      String event = qrCodeConvertResult[3];
+      String role = qrCodeConvertResult[3];
+      String event = qrCodeConvertResult[4];
       if (event == selectedEvent!.name.toLowerCase()) {
         ParticipantEntity participantData = ParticipantEntity(
             ref: FirebaseFirestore.instance.collection("events").doc(),
             name: name,
             email: email,
             division: division,
+            role: role,
             datetime: DateTime.now(),
             eventRaw: selectedEvent.ref.id);
         context.read<ParticipantBloc>().add(
