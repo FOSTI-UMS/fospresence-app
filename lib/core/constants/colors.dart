@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 Color get primaryDarkColor => const Color(0xFF043143);
 Color get secondaryColor => const Color(0xFF081C28);
 List<Color> get primaryGradientColor => [secondaryColor, primaryDarkColor];
+
 Color get appDarkBgColor => const Color(0xFF0B0B0D);
 List<Color> get darkCardGradientColor =>
     [primaryDarkColor.withOpacity(0.9), Colors.white];
@@ -57,6 +58,10 @@ Color iconSvgColor(BuildContext context) =>
 Color outlineColor(BuildContext context) =>
     Theme.of(context).colorScheme.outline;
 
+Color backgroundColor(BuildContext context) =>
+    Theme.of(context).colorScheme.background;
+Color onBackgroundColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onBackground;
 Border globalBorder(BuildContext context) =>
     Border.all(color: outlineColor(context), width: 0.2);
 Color globalShimmerColor(BuildContext context) =>

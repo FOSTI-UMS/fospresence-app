@@ -140,8 +140,8 @@ class _EventListViewState extends State<EventListView> {
                 },
                 child: SvgPicture.asset(
                   "assets/svg/more_vert.svg",
-                  colorFilter: ColorFilter.mode(
-                      iconSvgColor(context), BlendMode.srcIn),
+                  colorFilter:
+                      ColorFilter.mode(iconSvgColor(context), BlendMode.srcIn),
                 ),
               ),
             ),

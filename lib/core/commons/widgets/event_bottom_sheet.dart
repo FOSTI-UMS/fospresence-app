@@ -28,9 +28,7 @@ class EventBottomSheet {
       builder: (context) => Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-                color:
-                    Theme.of(context).colorScheme.background.withOpacity(0.2)),
+            decoration: BoxDecoration(color: backgroundColor(context)),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fospresence/core/constants/colors.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:fospresence/features/participant/presentation/widgets/detail_event/search.dart';
 import 'package:fospresence/features/participant/presentation/widgets/detail_event/participant_list_view.dart';
@@ -43,7 +44,7 @@ class _DetailEventScreenState extends State<DetailEventScreen> {
         ],
         body: Container(
           decoration:
-              BoxDecoration(color: Theme.of(context).colorScheme.background),
+              BoxDecoration(color: backgroundColor(context)),
           child: Column(
             children: [
               const DetailEventSearch(),
