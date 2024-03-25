@@ -28,9 +28,7 @@ class EventBottomSheet {
       builder: (context) => Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-                color:
-                    Theme.of(context).colorScheme.background.withOpacity(0.2)),
+            decoration: BoxDecoration(color: backgroundColor(context)),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -55,13 +53,10 @@ class EventBottomSheet {
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: Theme.of(context).colorScheme.surface,
+                              color: surfaceColor(context),
                               width: 0.2),
                           gradient: LinearGradient(
-                              colors: [
-                                Theme.of(context).colorScheme.secondary,
-                                Theme.of(context).colorScheme.primary
-                              ],
+                              colors: lightCardGradientColor(context),
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight)),
                       child: const Padding(
@@ -81,13 +76,10 @@ class EventBottomSheet {
                                 topLeft: Radius.circular(12.5),
                                 topRight: Radius.circular(12.5)),
                             border: Border.all(
-                                color: Theme.of(context).colorScheme.surface,
+                                color: surfaceColor(context),
                                 width: 0.2),
                             gradient: LinearGradient(
-                                colors: [
-                                  Theme.of(context).colorScheme.secondary,
-                                  Theme.of(context).colorScheme.primary
-                                ],
+                                colors: lightCardGradientColor2(context),
                                 end: Alignment.centerLeft,
                                 begin: Alignment.centerRight)),
                         child: const Padding(
@@ -102,16 +94,13 @@ class EventBottomSheet {
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                              color: Theme.of(context).colorScheme.surface,
+                              color: surfaceColor(context),
                               width: 0.2),
                           borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(12.5),
                               bottomRight: Radius.circular(12.5)),
                           gradient: LinearGradient(
-                              colors: [
-                                Theme.of(context).colorScheme.secondary,
-                                Theme.of(context).colorScheme.primary
-                              ],
+                              colors: lightCardGradientColor2(context),
                               end: Alignment.centerLeft,
                               begin: Alignment.centerRight),
                         ),

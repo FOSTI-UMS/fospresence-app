@@ -139,7 +139,7 @@ class _EventListViewState extends State<EventListView> {
                 },
                 child: Icon(
                   Icons.more_vert_rounded,
-                  color: Theme.of(context).colorScheme.surface,
+                  color: onSurfaceColor(context),
                 ),
               ),
             ),

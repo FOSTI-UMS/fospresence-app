@@ -54,7 +54,7 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
             height: 4,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Theme.of(context).colorScheme.surface),
+                color: surfaceColor(context)),
           ),
           BlocBuilder<ParticipantBloc, ParticipantState>(
             bloc: _participantBloc,
@@ -136,12 +136,11 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     border: globalBorder(context),
-                    color:
-                        Theme.of(context).colorScheme.surface.withOpacity(0.7),
+                    color: surfaceColor(context),
                     borderRadius: BorderRadius.circular(10)),
                 child: Icon(
                   Icons.download_rounded,
-                  color: Theme.of(context).colorScheme.background,
+                  color: backgroundColor(context),
                 ),
               ),
             );

@@ -162,8 +162,7 @@ class _AddEventFormState extends State<AddEventForm> {
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurface),
+                  decoration: BoxDecoration(color: surfaceColor(context)),
                   child: IntrinsicWidth(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

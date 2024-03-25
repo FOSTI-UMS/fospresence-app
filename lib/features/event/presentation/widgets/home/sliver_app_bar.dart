@@ -51,10 +51,7 @@ class _HomeSliverAppBarState extends State<HomeSliverAppBar> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Theme.of(context).colorScheme.secondary,
-                Theme.of(context).colorScheme.primary
-              ]),
+              colors: lightCardGradientColor2(context)),
         ),
         child: _buildFlexibleSpaceBar(context),
       ),

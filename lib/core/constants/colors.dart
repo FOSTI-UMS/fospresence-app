@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // =========== DARK COLOR =============
 Color get primaryColor => const Color(0xFF043143);
-Color get secondaryColor => const Color(0xFF081C28);
+Color get secondaryColor => const Color.fromARGB(255, 2, 6, 8);
 List<Color> get primaryGradientColor => [secondaryColor, primaryColor];
 Color get appDarkBgColor => const Color(0xFF0B0B0D);
 List<Color> get darkCardGradientColor =>
@@ -49,6 +49,9 @@ Color surfaceColor(BuildContext context) =>
     Theme.of(context).colorScheme.surface;
 Color onSurfaceColor(BuildContext context) =>
     Theme.of(context).colorScheme.onSurface;
-
+Color backgroundColor(BuildContext context) =>
+    Theme.of(context).colorScheme.background;
+Color onBackgroundColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onBackground;
 Border globalBorder(BuildContext context) =>
     Border.all(color: Theme.of(context).colorScheme.surface, width: 0.2);
