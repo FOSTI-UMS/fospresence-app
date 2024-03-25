@@ -52,12 +52,12 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              primaryColor.withOpacity(0.5),
+              primaryColor(context).withOpacity(0.5),
               Colors.black,
               Colors.black,
               Colors.black,
               Colors.black,
-              primaryColor.withOpacity(0.5),
+              primaryColor(context).withOpacity(0.5),
             ],
           ),
         ),
@@ -72,7 +72,10 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
                   GestureDetector(
                     onTap: () async => await _flipCamera(),
                     child: const SizedBox(
-                        width: 30, child: Icon(Icons.flip_camera_ios_rounded)),
+                      width: 30,
+                      child: Icon(Icons.flip_camera_ios_rounded,
+                          color: Colors.white),
+                    ),
                   )
                 ],
               ),
@@ -92,9 +95,11 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
                         right: 20,
                         child: GestureDetector(
                           onTap: () async => _toggleFlash(),
-                          child: Icon(_isFlashOn!
-                              ? Icons.flash_on
-                              : Icons.flash_off_rounded),
+                          child: Icon(
+                              _isFlashOn!
+                                  ? Icons.flash_on
+                                  : Icons.flash_off_rounded,
+                              color: Colors.white),
                         ),
                       )
                     ],
@@ -108,7 +113,8 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
                   Text("Scan QR Code",
                       style: textWhite14.copyWith(fontWeight: FontWeight.w600)),
                   const SizedBox(width: 5),
-                  const Icon(Icons.qr_code_scanner, size: 20),
+                  const Icon(Icons.qr_code_scanner,
+                      size: 20, color: Colors.white),
                 ],
               )
             ],
@@ -141,7 +147,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen> {
   Future<void> _createParticipant(List<String> qrCodeConvertResult) async {
     final selectedEvent =
         BlocProvider.of<EventBloc>(context).state.selectedEvent;
-    if (qrCodeConvertResult.length == 4) {
+    if (qrCodeConvertResult.length == 5) {
       String name = qrCodeConvertResult[0];
       String email = qrCodeConvertResult[1];
       String division = qrCodeConvertResult[2];

@@ -18,7 +18,7 @@ class AppBarCustom extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: primaryGradientColor,
+            colors: gradientColorTopToBottom(context),
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

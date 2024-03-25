@@ -45,7 +45,7 @@ class _HomeSearchState extends State<HomeSearch> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: TextField(
-        style: textWhite14,
+        style: inputTextStyle(context),
         controller: _edtSearch,
         enabled: !state.isLoading,
         onChanged: (value) {
@@ -56,7 +56,11 @@ class _HomeSearchState extends State<HomeSearch> {
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.all(13.0),
-            child: SvgPicture.asset("assets/svg/search.svg"),
+            child: SvgPicture.asset(
+              "assets/svg/search.svg",
+              colorFilter:
+                  ColorFilter.mode(iconSvgColor(context), BlendMode.srcIn),
+            ),
           ),
           suffixIcon: _isSearchTextEmpty
               ? const SizedBox()
@@ -77,15 +81,15 @@ class _HomeSearchState extends State<HomeSearch> {
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide(width: 0.2, color: lightGrey),
+            borderSide: BorderSide(width: 0.2, color: outlineColor(context)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide(width: 0.2, color: lightGrey),
+            borderSide: BorderSide(width: 0.2, color: outlineColor(context)),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: const BorderSide(width: 0.8, color: Colors.white),
+            borderSide: BorderSide(width: 0.8, color: outlineColor(context)),
           ),
         ),
       ),

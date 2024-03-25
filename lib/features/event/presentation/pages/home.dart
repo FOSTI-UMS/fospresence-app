@@ -84,8 +84,7 @@ class HomeScreen extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Theme.of(context).colorScheme.surface, width: 0.3),
+                  border: globalBorder(context),
                   borderRadius: const BorderRadius.only(
                     bottomRight: Radius.circular(15),
                     topLeft: Radius.circular(15),
@@ -93,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: lightCardGradientColor2(context)),
+                      colors: gradientColorTopToBottom(context)),
                 ),
                 child: const Icon(Icons.add),
               ),

@@ -26,7 +26,7 @@ class ShimmerSkelton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
-          color: const Color(0xFF01303f),
+          color: primaryDarkColor,
           borderRadius: isCircle ? null : BorderRadius.circular(borderRadius),
         ),
       ),

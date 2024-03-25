@@ -83,8 +83,10 @@ class _ParticipantListViewState extends State<ParticipantListView> {
     ParticipantEntity? selectedParticipant =
         state.searchParticipantResult[index];
     return Padding(
-      padding:
-          EdgeInsets.only(bottom: index == participantListLength - 1 ? 10 : 0, right: 8, left: 8),
+      padding: EdgeInsets.only(
+          bottom: index == participantListLength - 1 ? 10 : 0,
+          right: 8,
+          left: 8),
       child: Container(
         height: 100,
         width: MediaQuery.sizeOf(context).width,
@@ -96,18 +98,20 @@ class _ParticipantListViewState extends State<ParticipantListView> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: lightCardGradientColor(context),
+            colors: gradientColorLeftToRight(context),
           ),
         ),
         child: Center(
           child: ListTile(
             title: Text(
-              "${selectedParticipant.name} (${selectedParticipant.division})",
+              selectedParticipant.name,
               maxLines: 2,
               style: textWhite18.copyWith(
                   fontWeight: FontWeight.w700, overflow: TextOverflow.ellipsis),
             ),
-            subtitle: Text(selectedParticipant.email, style: textWhite12),
+            subtitle: Text(
+                "${selectedParticipant.email}\n${selectedParticipant.division} (${selectedParticipant.role})",
+                style: textWhite12),
             trailing: GestureDetector(
               onTap: () {
                 _participantBloc.add(

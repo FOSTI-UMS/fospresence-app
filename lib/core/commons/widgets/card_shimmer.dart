@@ -31,7 +31,7 @@ class CardShimmer extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: lightCardGradientColor(context),
+                colors: gradientColorLeftToRight(context),
               ),
             ),
             child: Shimmer.fromColors(

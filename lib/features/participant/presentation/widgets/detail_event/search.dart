@@ -54,7 +54,7 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
             height: 4,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Theme.of(context).colorScheme.surface),
+                color: textColor(context)),
           ),
           BlocBuilder<ParticipantBloc, ParticipantState>(
             bloc: _participantBloc,
@@ -73,7 +73,7 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
       children: [
         Expanded(
           child: TextField(
-            style: textWhite14,
+            style: inputTextStyle(context),
             controller: _edtSearch,
             enabled: !state.isLoading,
             onChanged: (value) {
@@ -84,7 +84,11 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
             decoration: InputDecoration(
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(13.0),
-                child: SvgPicture.asset("assets/svg/search.svg"),
+                child: SvgPicture.asset(
+                  "assets/svg/search.svg",
+                  colorFilter:
+                      ColorFilter.mode(iconSvgColor(context), BlendMode.srcIn),
+                ),
               ),
               suffixIcon: isSearchTextEmpty
                   ? const SizedBox()
@@ -104,15 +108,18 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
                   const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide(width: 0.2, color: lightGrey),
+                borderSide:
+                    BorderSide(width: 0.2, color: outlineColor(context)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide(width: 0.2, color: lightGrey),
+                borderSide:
+                    BorderSide(width: 0.2, color: outlineColor(context)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
-                borderSide: const BorderSide(width: 0.8, color: Colors.white),
+                borderSide:
+                    BorderSide(width: 0.8, color: outlineColor(context)),
               ),
             ),
           ),
@@ -136,13 +143,9 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     border: globalBorder(context),
-                    color:
-                        Theme.of(context).colorScheme.surface.withOpacity(0.7),
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10)),
-                child: Icon(
-                  Icons.download_rounded,
-                  color: Theme.of(context).colorScheme.background,
-                ),
+                child: const Icon(Icons.download_rounded),
               ),
             );
           },

@@ -48,7 +48,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: primaryColor,
+      backgroundColor: primaryDarkColor,
       expandedHeight: 200,
       floating: true,
       automaticallyImplyLeading: false,
@@ -125,7 +125,7 @@ class _DetailEventSliverAppBarState extends State<DetailEventSliverAppBar> {
                 margin: const EdgeInsets.only(right: 5),
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
-                  color: primaryColor,
+                  color: primaryDarkColor,
                   shape: BoxShape.circle,
                   border: Border.all(width: 1.5, color: Colors.white),
                   boxShadow: [

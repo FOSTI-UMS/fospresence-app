@@ -7,7 +7,7 @@ ThemeData get darkThemeData => ThemeData(
       scaffoldBackgroundColor: appDarkBgColor,
       appBarTheme: AppBarTheme(
         scrolledUnderElevation: 0,
-        backgroundColor: primaryColor,
+        backgroundColor: primaryDarkColor,
         foregroundColor: Colors.black,
         centerTitle: true,
         titleTextStyle: const TextStyle(
@@ -27,7 +27,7 @@ ThemeData get darkThemeData => ThemeData(
           foregroundColor: Colors.white,
           elevation: 0.5,
           textStyle: textWhite14.copyWith(fontWeight: FontWeight.w600),
-          backgroundColor: primaryColor,
+          backgroundColor: primaryDarkColor,
         ),
       ),
       splashFactory: InkRipple.splashFactory,
@@ -49,8 +49,8 @@ ThemeData get darkThemeData => ThemeData(
       ),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: Colors.white,
-        selectionColor: primaryColor.withOpacity(0.3),
-        selectionHandleColor: primaryColor,
+        selectionColor: primaryDarkColor.withOpacity(0.3),
+        selectionHandleColor: primaryDarkColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
         errorMaxLines: 3,
@@ -127,26 +127,26 @@ ThemeData get darkThemeData => ThemeData(
       ),
       colorScheme: ColorScheme(
         brightness: Brightness.dark,
-        primary: primaryColor,
+        primary: primaryDarkColor,
         onPrimary: Colors.white,
         secondary: secondaryColor,
         onSecondary: Colors.white,
-        primaryContainer: primaryColor,
+        primaryContainer: Colors.black,
         onPrimaryContainer: Colors.white,
-        secondaryContainer: primaryColor,
+        secondaryContainer: Colors.black.withOpacity(0.9),
         onSecondaryContainer: Colors.white,
+        tertiaryContainer: Colors.blue.withOpacity(0.3),
+        onTertiaryContainer: Colors.white,
         error: Colors.red,
         onError: Colors.red,
         background: appDarkBgColor,
         onBackground: Colors.white,
-        surface: primaryColor,
+        surface: primaryDarkColor,
         onSurface: Colors.white,
         shadow: shimmerDarkColor,
+        outline: Colors.white,
       ),
     );
 
 Theme darkTheme(Widget? child) => Theme(
-    data: darkThemeData.copyWith(
-      primaryColor: primaryColor,
-    ),
-    child: child!);
+    data: darkThemeData.copyWith(primaryColor: primaryDarkColor), child: child!);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fospresence/core/constants/colors.dart';
 
 TextStyle get basicText =>
     const TextStyle(fontFamily: "Nunito", color: Colors.black);
@@ -69,3 +70,6 @@ TextStyle get textWhite11 =>
 TextStyle get textWhite10 =>
     basicText.copyWith(fontSize: 10, color: Colors.white);
 TextStyle get textWhite9 => basicText.copyWith(fontSize: 9);
+
+TextStyle inputTextStyle(BuildContext context) =>
+    basicText.copyWith(fontSize: 14, color: textColor(context));

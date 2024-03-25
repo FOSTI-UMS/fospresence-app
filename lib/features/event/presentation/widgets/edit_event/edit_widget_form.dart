@@ -89,7 +89,7 @@ class _EditEventFormState extends State<EditEventForm> {
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                   border: globalBorder(context),
-                  color: Colors.blue.withOpacity(0.3),
+                  color: tertiaryContainerColor(context),
                   borderRadius: BorderRadius.circular(10)),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,21 +101,25 @@ class _EditEventFormState extends State<EditEventForm> {
                       overflow: TextOverflow.fade,
                       maxLines: 3,
                       text: TextSpan(
-                        style: textWhite12,
+                        style: textWhite12.copyWith(
+                            color: onSecondaryContainerColor(context)),
                         children: [
-                          const TextSpan(text: "Format nama proker : "),
+                          const TextSpan(text: "Format nama proker: "),
                           TextSpan(
-                            text: "namaproker24",
+                            text: "namaproker",
                             style: textWhite12.copyWith(
+                                color: onSecondaryContainerColor(context),
                                 fontWeight: FontWeight.bold),
                           ),
                           TextSpan(
-                            text: "\n*",
+                            text: "\nCatatan:",
                             style: textWhite12.copyWith(
+                                color: onSecondaryContainerColor(context),
                                 fontWeight: FontWeight.bold),
                           ),
                           const TextSpan(
-                              text: "24 adalah tahun dilaksanakannya proker")
+                              text:
+                                  " Nama proker harus sama persis dengan nama proker di QR Code")
                         ],
                       ),
                     ),
@@ -130,7 +134,7 @@ class _EditEventFormState extends State<EditEventForm> {
             TextFormField(
               controller: _edtEventName,
               focusNode: _focusNode,
-              style: textWhite14,
+              style: inputTextStyle(context),
               decoration:
                   const InputDecoration(hintText: "Edit nama proker..."),
               validator: (value) {
@@ -149,11 +153,12 @@ class _EditEventFormState extends State<EditEventForm> {
                 padding: EdgeInsets.only(left: 8.0), child: Text("Tanggal")),
             const SizedBox(height: 5),
             Material(
-              color: Colors.black,
+              color: Colors.transparent,
               clipBehavior: Clip.hardEdge,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(width: 0.25, color: lightGrey)),
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(width: 0.25, color: outlineColor(context)),
+              ),
               child: InkWell(
                 onTap: () async {
                   _selectedDate =
@@ -170,9 +175,13 @@ class _EditEventFormState extends State<EditEventForm> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("$_formattedDatetime"),
+                        Text(
+                          "$_formattedDatetime",
+                          style: textDark14.copyWith(color: textColor(context)),
+                        ),
                         const SizedBox(width: 25),
-                        const Icon(Icons.calendar_month, size: 20),
+                        Icon(Icons.calendar_month,
+                            size: 20, color: textColor(context)),
                       ],
                     ),
                   ),

@@ -54,16 +54,13 @@ class EventBottomSheet {
                     onTap: () => Navigator.of(context).pop(),
                     child: Container(
                       decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.surface,
-                              width: 0.2),
-                          gradient: LinearGradient(
-                              colors: [
-                                Theme.of(context).colorScheme.secondary,
-                                Theme.of(context).colorScheme.primary
-                              ],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight)),
+                        border: globalBorder(context),
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: gradientColorLeftToRight(context),
+                        ),
+                      ),
                       child: const Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Text("Batal", textAlign: TextAlign.center),
@@ -77,19 +74,16 @@ class EventBottomSheet {
                           .then((_) => Navigator.of(context).pop()),
                       child: Container(
                         decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(12.5),
-                                topRight: Radius.circular(12.5)),
-                            border: Border.all(
-                                color: Theme.of(context).colorScheme.surface,
-                                width: 0.2),
-                            gradient: LinearGradient(
-                                colors: [
-                                  Theme.of(context).colorScheme.secondary,
-                                  Theme.of(context).colorScheme.primary
-                                ],
-                                end: Alignment.centerLeft,
-                                begin: Alignment.centerRight)),
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(12.5),
+                              topRight: Radius.circular(12.5)),
+                          border: globalBorder(context),
+                          gradient: LinearGradient(
+                            colors: gradientColorLeftToRight(context),
+                            end: Alignment.centerLeft,
+                            begin: Alignment.centerRight,
+                          ),
+                        ),
                         child: const Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Text("Edit", textAlign: TextAlign.center),
@@ -101,19 +95,15 @@ class EventBottomSheet {
                           context, formKey, edtPass, focusNode),
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.surface,
-                              width: 0.2),
                           borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(12.5),
                               bottomRight: Radius.circular(12.5)),
+                          border: globalBorder(context),
                           gradient: LinearGradient(
-                              colors: [
-                                Theme.of(context).colorScheme.secondary,
-                                Theme.of(context).colorScheme.primary
-                              ],
-                              end: Alignment.centerLeft,
-                              begin: Alignment.centerRight),
+                            colors: gradientColorLeftToRight(context),
+                            end: Alignment.centerLeft,
+                            begin: Alignment.centerRight,
+                          ),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),

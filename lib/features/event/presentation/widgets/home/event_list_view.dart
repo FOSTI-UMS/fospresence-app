@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/core/commons/widgets/card_shimmer.dart';
 import 'package:fospresence/core/commons/widgets/event_bottom_sheet.dart';
@@ -114,7 +115,7 @@ class _EventListViewState extends State<EventListView> {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: lightCardGradientColor(context),
+              colors: gradientColorLeftToRight(context),
             ),
           ),
           child: Center(
@@ -137,9 +138,10 @@ class _EventListViewState extends State<EventListView> {
                       focusNode: _focusNodeDialog,
                       edtPass: _edtPassDialog);
                 },
-                child: Icon(
-                  Icons.more_vert_rounded,
-                  color: Theme.of(context).colorScheme.surface,
+                child: SvgPicture.asset(
+                  "assets/svg/more_vert.svg",
+                  colorFilter: ColorFilter.mode(
+                      iconSvgColor(context), BlendMode.srcIn),
                 ),
               ),
             ),

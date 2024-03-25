@@ -47,8 +47,8 @@ ThemeData get lightThemeData => ThemeData(
         foregroundColor: Colors.white,
       ),
       textSelectionTheme: TextSelectionThemeData(
-        cursorColor: Colors.white,
-        selectionColor: primaryColor.withOpacity(0.3),
+        cursorColor: Colors.black,
+        selectionColor: primaryLightColor.withOpacity(0.3),
         selectionHandleColor: primaryLightColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -58,7 +58,7 @@ ThemeData get lightThemeData => ThemeData(
         hintStyle: textDark14.copyWith(color: Colors.grey),
         helperStyle: textDark14.copyWith(color: Colors.grey),
         errorStyle: textDark10.copyWith(color: Colors.redAccent),
-        fillColor: appDarkBgColor.withOpacity(0.7),
+        fillColor: Colors.transparent,
         labelStyle: textDark14.copyWith(color: Colors.black),
         filled: true,
         focusedErrorBorder: OutlineInputBorder(
@@ -71,7 +71,7 @@ ThemeData get lightThemeData => ThemeData(
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(width: 0.2, color: lightGrey),
+          borderSide: const BorderSide(width: 0.2, color: Colors.black),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -79,7 +79,7 @@ ThemeData get lightThemeData => ThemeData(
         ),
       ),
       chipTheme: ChipThemeData(
-        iconTheme: IconThemeData(color: primaryColor),
+        iconTheme: IconThemeData(color: primaryLightColor),
         side: BorderSide.none,
         padding: const EdgeInsets.all(10),
         labelStyle: textDark12,
@@ -123,10 +123,12 @@ ThemeData get lightThemeData => ThemeData(
         onPrimary: Colors.black,
         secondary: secondaryLightColor,
         onSecondary: Colors.black,
-        primaryContainer: primaryLightColor.withOpacity(0.9),
+        primaryContainer: primaryLightColor,
         onPrimaryContainer: Colors.black,
         secondaryContainer: secondaryLightColor.withOpacity(0.9),
         onSecondaryContainer: Colors.black,
+        tertiaryContainer: primaryLightColor.withOpacity(0.3),
+        onTertiaryContainer: Colors.black,
         error: Colors.red,
         onError: Colors.red,
         background: appLightBgColor,
@@ -134,11 +136,10 @@ ThemeData get lightThemeData => ThemeData(
         surface: primaryLightColor,
         onSurface: Colors.black,
         shadow: shimmerLightColor,
+        outline: Colors.black,
       ),
     );
 
 Theme lightTheme(Widget? child) => Theme(
-    data: lightThemeData.copyWith(
-      primaryColor: primaryLightColor,
-    ),
+    data: lightThemeData.copyWith(primaryColor: primaryLightColor),
     child: child!);
