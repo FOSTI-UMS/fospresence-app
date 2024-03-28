@@ -137,6 +137,7 @@ class ConfirmPassDialog {
                 : const SizedBox(),
             Expanded(
               child: TextFormField(
+                cursorColor: Colors.white,
                 focusNode: focusNode,
                 controller: edtPass,
                 style: textWhite14,

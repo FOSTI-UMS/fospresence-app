@@ -12,7 +12,7 @@ Color get shimmerDarkColor => const Color.fromARGB(255, 1, 55, 78);
 
 // ========== LIGHT COLOR ==============
 Color get appLightBgColor => const Color(0xFFEDF2F8);
-Color get primaryLightColor => const Color(0xFF343a40);
+Color get primaryLightColor => const Color.fromARGB(255, 2, 124, 173);
 Color get secondaryLightColor => const Color(0xFFf8f9fa);
 List<Color> get primaryLightGradientColor =>
     [appLightBgColor, primaryLightColor];
@@ -26,7 +26,7 @@ List<Color> gradientColorTopToBottom(BuildContext context) => [
     ];
 final Border darkGlobalWhiteBorder =
     Border.all(color: appLightBgColor, width: 0.2);
-Color get shimmerLightColor => appDarkBgColor.withOpacity(0.8);
+Color get shimmerLightColor => appLightBgColor.withOpacity(0.5);
 
 // ============= GLOBAL COLOR ======================
 Color get lightGrey => const Color.fromARGB(255, 228, 226, 226);
