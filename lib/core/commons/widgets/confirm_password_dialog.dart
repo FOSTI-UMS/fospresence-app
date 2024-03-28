@@ -47,7 +47,7 @@ class ConfirmPassDialog {
                 child: AlertDialog(
                   elevation: 0,
                   backgroundColor: appDarkBgColor,
-                  title: isParticipant || isExcel
+                  title: isParticipant
                       ? const SizedBox()
                       : Text(
                           "Password",
