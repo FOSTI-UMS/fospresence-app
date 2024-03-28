@@ -56,7 +56,7 @@ class ConfirmPassDialog {
                           textAlign: TextAlign.center,
                         ),
                   content: _buildForm(formKey, focusNode, edtPass, onConfirm,
-                      context, isParticipant),
+                      context, isParticipant, isExcel),
                 ),
               ),
             ),
@@ -73,6 +73,7 @@ class ConfirmPassDialog {
     void Function(BuildContext context) onConfirm,
     BuildContext context,
     bool isParticipant,
+    bool isExcel,
   ) {
     void back() {
       Navigator.pop(context);
@@ -85,11 +86,10 @@ class ConfirmPassDialog {
         if (edtPass.text.toLowerCase() == pass) {
           back();
           onConfirm(context);
+          if (isExcel) Navigator.pop(context);
         } else {
           back();
-          await Future.delayed(
-            const Duration(milliseconds: 300),
-          );
+          await Future.delayed(const Duration(milliseconds: 300));
           fToast.showToast(
             child: const CustomToastWithBorder(
                 message: "Password salah", isSuccess: false),

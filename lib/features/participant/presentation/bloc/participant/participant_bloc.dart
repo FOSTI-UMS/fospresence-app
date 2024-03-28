@@ -45,27 +45,33 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
           selectedParticipantPressed: (value) =>
               emit(state.copyWith(selectedParticipant: value.participant)),
           addParticipantsToExcel: (value) =>
-              _addParticipantsToExcel(value.event),
+              _addParticipantsToExcel(value.event, value.participantRole),
         );
       },
     );
   }
 
-  Future<void> _addParticipantsToExcel(EventEntity event) async {
+  Future<void> _addParticipantsToExcel(
+      EventEntity event, String participantRole) async {
     final participantList = await getParticipantsUseCase(params: event);
     final participantListUpdated = _getParticipantListUpdated(participantList);
 
     if (participantListUpdated.isNotEmpty) {
+      final filteredParticipant = participantListUpdated
+          .where((element) =>
+              element.role.toLowerCase() == participantRole.toLowerCase())
+          .toList();
       final Workbook workbook = Workbook();
       final Worksheet sheet = workbook.worksheets[0];
       sheet.getRangeByIndex(1, 1).setText("No");
       sheet.getRangeByIndex(1, 2).setText("Nama");
       sheet.getRangeByIndex(1, 3).setText("NIM");
       sheet.getRangeByIndex(1, 4).setText("Divisi");
-      sheet.getRangeByIndex(1, 5).setText("Waktu Presensi");
+      sheet.getRangeByIndex(1, 5).setText("Role");
+      sheet.getRangeByIndex(1, 6).setText("Waktu Presensi");
 
-      for (int i = 0; i < participantListUpdated.length; i++) {
-        final participant = participantListUpdated[i];
+      for (int i = 0; i < filteredParticipant.length; i++) {
+        final participant = filteredParticipant[i];
         String hour = participant.datetime.hour.toString().padLeft(2, '0');
         String minute = participant.datetime.minute.toString().padLeft(2, '0');
         String formattedTime = '$hour:$minute';
@@ -77,13 +83,15 @@ class ParticipantBloc extends Bloc<ParticipantEvent, ParticipantState> {
         sheet
             .getRangeByIndex(i + 2, 4)
             .setText(participant.division.toUpperCase());
-        sheet.getRangeByIndex(i + 2, 5).setText(formattedTime);
+        sheet.getRangeByIndex(i + 2, 5).setText(participant.role.toUpperCase());
+        sheet.getRangeByIndex(i + 2, 6).setText(formattedTime);
       }
       Directory? downloadsDirectory = await getApplicationSupportDirectory();
       final String path = downloadsDirectory.path;
       final String eventDate =
           "${event.datetime.day}-${event.datetime.month}-${event.datetime.year}";
-      final String fileName = "$path/${event.name}_$eventDate.xlsx";
+      final String fileName =
+          "$path/${event.name.toLowerCase()}_${eventDate}_${participantRole.toLowerCase()}.xlsx";
       final File file = File(fileName);
       if (await file.exists()) {
         await file.delete();

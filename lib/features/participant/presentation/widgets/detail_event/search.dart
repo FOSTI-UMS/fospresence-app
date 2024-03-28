@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fospresence/core/constants/font.dart';
-import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:fospresence/features/participant/presentation/bloc/participant/participant_bloc.dart';
+import 'package:fospresence/features/participant/presentation/widgets/detail_event/choose_role.dart';
 
-import '../../../../../core/commons/widgets/confirm_password_dialog.dart';
 import '../../../../../core/constants/colors.dart';
 
 class DetailEventSearch extends StatefulWidget {
@@ -125,30 +124,19 @@ class _DetailEventSearchState extends State<DetailEventSearch> {
           ),
         ),
         const SizedBox(width: 15),
-        BlocBuilder<EventBloc, EventState>(
-          bloc: BlocProvider.of<EventBloc>(context),
-          builder: (context, eventState) {
-            return GestureDetector(
-              onTap: state.isLoading
-                  ? () {}
-                  : () => ConfirmPassDialog.showConfirmDialog(
-                      context: context,
-                      onConfirm: (context) => _participantBloc.add(
-                          ParticipantEvent.addParticipantsToExcel(
-                              event: eventState.selectedEvent!)),
-                      formKey: _formKeyDialog,
-                      edtPass: _edtPassDialog,
-                      focusNode: _focusNodeDialog),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: globalBorder(context),
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Icon(Icons.download_rounded),
-              ),
-            );
-          },
+        GestureDetector(
+          onTap: state.isLoading
+              ? () {}
+              : () => ChooseRole.show(context, _participantBloc, _formKeyDialog,
+                  _edtPassDialog, _focusNodeDialog),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                border: globalBorder(context),
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(10)),
+            child: const Icon(Icons.download_rounded),
+          ),
         ),
         const SizedBox(width: 10)
       ],

@@ -15,5 +15,6 @@ class ParticipantEvent with _$ParticipantEvent {
   const factory ParticipantEvent.searchParticipant(
       {required String searchText}) = _SearchParticipant;
   const factory ParticipantEvent.addParticipantsToExcel(
-      {required EventEntity event}) = _AddParticipantsToExcel;
+      {required EventEntity event,
+      required String participantRole}) = _AddParticipantsToExcel;
 }
