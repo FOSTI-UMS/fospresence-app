@@ -7,7 +7,7 @@ ThemeData get lightThemeData => ThemeData(
       appBarTheme: AppBarTheme(
         scrolledUnderElevation: 0,
         backgroundColor: primaryLightColor,
-        foregroundColor: Color.fromARGB(255, 34, 34, 34),
+        foregroundColor: const Color.fromARGB(255, 34, 34, 34),
         centerTitle: true,
         titleTextStyle: const TextStyle(
           fontFamily: "Nunito",
