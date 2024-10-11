@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 
-import '../../../config/routes/route_name.dart';
+import '../../routes/route_name.dart';
 import '../../../features/event/domain/entities/event/event_entity.dart';
 import '../../../features/my_app.dart';
 import '../../constants/colors.dart';

@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fospresence/features/participant/presentation/bloc/participant/participant_bloc.dart';
 
-import '../../../../../config/routes/route_name.dart';
+import '../../../../../core/routes/route_name.dart';
 import '../../../../../core/constants/colors.dart';
 
 class ScanButton extends StatefulWidget {

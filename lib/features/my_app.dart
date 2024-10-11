@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:fospresence/config/themes/dark_theme.dart';
-import 'package:fospresence/config/themes/light_theme.dart';
+import 'package:fospresence/core/themes/dark_theme.dart';
+import 'package:fospresence/core/themes/light_theme.dart';
 import 'package:fospresence/features/event/presentation/pages/home.dart';
 
-import '../config/routes/route_generator.dart';
-import '../config/routes/route_name.dart';
+import '../core/routes/route_generator.dart';
+import '../core/routes/route_name.dart';
 
 late final FToast fToast;
 

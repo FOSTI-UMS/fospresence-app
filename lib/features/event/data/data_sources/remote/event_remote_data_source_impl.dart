@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fospresence/features/event/data/data_resources/remote/event_remote_data_source.dart';
+import 'package:fospresence/features/event/data/data_sources/remote/event_remote_data_source.dart';
 import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
 
 class EventRemoteDataSourceImpl extends EventRemoteDataSource {

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:fospresence/core/errors/failure.dart';
-import 'package:fospresence/features/event/data/data_resources/remote/event_remote_data_source.dart';
+import 'package:fospresence/features/event/data/data_sources/remote/event_remote_data_source.dart';
 import 'package:fospresence/features/event/domain/entities/event/event_entity.dart';
 import 'package:fospresence/features/event/domain/repositories/event_repository.dart';
 

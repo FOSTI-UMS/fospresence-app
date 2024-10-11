@@ -8,7 +8,7 @@ import 'package:fospresence/core/constants/font.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../../config/routes/route_name.dart';
+import '../../../../../core/routes/route_name.dart';
 import '../../../../../core/commons/widgets/custom_toast_w_border.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../my_app.dart';

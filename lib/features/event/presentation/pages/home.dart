@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fospresence/config/routes/route_name.dart';
+import 'package:fospresence/core/routes/route_name.dart';
 import 'package:fospresence/core/commons/widgets/custom_toast_w_border.dart';
 import 'package:fospresence/features/event/presentation/bloc/event/event_bloc.dart';
 import 'package:fospresence/features/event/presentation/widgets/home/event_list_view.dart';

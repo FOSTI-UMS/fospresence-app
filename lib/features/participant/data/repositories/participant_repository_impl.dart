@@ -5,7 +5,7 @@ import 'package:fospresence/features/participant/domain/entities/participant/par
 
 import '../../../event/domain/entities/event/event_entity.dart';
 import '../../domain/repositories/participant_repository.dart';
-import '../data_resources/remote/participant_remote_data_source.dart';
+import '../data_sources/remote/participant_remote_data_source.dart';
 
 class ParticipantRepositoryImpl extends ParticipantRespository {
   final ParticipantRemoteDataSource participantRemoteDataSource;

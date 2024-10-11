@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/themes/dark_theme.dart';
+import '../../themes/dark_theme.dart';
 
 class DatetimePicker {
   DatetimePicker._();
